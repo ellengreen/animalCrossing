@@ -8,6 +8,7 @@ import { KeyValuePipe } from '@angular/common';
 export class NookipediaService {
 
   constructor(private httpClient: HttpClient, private keyPipe: KeyValuePipe) { }
+
   
   getFish(){
     return this.httpClient.get("assets/fish.json")

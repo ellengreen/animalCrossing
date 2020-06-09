@@ -4,17 +4,25 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth'
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+
+import { RouterModule, Routes, Router } from '@angular/router';
+import { ReactiveFormsModule, FormsModule} from "@angular/forms";
+import { DatePipe, KeyValuePipe } from '@angular/common'
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+// import { ProfileComponent } from 'src/app/profile/prof';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CurrentCrittersComponent } from './dashboard/current-critters/current-critters.component';
-import { CurrentBugsComponent } from './dashboard/current-critters/current-bugs/current-bugs.component';
-import { CurrentFishComponent } from './dashboard/current-critters/current-fish/current-fish.component';
 
-import { DatePipe, KeyValuePipe } from '@angular/common';
+import { AuthenticationService } from './shared/authentication.service';
+import { CurrentCrittersComponent } from './dashboard/current-critters/current-critters.component';
+import { CurrentFishComponent } from './dashboard/current-critters/current-fish/current-fish.component';
+import { CurrentBugsComponent } from './dashboard/current-critters/current-bugs/current-bugs.component';
+
 import { EventsComponent } from './dashboard/events/events.component';
 import { BirthdayComponent } from './dashboard/birthday/birthday.component';
 import { NavComponent } from './nav/nav.component';
@@ -23,13 +31,17 @@ import { NavComponent } from './nav/nav.component';
 @NgModule({
   declarations: [
     AppComponent,
+    // ProfileComponent,
     DashboardComponent,
+
     CurrentCrittersComponent,
-    CurrentBugsComponent,
     CurrentFishComponent,
+    CurrentBugsComponent,
+    NavComponent,
     EventsComponent,
     BirthdayComponent,
     NavComponent
+
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -37,9 +49,13 @@ import { NavComponent } from './nav/nav.component';
     AngularFireAuthModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    AngularFirestoreModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule, 
+    RouterModule
   ],
-  providers: [DatePipe, KeyValuePipe],
+  providers: [AuthenticationService, DatePipe, KeyValuePipe, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
