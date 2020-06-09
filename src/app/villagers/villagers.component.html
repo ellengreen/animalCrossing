@@ -1,137 +1,119 @@
 <body>
+    <div class="jumbotron">
+        <h1>Villagers</h1>
+    </div>
     <div class="container-fluid">
         <div class="row justify-content-between">
-<!-- Table for all fish in JSON -->
             <div class="col-sm-8 list scroll ">
                 <table class="table table-hover table-responsive-sm table-bordered">
                     <thead class="thead-light">
                         <tr class="head">
                             <th></th>
                             <th>Name</th>
-                            <th>Location</th>
-                            <th>Months Available (N)</th>
-                            <th>Months Available (S)</th>
-                            <th>Price</th>
+                            <th>Species</th>
+                            <th>Personality</th>
                         </tr>
                     </thead>   
                     <tbody>
-                    <tr (click)="onSelect(f)" class="table" *ngFor="let f of fish | keyvalue: originalOrder" >
+                    <tr (click)="onSelect(v)" class="table" *ngFor="let v of villagers | keyvalue" >
                         <td class="icon text-center">
-                            <img src="http://acnhapi.com/icons/fish/{{f.value['id']}}">
+                            <img src="http://acnhapi.com/icons/villagers/{{v.value['id']}}">
                         </td>    
                         <td>
-                            {{f.value['name']}}
+                            {{v.value['name']['name-en']}}
                         </td>
                         <td>
-                            {{f.value['location']}}
+                            {{v.value['species']}}
                         </td>
                         <td>
-                            {{f.value['months']['northern']['text']}}
-                        </td>
-                        <td>
-                            {{f.value['months']['southern']['text']}}
-                        </td>
-                        <td class="price text-center">
-                            {{f.value['price']}} 
+                            {{v.value['personality']}}
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-<!-- Details for Selected Fish -->
+
             <div class="col-sm-4 details">
                 <div class="detailBox">
-<!-- If a fish hasn't been selected -->
-                    <div *ngIf="!selectedFish">
-                        <div *ngFor="let f of fish | keyvalue">
-                            <div *ngIf="f.key == 0">
+
+                    <!-- <div *ngIf="!selectedVillager">
+                        <div *ngFor="let v of villagers | keyvalue">
+                            <div *ngIf="v.key == 0">
                                 <div class="text-center">
-                                    <img class="icon2" src="http://acnhapi.com/icons/fish/{{f.value['id']}}">
+                                    <img class="icon2" src="http://acnhapi.com/icons/villagers/{{v.value['id']}}">
                                 </div> 
-                                <h1>{{f.value['name']}}</h1>
-                                <h6>{{f.value['price']}} bells</h6>
-                                <h6>{{f.value['price'] * 1.5}} bells from CJ</h6>
+                                <h1>{{v.value['name']}}</h1>
+                                <h6>{{v.value['price']}} bells</h6>
+                                <h6>{{v.value['price'] * 1.5}} bells from Flick</h6>
                                 <div class="deets">
                                     <div class="row">
                                         <div class="col-sm-6 text-left">
                                             Location 
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            {{f.value['location']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Shadow Size
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{f.value['shadow_size']}} 
+                                            {{v.value['location']}} 
                                         </div>
                                         <div class="col-sm-6 text-left">
                                             Available Times 
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            {{f.value['times']['text']}} 
+                                            {{v.value['times']['text']}} 
                                         </div>
                                         <div class="col-sm-6 text-left">
                                             Nothern Months 
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            {{f.value['months']['northern']['text']}} 
+                                            {{v.value['months']['northern']['text']}} 
                                         </div>
                                         <div class="col-sm-6 text-left">
                                             Southern Months 
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            {{f.value['months']['southern']['text']}} 
+                                            {{v.value['months']['southern']['text']}} 
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                    </div>
-<!--If selected fish-->     
-                    <div *ngIf="selectedFish">
+                    </div>     -->
+                    <div *ngIf="selectedVillager">
                                 <div class="text-center">
-                                    <img class="icon2" src="http://acnhapi.com/icons/fish/{{selectedFish.value['id']}}">
+                                    <img class="icon2" src="http://acnhapi.com/images/villagers/{{selectedVillager.value['id']}}">
                                 </div> 
-                                <h1>{{selectedFish.value['name']}}</h1>
-                                <h6>{{selectedFish.value['price']}} bells</h6>
-                                <h6>{{selectedFish.value['price'] * 1.5}} bells from CJ</h6>
+                                <h1>{{selectedVillager.value['name']['name-en']}}</h1>
                                 <div class="deets">
                                     <div class="row">
                                         <div class="col-sm-6 text-left">
-                                            Location 
+                                            Gender 
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            {{selectedFish.value['location']}} 
+                                            {{selectedVillager.value['gender']}} 
                                         </div>
                                         <div class="col-sm-6 text-left">
-                                            Shadow Size
+                                            Birthday 
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            {{selectedFish.value['shadow_size']}} 
+                                            {{selectedVillager.value['birthday-string']}} 
                                         </div>
                                         <div class="col-sm-6 text-left">
-                                            Available Times 
+                                            Personality
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            {{selectedFish.value['times']['text']}} 
+                                            {{selectedVillager.value['personality']}} 
                                         </div>
                                         <div class="col-sm-6 text-left">
-                                            Nothern Months 
+                                            Catch Phrase 
                                         </div>
                                         <div class="col-sm-6 text-right">
-                                            {{selectedFish.value['months']['northern']['text']}} 
+                                            {{selectedVillager.value['catch-phrase']}} 
                                         </div>
-                                        <div class="col-sm-6 text-left">
-                                            Southern Months 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{selectedFish.value['months']['southern']['text']}} 
+                                        <div>
+
                                         </div>
                             </div>
                         </div>
-                    </div>        
+                    </div>         
                 </div>
 
                 

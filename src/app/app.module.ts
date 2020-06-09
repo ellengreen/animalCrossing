@@ -16,43 +16,19 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { ProfileComponent } from 'src/app/profile/prof';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './user-auth/login/login.component';
-import { RegisterComponent } from './user-auth/register/register.component';
-import { VerifyEmailComponent } from './user-auth/verify-email/verify-email.component';
-import { ForgotPasswordComponent } from './user-auth/forgot-password/forgot-password.component';
-
 import { AuthenticationService } from './shared/authentication.service';
-import { CurrentCrittersComponent } from './dashboard/current-critters/current-critters.component';
-import { CurrentFishComponent } from './dashboard/current-critters/current-fish/current-fish.component';
-import { CurrentBugsComponent } from './dashboard/current-critters/current-bugs/current-bugs.component';
+
 import { NavComponent } from './nav/nav.component';
 
-import { EventsComponent } from './dashboard/events/events.component';
-import { BirthdayComponent } from './dashboard/birthday/birthday.component';
-import { BugsComponent } from './critterpedia/bugs/bugs.component';
-import { FishComponent } from './critterpedia/fish/fish.component';
-import { CritterpediaMainComponent } from './critterpedia/critterpedia-main/critterpedia-main.component';
+import { VillagersComponent } from './villagers/villagers.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     // ProfileComponent,
-    DashboardComponent,
-    LoginComponent,
-    RegisterComponent,
-    VerifyEmailComponent,
-    ForgotPasswordComponent,
-    CurrentCrittersComponent,
-    CurrentFishComponent,
-    CurrentBugsComponent,
     NavComponent,
-    EventsComponent,
-    BirthdayComponent,
-    CritterpediaMainComponent,
-    BugsComponent,
-    FishComponent
+    VillagersComponent
     
   ],
   imports: [
