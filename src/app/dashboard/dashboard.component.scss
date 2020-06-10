@@ -12,12 +12,43 @@
 // .events {
 //   background-color: white;
 // }
+// .left {
+//   background-color: green;
+// }
+
+.isabelle {
+  width: 40%;
+}
+// .date {
+//   background-color: white;
+//   border-radius: 15px;
+//   padding: 3%;
+// }
+
+.profile {
+  background-color: white;
+}
+
+.nav {
+  background-color: seagreen;
+  height: 800px;
+}
 
 .row {
   margin-left: 0px;
 }
 
+.date {
+  background-color: #8DDAC1;
+  // position: absolute;
+  padding: 5%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
 
+.current {
+  background-color: green;
+}
 // .today {
 //   background-color: white;
 //   border-radius: 20px;
@@ -37,6 +68,16 @@
     display: none;
   }
 
+  .row {
+    margin-right: 0px;
+  }
+
+  .date {
+    display: none;
+  }
+  .left {
+    margin: 0px;
+  }
   // .row {
   //   width:100%; 
   //   padding:0px 0px 0px 30px; 
