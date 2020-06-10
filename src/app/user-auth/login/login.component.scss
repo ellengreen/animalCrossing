@@ -1,13 +1,24 @@
-body {
- min-height: 823px;
+.sideTom {
+  width: 50%;
+  vertical-align: middle;
 }
-  
-img {
-  width: 40%;
-  height: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.littleTom {
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.side {
+    background-color: #8DDAC1;
+    height: 100vh;
 }
 
 .card-signin {
@@ -57,10 +68,16 @@ p {
   text-align: center; 
 }
 
-@media only screen and (min-width: 768px) {
-  .home {
-    background-image: url('src/assets/images/wallpaper.jpg');
-    background-repeat: no-repeat;
-    background-size: 50% 100%;  
-  }
+@media only screen and (max-width: 580px) {
+    .sideTom, .side {
+        display: none;
+    }
 }
+
+@media only screen and (min-width: 580px) {
+    .littleTom {
+        display: none;
+    }
+}
+
+
