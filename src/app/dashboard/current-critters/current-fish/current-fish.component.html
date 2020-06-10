@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row">
   <div class="col-6">
-    <h2>Available This Month</h2>
-    <div class="row justify-content-center">
+    <h3>Available This Month</h3>
+    <div class="row justify-content-center scroll">
       <div *ngFor="let fish of currentFish">
-        <div class="col-md-">
-          <i><img class="icon" src="http://acnhapi.com/icons/fish/{{fish['id']}}"/></i>
+        <div class="col-sm-">
+          <img class="icon" src="http://acnhapi.com/icons/fish/{{fish['id']}}"/>
         </div>
       </div>
     </div>
@@ -13,11 +13,11 @@
 
   <div class="col-sm-1"></div>
  
-  <div class="col-5">
-    <h2>Year Round</h2>
-    <div class="row justify-content-center">
+  <div class="col-sm-5">
+    <h3>Year Round</h3>
+    <div class="row justify-content-center scroll">
       <div *ngFor="let fish of alwaysFish">
-        <div class="col-md-">
+        <div class="col-sm-">
           <i><img class="icon" src="http://acnhapi.com/icons/fish/{{fish['id']}}"/></i>
         </div>
       </div>

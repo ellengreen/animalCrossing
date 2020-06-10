@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row">
   <div class="col-sm-6">
-    <h2>Available This Month</h2>
+    <h3>Available This Month</h3>
     <div class="row justify-content-center scroll bugs">
       <div *ngFor="let bug of currentBugs">
         <div class="col-sm-">
-          <i><img class="icon" src="http://acnhapi.com/icons/bugs/{{bug['id']}}"/></i>
+          <img class="icon" src="http://acnhapi.com/icons/bugs/{{bug['id']}}"/>
         </div>
       </div>
     </div>
@@ -14,7 +14,7 @@
   <div class="col-sm-1"></div>
  
   <div class="col-sm-5">
-    <h2>Year Round</h2>
+    <h3>Year Round</h3>
     <div class="row justify-content-center scroll bugs">
       <div *ngFor="let bug of alwaysBugs">
         <div class="col-sm-">
