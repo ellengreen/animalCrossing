@@ -1,6 +1,4 @@
-
 body {
-//  background-color: #8DDAC1;
  min-height: 823px;
 }
   
@@ -36,7 +34,6 @@ img {
     font-weight: bold;
     padding: 1rem;
     transition: all 0.2s;
-    //background-color: #FFDF5D;
   }
   
   .form-label-group {
@@ -58,4 +55,12 @@ img {
 p {
   color: #007bff;
   text-align: center; 
+}
+
+@media only screen and (min-width: 768px) {
+  .home {
+    background-image: url('src/assets/images/wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-size: 50% 100%;  
+  }
 }
