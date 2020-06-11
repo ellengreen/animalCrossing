@@ -7,14 +7,13 @@ import { AppComponent } from './app.component';
 import { BugsComponent } from './critterpedia/bugs/bugs.component';
 import { FishComponent } from './critterpedia/fish/fish.component';
 import { CritterpediaMainComponent } from './critterpedia/critterpedia-main/critterpedia-main.component';
-import { NavComponent } from './nav/nav.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BugsComponent,
     FishComponent,
-    NavComponent,
     CritterpediaMainComponent
   ],
   imports: [
