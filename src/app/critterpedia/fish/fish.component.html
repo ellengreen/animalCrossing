@@ -1,3 +1,97 @@
+<body>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12 header">
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- Fish grid -->
+            <div class="col-sm-8">
+                <div class="card card-signin my-5">
+                    <div class="card-body">  
+                        <h5 class="card-title text-center">Fish</h5>
+                        <div class="row scroll">
+                            <div class="col-4 col-sm-3 align-items-center text-center fishGrid" (click)="onSelect(f)" *ngFor="let f of fish">
+                                <img  class="icon" src="http://acnhapi.com/icons/fish/{{f['id']}}">
+                                <p>{{f['name']}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fish detail view -->
+            <div class="col-sm-4 detail">
+                <div class="card card-signin my-5">
+                    <div class="card-body"> 
+                      <!-- <h5 class="card-title text-center" *ngIf="!selectedFish">Pick A Fish Any Fish</h5> -->
+                      <div *ngIf="selectedFish">
+                      <h5 class="card-title text-center">{{selectedFish['name']}}</h5>
+ 
+                      <table class="table">
+                          <tr>
+                            <td>Price</td>
+                            <td class="text-right">{{selectedFish['price']}} bells</td>
+                          </tr>
+                          <tr>
+                            <td>CJ's Price</td>
+                            <td class="text-right">{{selectedFish['price']*1.5}} bells</td>
+                          </tr>
+                          <tr>
+                              <td>Location</td>
+                              <td class="text-right">{{selectedFish.location}}</td>
+                          </tr>
+                          <tr>
+                            <td>Shadow Size</td>
+                            <td class="text-right">{{selectedFish.shadow_size}}</td>
+                        </tr>
+                          <tr>
+                              <td>Available Times</td>
+                              <td class="text-right">{{selectedFish['times']['text']}}</td>
+                          </tr>
+                          <tr>
+                              <td>Northern Months</td>
+                              <td class="text-right">{{selectedFish['months']['northern']['text']}}</td>
+                          </tr>
+                          <tr>
+                            <td>Southern Months</td>
+                            <td class="text-right">{{selectedFish['months']['southern']['text']}}</td>
+                        </tr>
+                      </table>
+                      
+                      <button class="button">I've Caught It!</button>
+
+                      </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer"></div>
+        <img class="cj" src="assets/images/CJ.png">
+        
+    </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <body>
     <div class="container-fluid">
         <div class="row justify-content-between">
