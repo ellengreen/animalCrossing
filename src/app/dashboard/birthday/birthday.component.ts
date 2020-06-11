@@ -16,10 +16,12 @@ export class BirthdayComponent implements OnInit {
     public kvPipe: KeyValuePipe
   ) { }
 
-  bdayFormat = this.dateService.bdayFormat;
+  currentMonth = this.dateService.currentMonth;
+
   villagers: any;
   bday: any;
   bdayID: number; 
+  birthdays = [];
   ngOnInit() {
     this.nookService.getVillagers().subscribe(data=> {
       this.villagers = data;
@@ -28,13 +30,21 @@ export class BirthdayComponent implements OnInit {
     });
   }
 
+  //add villagers whose birthday matches the current month to birthday array
   birthday(){
     Object.keys(this.villagers).forEach(key => {
-      if (this.villagers[key]['birthday']==this.bdayFormat){
-        this.bday = this.villagers[key]['name']['name-en'];
-        this.bdayID = this.villagers[key]['id'];
-        console.log(this.bday)
+      if (this.villagers[key]['birthday'].split('/')[1] == this.currentMonth){
+        this.birthdays.push((this.villagers[key]));
+        console.log(this.birthdays);
+
       }
+
+      
+      // if (this.villagers[key]['birthday']==this.bdayFormat){
+      //   this.bday = this.villagers[key]['name']['name-en'];
+      //   this.bdayID = this.villagers[key]['id'];
+      //   console.log(this.bday)
+      // }
     })
   }
 

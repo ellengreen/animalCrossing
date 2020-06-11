@@ -1,24 +1,9 @@
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="icon">
-        <img class="villager" src="https://acnhapi.com/v1/images/villagers/{{bdayID}}">
-      </div>
-    </div>
-    <div class="col-sm-8">
-      <div class="text-center">
-        <h6>It's</h6>
-        <h3><strong>{{bday}}'s</strong></h3>
-        <h6>Birthday!</h6>
-      </div>
-    </div>
-  </div>
+
+
+<div class="scroll">
+<div *ngFor="let b of birthdays | keyvalue">
+  <img src="https://acnhapi.com/v1/images/villagers/{{b.value['id']}}">
+  <div class="text-center">{{b.value['name']['name-en']}}<br>{{b.value['birthday-string']}}</div>
 </div>
- -->
- <div>
-<h3 class="text-center">Villager Birthdays</h3>
-  <div class="icon">
-    <img class="villager text-center" src="https://acnhapi.com/v1/images/villagers/{{bdayID}}">
-    <h6 class="text-center">{{bday}}</h6>
-  </div>
 </div>
+

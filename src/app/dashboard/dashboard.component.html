@@ -1,137 +1,17 @@
 <body>
-  <div class="row">
-    <div class="col-sm-8 left">
-    <div class="row">
-      <div class="col-sm-12 current">
-        <br>
-        <app-current-critters></app-current-critters>
-      </div>
-    </div>
-
-<br>
-
-    <div class="row ">
-
-      <div class="col-sm-3">
-        <div><img class="justify-content-center isabelle" src="assets/images/isabelle.png"></div>
-      </div>
-
-      <div class="col-sm-9">
-        <div class="row">
-
-          <div class="col-sm-12">
-            <h1 class="text-right">Daily Update</h1>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-7">
-            <app-events></app-events>
-          </div>
-
-          <div class="col-sm-5">
-            <app-birthday></app-birthday>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="col-sm-12 events">
-          <div><img class="justify-content-center isabelle" src="assets/images/isabelle.png"></div>
-      </div> -->
-      <!-- <div class="col-sm-12">
-        <h1 class="text-right">Daily Update</h1>
-      </div>
-      <br>
-      <br>
-      <div class="row">
-        <div class="col-sm-7">
-          <app-events></app-events>
-        </div>
-        <div class="col-sm-5">
-          <app-birthday></app-birthday>
-        </div>
-      </div> -->
-
-    
-      <!-- <div class="col-sm-6">
-        events
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          birthdays
-        </div>
-      </div> -->
-  </div>
-
-  
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col-md-3 profile">
-      <div class="date">
-        <h4 class="card-title text-right">Today is</h4>
-        <h2 class="card-title text-right"><strong>{{dateService.todayFullDate}}</strong></h2>
-        <h3 class="card-title text-right">{{dateService.todayTime}}</h3>
-      </div>
-      <div class="profile text-right">
-        <br>
-        name input
-        <br>
-        island name
-        <br>
-        a photo
-        <hr>
-        collection progress
-        <br>
-        donation progress
-        <br>
-        <hr>
-        villager grid
-      </div>
-    </div>
-  </div>
-</body>
-
-<!-- <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-2 text-center">
-        <div class="imageContainer"><img class="justify-content-center isabelle" src="assets/images/isabelle.png"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-2 events">
-        <app-events></app-events>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-2 events">
-      <app-birthday></app-birthday>
-      </div>
-    </div>
-
-
-    <div class="col-lg-7 flex-item">
-      <div class="row">
-        <div class="col-lg-12 flex-item today">
-          <br>
-          <h4 class="card-title text-center">Today is</h4>
-          <h1 class="card-title text-center"><strong>{{dateService.todayFullDate}}</strong></h1>
-          <h3 class="card-title text-center">{{dateService.todayTime}}</h3>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-lg-12 flex-item now">
-              <app-current-critters></app-current-critters> 
-        </div>
+      <div class="col-sm-2">
+        <app-birthday></app-birthday>
       </div>
 
-    </div>
-    <div class="col-lg-3 col-sm-offset-2 flex-item profile">
-    
-    </div> 
+      <div class="col-sm-6">
+        Current
+      </div>
 
-</div>
+      <div class="col-sm-4">
+        Profile
+      </div>
+    </div>
+  </div>
 </body>
-
-
- -->
