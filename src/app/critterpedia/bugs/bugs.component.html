@@ -1,86 +1,79 @@
 <body>
     <div class="container-fluid">
+
         <div class="row">
-            <div class="col-sm-3"></div>
-            <!-- <div class="col-sm-12">
-                settings and header
+            <div class="col-sm-12 header">
             </div>
         </div>
+
         <div class="row">
-            <div class="col-sm-5">
+
+            <!-- Bug grid -->
+            <div class="col-sm-8">
                 <div class="card card-signin my-5">
                     <div class="card-body">  
-                      <h5 class="card-title text-center">Sign In</h5>
+                        <h5 class="card-title text-center">Bugs</h5>
+                        <div class="row scroll">
+                            <div class="col-4 col-sm-3 align-items-center text-center bugGrid" (click)="onSelect(bug)" *ngFor="let bug of bugs">
+                                <img  class="icon" src="http://acnhapi.com/icons/bugs/{{bug['id']}}">
+                                <p>{{bug['name']}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-        </div>
-            <div class="col-sm-7">
-                ok
+
+            <!-- Bug detail view -->
+            <div class="col-sm-4 detail">
+                <div class="card card-signin my-5">
+                    <div class="card-body"> 
+                      <!-- <h5 class="card-title text-center" *ngIf="!selectedBug">Pick A Bug Any Bug</h5> -->
+                      <div *ngIf="selectedBug">
+                      <h5 class="card-title text-center">{{selectedBug['name']}}</h5>
+ 
+                      <table class="table">
+                          <tr>
+                            <td>Price</td>
+                            <td class="text-right">{{selectedBug['price']}} bells</td>
+                          </tr>
+                          <tr>
+                            <td>Flick's Price</td>
+                            <td class="text-right">{{selectedBug['price']*1.5}} bells</td>
+                          </tr>
+                          <tr>
+                              <td>Location</td>
+                              <td class="text-right">{{selectedBug.location}}</td>
+                          </tr>
+                          <tr>
+                              <td>Available Times</td>
+                              <td class="text-right">{{selectedBug['times']['text']}}</td>
+                          </tr>
+                          <tr>
+                              <td>Northern Months</td>
+                              <td class="text-right">{{selectedBug['months']['northern']['text']}}</td>
+                          </tr>
+                          <tr>
+                            <td>Southern Months</td>
+                            <td class="text-right">{{selectedBug['months']['southern']['text']}}</td>
+                        </tr>
+                      </table>
+                      
+                      <button class="button">I've Caught It!</button>
+
+                      </div>
+
+                    </div>
+                </div>
             </div>
-         -->
-         </div>
+
+        </div>
+
+        <div class="footer"></div>
+        <img class="flick" src="assets/images/flick.png">
+        
     </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <body>
-    <div class="container-fluid">
-        <div class="row justify-content-between">
-            <div class="col-sm-8 list scroll ">
-                <table class="table table-hover table-responsive-sm table-bordered">
-                    <thead class="thead-light">
-                        <tr class="head">
-                            <th></th>
-                            <th>Name</th>
-                            <th>Location</th>
-                            <th>Months Available (N)</th>
-                            <th>Months Available (S)</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>   
-                    <tbody>
-                    <tr (click)="onSelect(b)" class="table" *ngFor="let b of bugs | keyvalue: originalOrder" >
-                        <td class="icon text-center">
-                            <img src="http://acnhapi.com/icons/bugs/{{b.value['id']}}">
-                        </td>    
-                        <td>
-                            {{b.value['name']}}
-                        </td>
-                        <td>
-                            {{b.value['location']}}
-                        </td>
-                        <td>
-                            {{b.value['months']['northern']['text']}}
-                        </td>
-                        <td>
-                            {{b.value['months']['southern']['text']}}
-                        </td>
-                        <td class="price text-center">
-                            {{b.value['price']}} 
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+<!-- 
             <div class="col-sm-4 details">
                 <div class="detailBox">
                     <div *ngIf="!selectedBug">
