@@ -14,6 +14,7 @@ export class CurrentBugsComponent implements OnInit {
   currentBugs = [];
   alwaysBugs = [];
   bugs: any;
+  hourlyBugs = [];
 
 
   constructor(
@@ -37,6 +38,8 @@ export class CurrentBugsComponent implements OnInit {
   //get month number from current-date service
   currentMonth = this.dateService.currentMonth;
 
+  todayTime = this.dateService.todayDate;
+
   //updates currentBugs to bugs ONLY avaiable this current month
   catchableBugs(){
     Object.keys(this.bugsList).forEach(key => {
@@ -45,6 +48,10 @@ export class CurrentBugsComponent implements OnInit {
         this.currentBugs.push(this.bugsList[key])
       };
       this.bugs = this.currentBugs.length;
+          //if available this month & this hour
+          if (this.bugsList[key]['times']['array'].includes(this.todayTime) && (this.bugsList[key]['months']['northern']['array'].includes(this.currentMonth))) { 
+            this.hourlyBugs.push(this.bugsList[key])
+          }     
       //if available all the time
       if (this.bugsList[key]['months']['northern']['text'] == 'Year Round'){ 
         this.alwaysBugs.push(this.bugsList[key])
@@ -53,6 +60,9 @@ export class CurrentBugsComponent implements OnInit {
     });
   }
   
+  someMethod(id){
+    return this.hourlyBugs.some((item) => item.id == id);
+  }
 
 }
 
