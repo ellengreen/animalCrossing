@@ -1,13 +1,15 @@
 <body>
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 ml-auto">
+
+        <div class="col-sm-12">
           <div class="card card-signin my-2">
             <div class="card-body">
-              <h3 class="card-title text-center">Fish Available Right Now</h3>
+              <!-- <h3 class="card-title text-center">Fish Available Right Now</h3> -->
               <div class="row scroll">
-                  <div class="col-4 col-sm-3 align-items-center text-center" *ngFor="let fish of currentFish">
-                      <img [class.hour]="someMethod(fish.id)" class="icon" src="http://acnhapi.com/icons/fish/{{fish['id']}}">
+                  <div class="col-4 col-sm-3 align-items-center text-center" *ngFor="let fish of thisMonth">
+                      <img [class.hour]="hourMethod(fish.id)" [class.new]="newMethod(fish.id)" [class.leaving]="leavingMethod(fish.id)" class="icon" src="http://acnhapi.com/icons/fish/{{fish['id']}}">
+                      <p>{{fish['name']}}</p>
                   </div>
               </div>
             </div>
@@ -16,4 +18,3 @@
       </div>
     </div>
   </body>
-

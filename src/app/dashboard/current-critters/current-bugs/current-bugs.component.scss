@@ -1,7 +1,10 @@
 .icon {
-    width: 115%;
-    height: auto;
+  width: 70%;
+  margin: 5px;
+  padding: 5px;
+  
 }
+
 
 h3 {
     text-align: center;
@@ -9,7 +12,7 @@ h3 {
 }
 
 .scroll{
-  height: 200px;
+  height: 250px;
 }
 
        
@@ -26,9 +29,26 @@ h3 {
       }
       
       .card-signin .card-body {
-        padding: 3rem;
-        padding-top: 1rem;
+        padding: 1.5rem;
+        // padding-top: 1rem;
       }
       
-
-    
+      @media only screen and (max-width: 1000px) {
+        .icon {
+          width: 90%;
+          display:block;
+          margin:auto;
+        }
+      
+        .p{
+          font-size: 10px;
+        }
+      
+        .card-signin .card-body{
+          padding: 10px;
+        }
+      
+        .scroll {
+          height: 350px;
+        }
+      }

@@ -13,9 +13,12 @@ import { CurrentDateService } from 'src/app/shared/current-date.service';
 export class CurrentFishComponent implements OnInit {
 
   fishList: any;
-  currentFish = [];
-  alwaysFish = [];
-  hourlyFish = [];
+  thisMonth = [];
+  allYear = [];
+  allDay = [];
+  thisHour = [];
+  leaving = [];
+  new = [];
 
   constructor(
     private nookService: NookipediaService, 
@@ -31,8 +34,7 @@ export class CurrentFishComponent implements OnInit {
       this.fishList = data;
       this.kvPipe.transform(this.fishList);
       this.catchablefish()
-      console.log(this.currentFish)
-      console.log(this.todayTime)
+      // console.log(this.thisMonth)
     })
   }
 
@@ -44,23 +46,45 @@ export class CurrentFishComponent implements OnInit {
     catchablefish(){
       Object.keys(this.fishList).forEach(key => {
         //if available this month & not always
-        if (this.fishList[key]['months']['northern']['array'].includes(this.currentMonth) && this.fishList[key]['months']['northern']['text'] !== 'Year Round'){ 
-          this.currentFish.push(this.fishList[key])
+        if (this.fishList[key]['months']['northern']['array'].includes(this.currentMonth)){ 
+          // && this.fishList[key]['months']['northern']['text'] !== 'Year Round')
+          this.thisMonth.push(this.fishList[key])
         }
         //if available this month & this hour
         if (this.fishList[key]['times']['array'].includes(this.todayTime) && (this.fishList[key]['months']['northern']['array'].includes(this.currentMonth))) { 
-          this.hourlyFish.push(this.fishList[key])
+          this.thisHour.push(this.fishList[key])
+        }
+        //if available all day
+        if (this.fishList[key]['times']['text'] == 'All day'){ 
+          this.allDay.push(this.fishList[key])
         }
         //if available all year
         if (this.fishList[key]['months']['northern']['text'] == 'Year Round'){ 
-          this.alwaysFish.push(this.fishList[key])
+          this.allYear.push(this.fishList[key])
+        }        
+
+        //if new this month
+        if (this.fishList[key]['months']['northern']['array'][0] == this.currentMonth){
+          this.new.push(this.fishList[key]);
+        }
+        //if leaving next month
+        if (this.fishList[key]['months']['northern']['array'].includes(this.currentMonth +1) == false){
+          this.leaving.push(this.fishList[key])
         }
       });
     }
     
     
-    someMethod(id){
-      return this.hourlyFish.some((item) => item.id == id);
+    hourMethod(id){
+      return this.thisHour.some((item) => item.id == id);
+    }
+
+    newMethod(id){
+      return this.new.some((item) => item.id == id);
+    }
+
+    leavingMethod(id){
+      return this.leaving.some((item) => item.id == id);
     }
 }
 

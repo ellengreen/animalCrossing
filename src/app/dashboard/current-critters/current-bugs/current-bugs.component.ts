@@ -11,10 +11,12 @@ import { CurrentDateService } from 'src/app/shared/current-date.service';
 })
 export class CurrentBugsComponent implements OnInit {
   bugsList: any;
-  currentBugs = [];
+  thisMonth = [];
   alwaysBugs = [];
   bugs: any;
-  hourlyBugs = [];
+  thisHour = [];
+  new = [];
+  leaving = [];
 
 
   constructor(
@@ -31,7 +33,6 @@ export class CurrentBugsComponent implements OnInit {
       this.bugsList = data;
       this.kvPipe.transform(this.bugsList);
       this.catchableBugs()
-      console.log(this.currentBugs)
     })
   }
 
@@ -43,26 +44,40 @@ export class CurrentBugsComponent implements OnInit {
   //updates currentBugs to bugs ONLY avaiable this current month
   catchableBugs(){
     Object.keys(this.bugsList).forEach(key => {
-      //if available this month & not always
-      if (this.bugsList[key]['months']['northern']['array'].includes(this.currentMonth) && this.bugsList[key]['months']['northern']['text'] !== 'Year Round'){ 
-        this.currentBugs.push(this.bugsList[key])
+      //if available this month
+      if (this.bugsList[key]['months']['northern']['array'].includes(this.currentMonth)){ 
+        this.thisMonth.push(this.bugsList[key])
       };
-      this.bugs = this.currentBugs.length;
-          //if available this month & this hour
-          if (this.bugsList[key]['times']['array'].includes(this.todayTime) && (this.bugsList[key]['months']['northern']['array'].includes(this.currentMonth))) { 
-            this.hourlyBugs.push(this.bugsList[key])
-          }     
+      //if available this month & this hour
+      if (this.bugsList[key]['times']['array'].includes(this.todayTime) && (this.bugsList[key]['months']['northern']['array'].includes(this.currentMonth))) { 
+        this.thisHour.push(this.bugsList[key])
+      };     
       //if available all the time
       if (this.bugsList[key]['months']['northern']['text'] == 'Year Round'){ 
         this.alwaysBugs.push(this.bugsList[key])
       }
-      this.bugs += this.alwaysBugs.length;
+      //if new this month
+      if (this.bugsList[key]['months']['northern']['array'][0] == this.currentMonth){
+        this.new.push(this.bugsList[key]);
+      }
+      //if leaving next month
+      if (this.bugsList[key]['months']['northern']['array'].includes(this.currentMonth +1) == false){
+        this.leaving.push(this.bugsList[key])
+      }
+
     });
   }
   
-  someMethod(id){
-    return this.hourlyBugs.some((item) => item.id == id);
+  hourMethod(id){
+    return this.thisHour.some((item) => item.id == id);
   }
 
+  newMethod(id){
+    return this.new.some((item) => item.id == id);
+  }
+
+  leavingMethod(id){
+    return this.leaving.some((item) => item.id == id);
+  }
 }
 
