@@ -51,22 +51,22 @@ h3 {
           height: 350px;
         }
 }     
-@media only screen and (max-width: 1400px) {
-        .icon {
-          width: 90%;
-          display:block;
-          margin:auto;
-        }
-      
-        .p{
-          font-size: 10px;
-        }
-      
-        .card-signin .card-body{
-          padding: 10px;
-        }
-      
-        .scroll {
-          height: 350px;
-        }
+@media only screen and (min-width: 1400px) {
+  .icon {
+    width: 50%;
+    display:block;
+    margin:auto;
+  }
+
+  .p{
+    font-size: 10px;
+  }
+
+  .card-signin .card-body{
+    padding: 10px;
+  }
+
+  .scroll {
+    height: 350px;
+  }
 }
