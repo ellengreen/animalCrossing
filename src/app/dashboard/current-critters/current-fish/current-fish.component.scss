@@ -31,7 +31,7 @@ h3 {
 
       @media only screen and (max-width: 700px) {
         .icon {
-          width: 100%;
+          width: 60%;
           display:block;
           margin:auto;
         }
@@ -45,12 +45,12 @@ h3 {
         }
       
         .scroll {
-          height: 350px;
+          height: 400px;
         }
 }     
 @media only screen and (min-width: 1400px) {
         .icon {
-          width: 50%;
+          width: 40%;
           display:block;
           margin:auto;
         }

@@ -15,60 +15,24 @@ h3 {
 }
 
 .card-signin .card-title {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-weight: 300;
   font-size: 1.5rem;
 }
 
 .card-signin .card-body {
-  padding: 3rem;
+  padding: 1.5rem;
 }
 
-
-/* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
+.key {
+  text-align: center;
+  margin-bottom: 10px;
+}
   
   .dot {
     border-radius: 100%;
-    height: 1.5em;
-    width: 1.5em;
+    height: 2em;
+    width: 2em;
     text-align: center;
     background:#8DDAC1;
     display:inline-block;
@@ -78,8 +42,8 @@ h3 {
 
   .dot1 {
     border-radius: 100%;
-    height: 1.5em;
-    width: 1.5em;
+    height: 2em;
+    width: 2em;
     text-align: center;
     background:#F2C14E;
     display:inline-block;
@@ -89,8 +53,8 @@ h3 {
 
   .dot2 {
     border-radius: 100%;
-    height: 1.5em;
-    width: 1.5em;
+    height: 2em;
+    width: 2em;
     text-align: center;
     background:#006D77;
     display:inline-block;
@@ -122,7 +86,7 @@ h3 {
     border-radius: 50%;
   }
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 700px) {
     .col-sm-12 {
       padding: 2px;
     }
