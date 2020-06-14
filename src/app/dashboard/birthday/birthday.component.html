@@ -1,9 +1,9 @@
 
-
 <div class="scroll">
-<div *ngFor="let b of birthdays | keyvalue">
+<div *ngFor="let b of bdays| keyvalue">
+  <h3>Villager Birthdays</h3>
   <img class="villager" src="https://acnhapi.com/v1/icons/villagers/{{b.value['id']}}">
-  <div class="text-center">{{b.value['name']['name-en']}}<br>{{b.value['birthday-string']}}</div>
+  <div class="text-center">{{b.value['name']['name-en']}}</div>
+    <!-- <br>{{b.value['birthday-string']}}</div> -->
 </div>
 </div>
-

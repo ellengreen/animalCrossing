@@ -19,6 +19,8 @@ export class CurrentDateService {
   //today as 'May 23, 2020' etc
   todayFullDate = this.datePipe.transform(Date.now(), 'fullDate');
   //time as 9:03 PM
+  todayTime = this.datePipe.transform(Date.now(), 'shortTime');
+  //just get the hour
   todayDate = Number(this.datePipe.transform(Date.now(), 'H'));
   
   // .split(':')[0];

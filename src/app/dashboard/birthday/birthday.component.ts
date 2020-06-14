@@ -17,11 +17,14 @@ export class BirthdayComponent implements OnInit {
   ) { }
 
   currentMonth = this.dateService.currentMonth;
+  bdayFormat = this.dateService.bdayFormat;
 
   villagers: any;
   bday: any;
   bdayID: number; 
   birthdays = [];
+  bdays = [];
+
   ngOnInit() {
     this.nookService.getVillagers().subscribe(data=> {
       this.villagers = data;
@@ -33,18 +36,20 @@ export class BirthdayComponent implements OnInit {
   //add villagers whose birthday matches the current month to birthday array
   birthday(){
     Object.keys(this.villagers).forEach(key => {
-      if (this.villagers[key]['birthday'].split('/')[1] == this.currentMonth){
-        this.birthdays.push((this.villagers[key]));
-        console.log(this.birthdays);
-
-      }
-
-      
-      // if (this.villagers[key]['birthday']==this.bdayFormat){
-      //   this.bday = this.villagers[key]['name']['name-en'];
-      //   this.bdayID = this.villagers[key]['id'];
-      //   console.log(this.bday)
+      //all birthdays for current month
+      // if (this.villagers[key]['birthday'].split('/')[1] == this.currentMonth){
+      //   this.birthdays.push((this.villagers[key]));
+      //   console.log(this.birthdays);
       // }
+      //today's birthday(s)
+      if (this.villagers[key]['birthday']==this.bdayFormat){
+        this.bday = this.villagers[key]['name']['name-en'];
+        this.bdayID = this.villagers[key]['id'];
+        this.bdays.push((this.villagers[key]));
+        console.log(this.bday)
+      }
+      
+
     })
   }
 

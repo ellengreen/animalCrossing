@@ -1,3 +1,23 @@
 .box{
   background-color: #8ddac1;
 }
+
+
+.isabelle {
+  width: 12%;
+  position:fixed;
+  bottom:20px;
+  left:2%;
+}
+
+h2, h3 {
+  font-family: "Roboto", sans-serif;
+}
+hr {
+  border-top: 2px solid #F2C14E;
+}
+@media only screen and (max-width: 800px) {
+  .isabelle {
+    display: none;
+  }
+}

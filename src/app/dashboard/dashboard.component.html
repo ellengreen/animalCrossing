@@ -3,6 +3,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
+        <h1>Dashboard</h1>
+        <app-events></app-events>
         <app-birthday></app-birthday>
       </div>
 
@@ -11,9 +13,16 @@
       </div>
 
       <div class="col-sm-2">
-        Date
+          <h2 class="card-title text-center"><strong>{{dateService.todayFullDate}}</strong></h2>
+          <h3 class="card-title text-center">{{dateService.todayTime}}</h3>
+          <hr>
         <app-profile></app-profile>
       </div>
     </div>
+
+    <div class="footer"></div>
+    <img class="isabelle" src="assets/images/isabelle.png">
+
+
   </div>
 </body>

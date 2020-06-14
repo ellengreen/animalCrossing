@@ -1,6 +1,6 @@
 .scroll { 
     width: 100%;
-    height: 100vh;
+    height: 500px;
     overflow-y: scroll; 
   }
   
@@ -15,13 +15,12 @@
   }
 
 img {
-    width: 40%;
+    width: 20%;
     border-radius: 50%;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-
 
 @media only screen and (max-width: 580px) {
     .villager {
