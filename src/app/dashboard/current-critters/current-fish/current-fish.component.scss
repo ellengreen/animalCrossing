@@ -9,7 +9,7 @@ h3 {
 }
 
 .scroll{
-  height: 250px;
+  height: 280px;
 }
  
     .card-signin {
@@ -29,22 +29,41 @@ h3 {
         // padding-top: 1rem;
       }
 
-@media only screen and (max-width: 1000px) {
-  .icon {
-    width: 90%;
-    display:block;
-    margin:auto;
-  }
-
-  .p{
-    font-size: 10px;
-  }
-
-  .card-signin .card-body{
-    padding: 10px;
-  }
-
-  .scroll {
-    height: 350px;
-  }
+      @media only screen and (max-width: 700px) {
+        .icon {
+          width: 100%;
+          display:block;
+          margin:auto;
+        }
+      
+        .p{
+          font-size: 10px;
+        }
+      
+        .card-signin .card-body{
+          padding: 10px;
+        }
+      
+        .scroll {
+          height: 350px;
+        }
+}     
+@media only screen and (max-width: 1400px) {
+        .icon {
+          width: 90%;
+          display:block;
+          margin:auto;
+        }
+      
+        .p{
+          font-size: 10px;
+        }
+      
+        .card-signin .card-body{
+          padding: 10px;
+        }
+      
+        .scroll {
+          height: 350px;
+        }
 }

@@ -39,3 +39,47 @@ p {
   .scroll {
       -ms-overflow-style: none;
   }
+
+  /* You can add global styles to this file, and also import other style files */
+// body {
+//     // margin-top: 15px;
+//     background-color: #f0f0f0;
+// }
+
+// h1, h2, h3, h4, h5, h6, p {
+//     font-family: 'Nunito', sans-serif;
+// }
+
+.card-signin {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-signin .card-title {
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+    
+.card-signin .card-body {
+    padding: 2rem;
+}
+    
+.form-signin .btn {
+    font-size: 80%;
+    border-radius: 5rem;
+    border: none;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+@media only screen and (max-width: 700px) {
+
+}
