@@ -12,7 +12,7 @@
             <div class="col-sm-8">
                 <div class="card card-signin my-5">
                     <div class="card-body">  
-                        <h5 class="card-title text-center">Bugs</h5>
+                        <!-- <h5 class="card-title text-center">Bugs</h5> -->
                         <div class="row scroll">
                             <div class="col-4 col-sm-3 align-items-center text-center bugGrid" (click)="onSelect(bug)" *ngFor="let bug of bugs">
                                 <img  class="icon" src="http://acnhapi.com/icons/bugs/{{bug['id']}}">
@@ -27,9 +27,46 @@
             <div class="col-sm-4 detail">
                 <div class="card card-signin my-5">
                     <div class="card-body"> 
+                      <div *ngIf="!selectedBug">
+                        <div *ngFor="let b of bugs | keyvalue">
+                          <div *ngIf="b.key == 0">
+                            <h5 class="card-title text-center name">{{b['name']}}</h5>
+ 
+                            <table class="table">
+                                <tr>
+                                  <td>Price</td>
+                                  <!-- <td class="text-right">{{b['price']}} bells</td> -->
+                                </tr>
+                                <tr>
+                                  <td>Flick's Price</td>
+                                  <!-- <td class="text-right">{{b['price']*1.5}} bells</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Location</td>
+                                    <!-- <td class="text-right">{{b.location}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Available Times</td>
+                                    <!-- <td class="text-right">{{b['times']['text']}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Northern Months</td>
+                                    <!-- <td class="text-right">{{b['months']['northern']['text']}}</td> -->
+                                </tr>
+                                <tr>
+                                  <td>Southern Months</td>
+                                  <!-- <td class="text-right">{{b['months']['southern']['text']}}</td> -->
+                              </tr>
+                            </table>
+                            
+                            <button class="button">I've Caught It!</button>
+                          </div>
+                        </div>
+
+                      </div>
                       <!-- <h5 class="card-title text-center" *ngIf="!selectedBug">Pick A Bug Any Bug</h5> -->
                       <div *ngIf="selectedBug">
-                      <h5 class="card-title text-center">{{selectedBug['name']}}</h5>
+                      <h5 class="card-title text-center name">{{selectedBug['name']}}</h5>
  
                       <table class="table">
                           <tr>
@@ -69,183 +106,8 @@
         </div>
 
         <div class="footer"></div>
-        <img class="flick" src="assets/images/flick.png">
+        <img class="flick" src="assets/images/Flick.png">
         
     </div>
 </body>
-<!-- 
-            <div class="col-sm-4 details">
-                <div class="detailBox">
-                    <div *ngIf="!selectedBug">
-                        <div *ngFor="let b of bugs | keyvalue">
-                            <div *ngIf="b.key == 0">
-                                <div class="text-center">
-                                    <img class="icon2" src="http://acnhapi.com/icons/bugs/{{b.value['id']}}">
-                                </div> 
-                                <h1>{{b.value['name']}}</h1>
-                                <h6>{{b.value['price']}} bells</h6>
-                                <h6>{{b.value['price'] * 1.5}} bells from Flick</h6>
-                                <div class="deets">
-                                    <div class="row">
-                                        <div class="col-sm-6 text-left">
-                                            Location 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{b.value['location']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Available Times 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{b.value['times']['text']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Nothern Months 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{b.value['months']['northern']['text']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Southern Months 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{b.value['months']['southern']['text']}} 
-                                        </div>
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>    
-                    <div *ngIf="selectedBug">
-                                <div class="text-center">
-                                    <img class="icon2" src="http://acnhapi.com/icons/bugs/{{selectedBug.value['id']}}">
-                                </div> 
-                                <h1>{{selectedBug.value['name']}}</h1>
-                                <h6>{{selectedBug.value['price']}} bells</h6>
-                                <h6>{{selectedBug.value['price'] * 1.5}} bells from Flick</h6>
-                                <div class="deets">
-                                    <div class="row">
-                                        <div class="col-sm-6 text-left">
-                                            Location 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{selectedBug.value['location']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Available Times 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{selectedBug.value['times']['text']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Nothern Months 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{selectedBug.value['months']['northern']['text']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Southern Months 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{selectedBug.value['months']['southern']['text']}} 
-                                        </div>
-                                        <div>
-
-                                        </div>
-                            </div>
-                        </div>
-                    </div>        
-                </div>
-
-                
-            </div>
-        </div>
-    </div>
-</body> -->
-<!-- <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-          <div class="card card-signin my-2">
-            <div class="card-body">
-                <table class="table table-hover table-bordered table-responsive">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>#</th>
-                            <th></th>
-                            <th>Name</th>
-                        </tr>
-                    </thead>   
-                    <tbody>
-                    <tr class="table" *ngFor="let bug of bugs | keyvalue: originalOrder" >
-                        <td>{{bug.key}}</td>
-                        <td>
-                            <img src="http://acnhapi.com/icons/bugs/{{bug.value['id']}}">
-                        </td>    
-                        <td>
-                            {{bug.value['name']| lowercase}}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-  <!-- <div class="container">
-<table class="table table-hover table-responsive">
-    <thead class="thead-light">
-        <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Time</th>
-            <th>Month (Northern)</th>
-            <th>Month (Southern)</th>
-            <th>Price</th>
-            <th>Flick's Price</th>
-        </tr>
-    </thead>   
-    <tbody>
-    <tr class="table" *ngFor="let bug of bugs | keyvalue: originalOrder" >
-        <td>
-            <img src="http://acnhapi.com/icons/bugs/{{bug.value['id']}}">
-        </td>    
-        <td>
-            {{bug.value['name']| lowercase}}
-        </td>
-        <td>
-            {{bug.value['location']}} 
-        </td>
-        <td *ngIf="bug.value['times']['text'] == 'All Day'"> 
-            All Day
-        </td>
-        <td *ngIf="bug.value['times']['text'] !== 'All Day'"> 
-            {{bug.value['times']['text']}}
-        </td>
-        <td *ngIf="bug.value['months']['northern']['text'] == 'Year Round'"> 
-            All Day
-        </td>
-        <td *ngIf="bug.value['months']['northern']['text'] !== 'Year Round'"> 
-            {{bug.value['times']['text']}}
-        </td>
-        <td *ngIf="bug.value['months']['southern']['text'] == 'Year Round'"> 
-            All Day
-        </td>
-        <td *ngIf="bug.value['months']['southern']['text'] !== 'Year Round'"> 
-            {{bug.value['times']['text']}}
-        </td>
-        <td>
-            {{bug.value['price']}}
-        </td>
-        <td>
-            {{bug.value['price']*1.5}}
-        </td>
-    </tr>
-    </tbody>
-</table>
-</div> --> 

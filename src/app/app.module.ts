@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { BugsComponent } from './critterpedia/bugs/bugs.component';
 import { FishComponent } from './critterpedia/fish/fish.component';
 import { CritterpediaMainComponent } from './critterpedia/critterpedia-main/critterpedia-main.component';
+import { NavComponent } from './nav/nav.component';
+import { KeyValuePipe, DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -14,14 +16,15 @@ import { CritterpediaMainComponent } from './critterpedia/critterpedia-main/crit
     AppComponent,
     BugsComponent,
     FishComponent,
-    CritterpediaMainComponent
+    CritterpediaMainComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [KeyValuePipe, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

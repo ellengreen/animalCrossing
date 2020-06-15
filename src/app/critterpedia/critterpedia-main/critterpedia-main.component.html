@@ -1,27 +1,37 @@
+<app-nav></app-nav>
 <body>
-    <div class="container-fluid">
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-fish-tab" data-toggle="tab" href="#nav-fish" role="tab" aria-controls="nav-fish" aria-selected="true">Fish</a>
+      <a class="nav-item nav-link" id="nav-bugs-tab" data-toggle="tab" href="#nav-bugs" role="tab" aria-controls="nav-bugs" aria-selected="false">Bugs</a>
+    </div>
+<!-- </nav>
+<nav> -->
+    <!-- <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">All</a>
+        <a class="nav-item nav-link" id="nav-bugs-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-bugs" aria-selected="false">Active</a>
+        <a class="nav-item nav-link" id="nav-bugs-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-bugs" aria-selected="false">My Collection</a>
+    </div> -->
 
-        <div class="row">
-            <div class="col-sm-3 header">
-                <h1><strong></strong>Critterpedia</h1>
-            </div>
-            <div class="col-sm-3 options">
-                    <a (click)="onFish()"><h4 [class.selected]="fishView">Fish</h4></a> | 
-                    <a (click)="onBugs()"><h4 [class.selected]="bugView">Bugs</h4></a>
-            </div>
-            <div class="col-sm-3 options">
-                <h4>All | My Collection</h4>
-            </div>
-            <div class="col-sm-3 options">
-                <h4>List | Grid</h4>
-            </div>
-        </div>
 
-        <div *ngIf="fishView">
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-fish" role="tabpanel" aria-labelledby="nav-fish-tab"><app-fish></app-fish></div>
+    <div class="tab-pane fade" id="nav-bugs" role="tabpanel" aria-labelledby="nav-bugs-tab"><app-bugs></app-bugs></div>
+  </div>
+
+  <!-- <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-fish" role="tabpanel" aria-labelledby="nav-fish-tab"><app-fish></app-fish></div>
+    <div class="tab-pane fade" id="nav-bugs" role="tabpanel" aria-labelledby="nav-bugs-tab"><app-bugs></app-bugs></div>
+  </div> -->
+
+
+
+        <!-- <div *ngIf="fishView">
             <app-fish></app-fish>
         </div>
         <div *ngIf="bugView">
             <app-bugs></app-bugs>
-        </div>
-    </div>
-</body>
+        </div> -->
+    <!-- </div> -->
+</body> 

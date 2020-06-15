@@ -10,14 +10,15 @@
  }
 
 .cj {
-    width: 20%;
+    width: 19%;
     position:fixed;
-    bottom:3px;
-    left:79%;
+    bottom:-7px;
+    left:78%;
 }
 
-.header {
-    background-color: black;
+
+.icon:hover{
+    background-color: 	#FFFF99;
 }
 
 .icon {
@@ -26,17 +27,30 @@
     background-color: #f0f0f0;
     border: 0px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 p {
     margin-top: 3px;
     font-size: 13px;
     text-align: center;
-    // color: #007bff;
+    color: #007bff;
+    font-weight: 600;
+}
+
+.name {
+    text-align: center;
+    color: #007bff;
+    font-weight: 600;
 }
 
 .table td {
     padding: .25rem;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .button {
@@ -55,10 +69,9 @@ p {
   }
 
 
-.scroll {
-    // display: inline-block;
+.scroll { 
     width: 100%;
-    height: 435px;
+    height: 500px;
     overflow-y: scroll; 
   }
   
@@ -84,4 +97,14 @@ p {
     .footer, .cj {
         display: none;
     }
+}
+
+@media only screen and (min-width: 1000px) {
+    .icon {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .icon { width: 100%;}
 }
