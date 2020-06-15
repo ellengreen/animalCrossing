@@ -1,8 +1,8 @@
-<h3>Events this Month</h3>
+
 <div *ngFor="let event of eventsList | keyvalue">
   <div *ngIf="event.key == currentMonth">
       <span class="events" *ngFor="let e of event.value | keyvalue">
-          <h6><strong>{{e.value['name']}}</strong></h6>
+          <h6>{{e.value['name']}}</h6>
           <p>{{e.value['date-str']}}</p>
       </span>
   </div>

@@ -1,6 +1,6 @@
 .scroll { 
     width: 100%;
-    height: 500px;
+    height: 250px;
     overflow-y: scroll; 
   }
   
@@ -14,8 +14,18 @@
       -ms-overflow-style: none;
   }
 
+.table td {
+  padding: 0px;
+  border-top: 0px solid #F2C14E;
+  // vertical-align: middle;
+}
+
+.table p {
+  vertical-align: middle;
+}
+
 img {
-    width: 20%;
+    width: 30%;
     border-radius: 50%;
     display: block;
     margin-left: auto;

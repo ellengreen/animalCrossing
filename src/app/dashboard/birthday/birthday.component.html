@@ -1,9 +1,30 @@
 
 <div class="scroll">
 <div *ngFor="let b of bdays| keyvalue">
-  <h3>Villager Birthdays</h3>
   <img class="villager" src="https://acnhapi.com/v1/icons/villagers/{{b.value['id']}}">
-  <div class="text-center">{{b.value['name']['name-en']}}</div>
-    <!-- <br>{{b.value['birthday-string']}}</div> -->
+  <h6 class="text-center">{{b.value['name']['name-en']}}</h6>
+  <table class="table">
+    <tr>
+      <td>Gender</td>
+      <td><p>{{b.value['gender']}}</p></td>
+    </tr>
+  
+    <tr>
+      <td>Species</td>
+      <td><p>{{b.value['species']}}</p></td>
+    </tr>
+  
+    <tr>
+      <td>Personality</td>
+      <td><p>{{b.value['personality']}}</p></td>
+    </tr>
+  
+    <tr>
+      <td>Catch Phrase</td>
+      <td><p>{{b.value['catch-phrase']}}</p></td>
+    </tr>
+  </table>
+
 </div>
 </div>
+

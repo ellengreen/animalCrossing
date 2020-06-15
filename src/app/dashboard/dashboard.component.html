@@ -2,22 +2,41 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-3">
-        <h1>Dashboard</h1>
-        <app-events></app-events>
-        <app-birthday></app-birthday>
+
+      <div class="col-sm-2">
+        <div class="card card-signin my-2">
+          <div class="card-body">
+            <div class="card-title">Profile</div>
+              <app-profile></app-profile>
+            </div>
+          </div>
       </div>
 
-      <div class="col-sm-7">
+      <div class="col-sm-8">
         <app-current-critters></app-current-critters>
       </div>
 
       <div class="col-sm-2">
-          <h2 class="card-title text-center"><strong>{{dateService.todayFullDate}}</strong></h2>
-          <h3 class="card-title text-center">{{dateService.todayTime}}</h3>
+        <!-- <h1 class="text-right">Dashboard</h1> -->
+        <div class="date">
+        <h2 class="card-title"><strong>{{dateService.todayFullDate}}</strong></h2>
+        <h3 class="card-title">{{dateService.todayTime}}</h3>
+        </div>
+        <hr>
+        <div class="card card-signin my-2">
+          <div class="card-body">
+            <div class="card-title">Events this Month</div>
+            <app-events></app-events>
+          </div></div>
           <hr>
-        <app-profile></app-profile>
+          <div class="card card-signin my-2">
+            <div class="card-body">
+        <div class="card-title">Villager Birthdays</div>
+            <app-birthday></app-birthday>
+        </div>
+        </div>
       </div>
+
     </div>
 
     <div class="footer"></div>

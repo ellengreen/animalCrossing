@@ -1,13 +1,21 @@
-.box{
-  background-color: #8ddac1;
+.date {
+  background-color: #F2C14E;
+  padding: 20px 10px 20px 20px;
+  margin-right: 0px;
+  text-align: right;
+  border-top-left-radius: 15px;
 }
-
 
 .isabelle {
   width: 12%;
   position:fixed;
   bottom:20px;
   left:2%;
+}
+
+.col-sm-2{
+  // margin-left: 10px;
+  padding: 5px;
 }
 
 h2, h3 {
