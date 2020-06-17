@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NookipediaService } from 'src/app/shared/nookipedia.service';
 import { CurrentDateService } from 'src/app/shared/current-date.service';
 import { KeyValuePipe } from '@angular/common';
+import { FirebaseService } from 'src/app/shared/firebase.service';
 
 @Component({
   selector: 'app-critterpedia-main',
@@ -10,7 +11,7 @@ import { KeyValuePipe } from '@angular/common';
 })
 export class CritterpediaMainComponent implements OnInit {
 
-  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe) { }
+  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe, private db: FirebaseService) { }
 
   bugs: any;
   fish: any;
@@ -25,6 +26,8 @@ export class CritterpediaMainComponent implements OnInit {
   currentMonth=this.ds.currentMonth;
   thisMonthFish=[];
   thisMonthBugs=[];
+  loadedBugs:any;
+  loadedFish:any;
 
   ngOnInit(){
     this.ns.getBugs().subscribe(data=> {
@@ -39,6 +42,7 @@ export class CritterpediaMainComponent implements OnInit {
         this.fish = data;
         this.catchableFish();
     })
+    this.db.fetchBugs();
   }
 
   onFish(){
@@ -83,13 +87,14 @@ export class CritterpediaMainComponent implements OnInit {
     }
   }
 
-  
+  show=this.db.fetchBugs();
   showMine(){
     if (this.fishView){
       this.critters=this.myFishCP;
-      
+      // this.critters=this.db.fetchBugs();
       } else {
         this.critters=this.myBugsCP;
+        console.log(this.show)
       }
   }
 
@@ -116,10 +121,12 @@ myFishCP=[];
 myBugsCP=[];
 addToFishCP(selectedCritter){
   this.myFishCP.push(selectedCritter);
-  console.log(this.myFishCP);
+  this.db.addFish(selectedCritter);
 }
 addToBugsCP(selectedCritter){
   this.myBugsCP.push(selectedCritter);
-  console.log(this.myBugsCP);
+  this.db.addBug(selectedCritter)
 }
 }
+
+
