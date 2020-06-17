@@ -26,20 +26,31 @@ export class FirebaseService {
   fetchBugs(){
     return this.http
     .get('https://animal-crossing-92e14.firebaseio.com/bugs.json')
-    // .pipe(map(responseData => {
-    //   const loadedBugs =[];
-    //   for (const key in responseData) {
-    //     if (responseData.hasOwnProperty(key)){
-    //       loadedBugs.push({ ...responseData[key], newID: key})
-    //     }
-    //   }
-    //   // console.log(loadedBugs)
-    //   return loadedBugs;
-
-    // }))
+    .pipe(map(responseData => {
+      const loadedBugs =[];
+      for (const key in responseData) {
+        if (responseData.hasOwnProperty(key)){
+          loadedBugs.push({ ...responseData[key], newID: key})
+        }
+      }
+      return loadedBugs;
+    })
+    )
   }
 
   fetchFish(){
+    return this.http
+    .get('https://animal-crossing-92e14.firebaseio.com/fish.json')
+    .pipe(map(responseData => {
+      const loadedFish =[];
+      for (const key in responseData) {
+        if (responseData.hasOwnProperty(key)){
+          loadedFish.push({ ...responseData[key], newID: key})
+        }
+      }
+      return loadedFish;
+    })
+    )
 
   }
 }

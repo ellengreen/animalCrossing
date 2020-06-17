@@ -42,7 +42,13 @@ export class CritterpediaMainComponent implements OnInit {
         this.fish = data;
         this.catchableFish();
     })
-    this.db.fetchBugs();
+  
+    this.db.fetchBugs().subscribe(bugs =>{
+      this.loadedBugs=bugs;
+    })
+    this.db.fetchFish().subscribe(fish =>{
+      this.loadedFish=fish;
+    })
   }
 
   onFish(){
@@ -87,14 +93,11 @@ export class CritterpediaMainComponent implements OnInit {
     }
   }
 
-  show=this.db.fetchBugs();
   showMine(){
     if (this.fishView){
-      this.critters=this.myFishCP;
-      // this.critters=this.db.fetchBugs();
+      this.critters=this.loadedFish;
       } else {
-        this.critters=this.myBugsCP;
-        console.log(this.show)
+        this.critters=this.loadedBugs;
       }
   }
 
