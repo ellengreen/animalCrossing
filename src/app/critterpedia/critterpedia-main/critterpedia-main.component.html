@@ -92,6 +92,7 @@
             <td class="text-right">{{selectedCritter['months']['southern']['text']}}</td>
         </tr>
       </table>
+      <!-- <button (click)="checkDuplicates(selectedCritter)">duoe?</button> -->
       <div *ngIf="name === 'fish'"><button (click)="addToFishCP(selectedCritter)" class="button">I've Caught It!</button></div>
       <div *ngIf="name === 'bugs'"><button (click)="addToBugsCP(selectedCritter)" class="button">I've Caught It!</button></div>
 

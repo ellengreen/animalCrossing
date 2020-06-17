@@ -95,9 +95,13 @@ export class CritterpediaMainComponent implements OnInit {
 
   showMine(){
     if (this.fishView){
-      this.critters=this.loadedFish;
-      } else {
-        this.critters=this.loadedBugs;
+      this.db.fetchFish()
+      .subscribe(fish =>{
+      this.critters=fish;
+      })} else {
+        this.db.fetchBugs().subscribe(bugs=>{
+          this.critters=bugs;
+        })
       }
   }
 
@@ -108,7 +112,6 @@ export class CritterpediaMainComponent implements OnInit {
         this.thisMonthBugs.push(this.bugs[key])
       }
     });
-    // console.log(this.thisMonthFish)
   }
   catchableFish(){
     this.kv.transform(this.fish);
@@ -117,7 +120,6 @@ export class CritterpediaMainComponent implements OnInit {
         this.thisMonthFish.push(this.fish[key])
       }
     });
-    // console.log(this.thisMonthFish)
   }
 
 myFishCP=[];
@@ -130,6 +132,25 @@ addToBugsCP(selectedCritter){
   this.myBugsCP.push(selectedCritter);
   this.db.addBug(selectedCritter)
 }
+
+// checkDuplicates(selectedCritter){
+//   this.kv.transform(this.loadedBugs);
+//   Object.keys(this.loadedBugs).forEach(key=>{
+//     if(this.loadedBugs[key]['id'] == selectedCritter['id']){
+//       console.log('stop')
+//     }
+//   })
+// }
+
 }
 
+
+// catchableFish(){
+//   this.kv.transform(this.fish);
+//   Object.keys(this.fish).forEach(key => {
+//     if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth)){ 
+//       this.thisMonthFish.push(this.fish[key])
+//     }
+//   });
+// }
 
