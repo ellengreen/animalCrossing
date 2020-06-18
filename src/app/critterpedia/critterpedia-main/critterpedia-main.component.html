@@ -19,7 +19,7 @@
             <div class="card-body">  
                 <div class="row scroll">
                     <div class="col-4 col-sm-3 align-items-center text-center fishGrid" (click)="onSelect(c)" *ngFor="let c of critters">
-                        <img  class="icon" src="http://acnhapi.com/icons/{{name}}/{{c['id']}}">
+                        <img  [class.hour]="hourMethod(c.id)" [class.new]="newMethod(c.id)" [class.leaving]="leavingMethod(c.id)"class="icon" src="http://acnhapi.com/icons/{{name}}/{{c['id']}}">
                         <p>{{c['name']}}</p>
                     </div>
                 </div>

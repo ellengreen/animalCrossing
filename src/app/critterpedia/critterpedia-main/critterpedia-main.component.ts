@@ -24,8 +24,15 @@ export class CritterpediaMainComponent implements OnInit {
   
   selectedCritter: any;
   currentMonth=this.ds.currentMonth;
+  time=this.ds.todayTime;
   thisMonthFish=[];
   thisMonthBugs=[];
+  thisHourBugs=[];
+  thisHourFish=[];
+  leavingFish=[];
+  leavingBugs=[];
+  newFish=[];
+  newBugs=[];
   loadedBugs:any;
   loadedFish:any;
 
@@ -107,29 +114,55 @@ export class CritterpediaMainComponent implements OnInit {
 
   catchableBugs(){
     this.kv.transform(this.bugs);
+    //this month
     Object.keys(this.bugs).forEach(key => {
       if (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth)){ 
         this.thisMonthBugs.push(this.bugs[key])
       }
+       //this hour
+       if (this.bugs[key]['times']['array'].includes(this.time) && (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth))){
+         this.thisHourBugs.push(this.bugs[key])
+       }
+               //if new this month
+               if (this.bugs[key]['months']['northern']['array'][0] == this.currentMonth){
+                this.newBugs.push(this.bugs[key]);
+              }
+              //if leaving next month
+              if (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth +1) == false){
+                this.leavingBugs.push(this.bugs[key])
+              }
     });
   }
+
   catchableFish(){
     this.kv.transform(this.fish);
     Object.keys(this.fish).forEach(key => {
       if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth)){ 
         this.thisMonthFish.push(this.fish[key])
       }
+      if (this.fish[key]['times']['array'].includes(this.time) && (this.fish[key]['months']['northern']['array'].includes(this.currentMonth))){
+        this.thisHourFish.push(this.fish[key])
+      }
+              //if new this month
+              if (this.fish[key]['months']['northern']['array'][0] == this.currentMonth){
+                this.newFish.push(this.fish[key]);
+              }
+              //if leaving next month
+              if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth +1) == false){
+                this.leavingFish.push(this.fish[key])
+              }
     });
   }
 
 
 addFish(selectedCritter){
   // this.myFishCP.push(selectedCritter);
+  // this.dupes(selectedCritter)
   this.db.addFish(selectedCritter);
 }
 addBugs(selectedCritter){
-
-  this.db.addBug(selectedCritter)
+  this.dupes(selectedCritter)
+  // this.db.addBug(selectedCritter)
 }
 
 dupes(selectedCritter){
@@ -138,22 +171,25 @@ dupes(selectedCritter){
     if(this.loadedBugs[key]['id'] == selectedCritter['id']){
       console.log('stop')
     } else {
+      this.db.addBug(selectedCritter)
       console.log(this.loadedBugs)
       // this.db.addBug(selectedCritter)
     }
   })
 
-  // if (this.loadedBugs['id']==(selectedCritter['id'])){
-  //   console.log('stop!!!')
-  // }
+ 
 }
 
-// var found = false;
-// for(var i = 0; i < vendors.length; i++) {
-//     if (vendors[i].Name == 'Magenic') {
-//         found = true;
-//         break;
-//     }
-// }
+hourMethod(id){
+  return this.thisHourBugs.some((item) => item.id == id);
+}
+
+newMethod(id){
+  return this.newBugs.some((item) => item.id == id);
+}
+
+leavingMethod(id){
+  return this.leavingBugs.some((item) => item.id == id);
+}
 
 }
