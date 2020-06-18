@@ -122,35 +122,38 @@ export class CritterpediaMainComponent implements OnInit {
     });
   }
 
-myFishCP=[];
-myBugsCP=[];
-addToFishCP(selectedCritter){
-  this.myFishCP.push(selectedCritter);
+
+addFish(selectedCritter){
+  // this.myFishCP.push(selectedCritter);
   this.db.addFish(selectedCritter);
 }
-addToBugsCP(selectedCritter){
-  this.myBugsCP.push(selectedCritter);
+addBugs(selectedCritter){
+
   this.db.addBug(selectedCritter)
 }
 
-// checkDuplicates(selectedCritter){
-//   this.kv.transform(this.loadedBugs);
-//   Object.keys(this.loadedBugs).forEach(key=>{
-//     if(this.loadedBugs[key]['id'] == selectedCritter['id']){
-//       console.log('stop')
+dupes(selectedCritter){
+  this.kv.transform(this.loadedBugs);
+  Object.keys(this.loadedBugs).forEach(key=>{
+    if(this.loadedBugs[key]['id'] == selectedCritter['id']){
+      console.log('stop')
+    } else {
+      console.log(this.loadedBugs)
+      // this.db.addBug(selectedCritter)
+    }
+  })
+
+  // if (this.loadedBugs['id']==(selectedCritter['id'])){
+  //   console.log('stop!!!')
+  // }
+}
+
+// var found = false;
+// for(var i = 0; i < vendors.length; i++) {
+//     if (vendors[i].Name == 'Magenic') {
+//         found = true;
+//         break;
 //     }
-//   })
 // }
 
 }
-
-
-// catchableFish(){
-//   this.kv.transform(this.fish);
-//   Object.keys(this.fish).forEach(key => {
-//     if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth)){ 
-//       this.thisMonthFish.push(this.fish[key])
-//     }
-//   });
-// }
-
