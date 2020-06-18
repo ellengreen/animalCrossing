@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NookipediaService } from 'src/app/shared/nookipedia.service';
 import { CurrentDateService } from 'src/app/shared/current-date.service';
 import { KeyValuePipe } from '@angular/common';
+import { CurrentCritterService } from 'src/app/shared/current-critter.service';
 
 @Component({
   selector: 'app-critterpedia-main',
@@ -10,7 +11,7 @@ import { KeyValuePipe } from '@angular/common';
 })
 export class CritterpediaMainComponent implements OnInit {
 
-  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe) { }
+  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe, private ccs: CurrentCritterService) { }
 
   bugs: any;
   fish: any;
@@ -23,8 +24,8 @@ export class CritterpediaMainComponent implements OnInit {
   
   selectedCritter: any;
   currentMonth=this.ds.currentMonth;
-  thisMonthFish=[];
-  thisMonthBugs=[];
+  // thisMonthFish=[];
+  // thisMonthBugs=[];
 
   ngOnInit(){
     this.ns.getBugs().subscribe(data=> {
@@ -33,11 +34,12 @@ export class CritterpediaMainComponent implements OnInit {
       this.critters = this.bugs;
       this.name ='bugs';
       this.vendor='Flick';
-      this.catchableBugs();
+      // this.catchableBugs();
+      this.catchableCritter();
     })
       this.ns.getFish().subscribe(data => {
         this.fish = data;
-        this.catchableFish();
+        // this.catchableFish();
     })
   }
 
@@ -46,6 +48,7 @@ export class CritterpediaMainComponent implements OnInit {
     this.bugView = false;
     if (this.fishView){
       this.critters=this.fish;
+      this.catchableCritter()
       this.name = 'fish';
       this.vendor = 'CJ';
     } 
@@ -77,13 +80,16 @@ export class CritterpediaMainComponent implements OnInit {
 
   showCurrent(){
     if (this.fishView){
-    this.critters=this.thisMonthFish;
+      this.critters=this.fish;
+      this.catchableCritter()
+      this.critters=this.thisMonthCritters;
     } else {
-      this.critters=this.thisMonthBugs;
+      // this
+      this.critters=this.thisMonthCritters;
     }
   }
 
-  
+  thisMonthCritters=[];
   showMine(){
     if (this.fishView){
       this.critters=this.myFishCP;
@@ -93,24 +99,32 @@ export class CritterpediaMainComponent implements OnInit {
       }
   }
 
-  catchableBugs(){
-    this.kv.transform(this.bugs);
-    Object.keys(this.bugs).forEach(key => {
-      if (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth)){ 
-        this.thisMonthBugs.push(this.bugs[key])
+  catchableCritter(){
+    this.kv.transform(this.critters);
+    Object.keys(this.critters).forEach(key => {
+      if (this.critters[key]['months']['northern']['array'].includes(this.currentMonth)){ 
+        this.thisMonthCritters.push(this.critters[key])
       }
     });
-    // console.log(this.thisMonthFish)
   }
-  catchableFish(){
-    this.kv.transform(this.fish);
-    Object.keys(this.fish).forEach(key => {
-      if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth)){ 
-        this.thisMonthFish.push(this.fish[key])
-      }
-    });
-    // console.log(this.thisMonthFish)
-  }
+
+  // catchableBugs(){
+  //   this.kv.transform(this.bugs);
+  //   Object.keys(this.bugs).forEach(key => {
+  //     if (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth)){ 
+  //       this.thisMonthBugs.push(this.bugs[key])
+  //     }
+  //   });
+  // }
+  
+  // catchableFish(){
+  //   this.kv.transform(this.fish);
+  //   Object.keys(this.fish).forEach(key => {
+  //     if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth)){ 
+  //       this.thisMonthFish.push(this.fish[key])
+  //     }
+  //   });
+  // }
 
 myFishCP=[];
 myBugsCP=[];
