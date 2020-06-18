@@ -24,8 +24,8 @@ export class CritterpediaMainComponent implements OnInit {
   
   selectedCritter: any;
   currentMonth=this.ds.currentMonth;
-  // thisMonthFish=[];
-  // thisMonthBugs=[];
+  thisMonthFish=[];
+  thisMonthBugs=[];
 
   ngOnInit(){
     this.ns.getBugs().subscribe(data=> {
@@ -34,12 +34,11 @@ export class CritterpediaMainComponent implements OnInit {
       this.critters = this.bugs;
       this.name ='bugs';
       this.vendor='Flick';
-      // this.catchableBugs();
-      this.catchableCritter();
+      this.catchableBugs();
     })
       this.ns.getFish().subscribe(data => {
         this.fish = data;
-        // this.catchableFish();
+        this.catchableFish();
     })
   }
 
@@ -48,7 +47,6 @@ export class CritterpediaMainComponent implements OnInit {
     this.bugView = false;
     if (this.fishView){
       this.critters=this.fish;
-      this.catchableCritter()
       this.name = 'fish';
       this.vendor = 'CJ';
     } 
@@ -80,15 +78,13 @@ export class CritterpediaMainComponent implements OnInit {
 
   showCurrent(){
     if (this.fishView){
-      this.critters=this.fish;
-      this.catchableCritter()
-      this.critters=this.thisMonthCritters;
+    this.critters=this.thisMonthFish;
     } else {
-      // this
-      this.critters=this.thisMonthCritters;
+      this.critters=this.thisMonthBugs;
     }
   }
 
+  
   thisMonthCritters=[];
   showMine(){
     if (this.fishView){
@@ -101,30 +97,31 @@ export class CritterpediaMainComponent implements OnInit {
 
   catchableCritter(){
     this.kv.transform(this.critters);
-    Object.keys(this.critters).forEach(key => {
-      if (this.critters[key]['months']['northern']['array'].includes(this.currentMonth)){ 
-        this.thisMonthCritters.push(this.critters[key])
+    Object.keys(this.bugs).forEach(key => {
+      if (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth)){ 
+        this.thisMonthBugs.push(this.bugs[key])
       }
     });
   }
 
-  // catchableBugs(){
-  //   this.kv.transform(this.bugs);
-  //   Object.keys(this.bugs).forEach(key => {
-  //     if (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth)){ 
-  //       this.thisMonthBugs.push(this.bugs[key])
-  //     }
-  //   });
-  // }
+  catchableBugs(){
+    this.kv.transform(this.bugs);
+    Object.keys(this.bugs).forEach(key => {
+      if (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth)){ 
+        this.thisMonthBugs.push(this.bugs[key])
+      }
+    });
+  }
   
-  // catchableFish(){
-  //   this.kv.transform(this.fish);
-  //   Object.keys(this.fish).forEach(key => {
-  //     if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth)){ 
-  //       this.thisMonthFish.push(this.fish[key])
-  //     }
-  //   });
-  // }
+
+  catchableFish(){
+    this.kv.transform(this.fish);
+    Object.keys(this.fish).forEach(key => {
+      if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth)){ 
+        this.thisMonthFish.push(this.fish[key])
+      }
+    });
+  }
 
 myFishCP=[];
 myBugsCP=[];
