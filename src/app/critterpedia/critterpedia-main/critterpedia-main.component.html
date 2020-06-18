@@ -1,37 +1,112 @@
 <app-nav></app-nav>
 <body>
-<nav>
+  <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-fish-tab" data-toggle="tab" href="#nav-fish" role="tab" aria-controls="nav-fish" aria-selected="true">Fish</a>
-      <a class="nav-item nav-link" id="nav-bugs-tab" data-toggle="tab" href="#nav-bugs" role="tab" aria-controls="nav-bugs" aria-selected="false">Bugs</a>
+      <a (click)="onBugs()" class="nav-item nav-link active" id="nav-bugs-tab" data-toggle="tab" href="#nav-bugs" role="tab" aria-controls="nav-bugs" aria-selected="false">Bugs</a>
+      <a (click)="onFish()" class="nav-item nav-link" id="nav-fish-tab" data-toggle="tab" href="#nav-fish" role="tab" aria-controls="nav-fish" aria-selected="true">Fish</a>
+
+      <a (click)="showAll()"  class="nav-item nav-link ml-auto " id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">All</a>
+      <a (click)="showCurrent()" class="nav-item nav-link pull-right" id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">Available This Month</a>
+      <a (click)="showMine()" class="nav-item nav-link" id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">My Collection</a>
     </div>
-<!-- </nav>
-<nav> -->
-    <!-- <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">All</a>
-        <a class="nav-item nav-link" id="nav-bugs-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-bugs" aria-selected="false">Active</a>
-        <a class="nav-item nav-link" id="nav-bugs-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-bugs" aria-selected="false">My Collection</a>
-    </div> -->
-
-
   </nav>
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-fish" role="tabpanel" aria-labelledby="nav-fish-tab"><app-fish></app-fish></div>
-    <div class="tab-pane fade" id="nav-bugs" role="tabpanel" aria-labelledby="nav-bugs-tab"><app-bugs></app-bugs></div>
+
+<!-- Grid -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card card-signin my-5">
+            <div class="card-body">  
+                <div class="row scroll">
+                    <div class="col-4 col-sm-3 align-items-center text-center fishGrid" (click)="onSelect(c)" *ngFor="let c of critters">
+                        <img  class="icon" src="http://acnhapi.com/icons/{{name}}/{{c['id']}}">
+                        <p>{{c['name']}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Detail View: Default -->
+    <div class="col-sm-4 detail">
+      <div class="card card-signin my-5">
+          <div class="card-body"> 
+            <div *ngIf="!selectedCritter">
+              <table class="table">
+                  <tr>
+                    <td>Price</td>
+                  </tr>
+                  <tr>
+                    <td>{{vendor}}'s Price</td>
+                  </tr>
+                  <tr>
+                    <td>Location</td>
+                  </tr>
+                  <tr *ngIf="name == 'fish'">
+                    <td>Shadow Size</td>
+                  </tr>
+                  <tr>
+                    <td>Available Times</td>
+                  </tr>
+                  <tr>
+                    <td>Northern Months</td>
+                  </tr>
+                  <tr>
+                    <td>Southern Months</td>
+                </tr>
+              </table>
+              
+              <button class="button">I've Caught It!</button>
+            </div>
+
+<!-- Selected Critter Detail View -->
+    <div *ngIf="selectedCritter">
+      <h5 class="card-title text-center name">{{selectedCritter['name']}}</h5>
+
+      <table class="table">
+          <tr>
+            <td>Price</td>
+            <td class="text-right">{{selectedCritter['price']}} bells</td>
+          </tr>
+          <tr>
+            <td>CJ's Price</td>
+            <td class="text-right">{{selectedCritter['price']*1.5}} bells</td>
+          </tr>
+          <tr>
+              <td>Location</td>
+              <td class="text-right">{{selectedCritter.location}}</td>
+          </tr>
+          <tr *ngIf="name == 'fish'">
+            <td>Shadow Size</td>
+            <td class="text-right">{{selectedCritter.shadow_size}}</td>
+        </tr>
+          <tr>
+              <td>Available Times</td>
+              <td class="text-right">{{selectedCritter['times']['text']}}</td>
+          </tr>
+          <tr>
+              <td>Northern Months</td>
+              <td class="text-right">{{selectedCritter['months']['northern']['text']}}</td>
+          </tr>
+          <tr>
+            <td>Southern Months</td>
+            <td class="text-right">{{selectedCritter['months']['southern']['text']}}</td>
+        </tr>
+      </table>
+      <div *ngIf="name === 'fish'"><button (click)="addToFishCP(selectedCritter)" class="button">I've Caught It!</button></div>
+      <div *ngIf="name === 'bugs'"><button (click)="addToBugsCP(selectedCritter)" class="button">I've Caught It!</button></div>
+
   </div>
 
-  <!-- <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-fish" role="tabpanel" aria-labelledby="nav-fish-tab"><app-fish></app-fish></div>
-    <div class="tab-pane fade" id="nav-bugs" role="tabpanel" aria-labelledby="nav-bugs-tab"><app-bugs></app-bugs></div>
-  </div> -->
 
+                  </div>
+              </div>
+          </div>
 
+      </div>
 
-        <!-- <div *ngIf="fishView">
-            <app-fish></app-fish>
-        </div>
-        <div *ngIf="bugView">
-            <app-bugs></app-bugs>
-        </div> -->
-    <!-- </div> -->
-</body> 
+      <div class="footer"></div>
+      <img class="vendor" src="assets/images/{{vendor}}.png">
+      
+  </div>
+</body>
+
