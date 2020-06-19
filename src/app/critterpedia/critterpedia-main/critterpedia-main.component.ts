@@ -16,7 +16,7 @@ export class CritterpediaMainComponent implements OnInit {
 
   ngOnInit(){
     this.bugView=true;
-    this.vendor='Flick';
+    this.vendor='flick';
   }
 
   onFish(){
@@ -28,7 +28,7 @@ export class CritterpediaMainComponent implements OnInit {
   onBugs(){
     this.bugView=true;
     this.fishView=false;
-    this.vendor='Flick'
+    this.vendor='flick'
   }
 
 }
