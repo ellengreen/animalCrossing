@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NookipediaService } from 'src/app/shared/nookipedia.service';
 import { CurrentDateService } from 'src/app/shared/current-date.service';
 import { KeyValuePipe } from '@angular/common';
-import { CurrentCritterService } from 'src/app/shared/current-critter.service';
 
 @Component({
   selector: 'app-fish',
@@ -11,7 +10,7 @@ import { CurrentCritterService } from 'src/app/shared/current-critter.service';
 })
 export class FishComponent implements OnInit {
 
-  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe, private ccs: CurrentCritterService) { }
+  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe) { }
 
   fish: any;
   allFish: any;

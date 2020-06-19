@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NookipediaService } from 'src/app/shared/nookipedia.service';
 import { CurrentDateService } from 'src/app/shared/current-date.service';
 import { KeyValuePipe } from '@angular/common';
-import { CurrentCritterService } from 'src/app/shared/current-critter.service';
+import { FirebaseService } from 'src/app/shared/firebase.service';
+
 
 @Component({
   selector: 'app-bugs',
@@ -11,10 +12,11 @@ import { CurrentCritterService } from 'src/app/shared/current-critter.service';
 })
 export class BugsComponent implements OnInit {
 
-  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe, private ccs: CurrentCritterService) { }
+  constructor(public ns: NookipediaService, public ds: CurrentDateService, private db: FirebaseService, public kv:KeyValuePipe) { }
 
   bugs: any;
   allBugs: any;
+  dbBugs: any;
   critterList: any;
   selectedBug: any;
   currentMonth=this.ds.currentMonth;
@@ -30,6 +32,9 @@ export class BugsComponent implements OnInit {
       this.allBugs=this.bugs;
       this.catchableBugs();
     })
+    this.db.fetchBugs().subscribe(bugs=> {
+      this.loadedBugs=bugs;
+    })
   }
 
   onSelect(b:any){
@@ -44,8 +49,15 @@ export class BugsComponent implements OnInit {
     this.bugs=this.thisMonth;
   }
 
+  loadedBugs: any;
   showMine(){
-    this.critterList=this.myBugsCP;
+    this.db.fetchBugs().subscribe(bugs =>{
+      this.bugs=bugs;
+    });
+  }
+
+  addBugs(selectedCritter){
+    this.db.addBug(selectedCritter)
   }
 
   catchableBugs(){
@@ -65,12 +77,7 @@ export class BugsComponent implements OnInit {
       }
     });
   }
-  
-  myBugsCP=[];
-  addToBugsCP(selectedBug){
-    this.myBugsCP.push(selectedBug);
-    console.log(this.myBugsCP);
-  }
+
 
   hourMethod(id){
     return this.thisHour.some((item) => item.id == id);
@@ -84,4 +91,5 @@ export class BugsComponent implements OnInit {
     return this.leaving.some((item) => item.id == id);
   }
 }
+
 
