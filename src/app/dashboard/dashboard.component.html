@@ -3,20 +3,7 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div class="col-sm-2">
-        <div class="card card-signin my-2">
-          <div class="card-body">
-            <div class="card-title">Profile</div>
-              <app-profile></app-profile>
-            </div>
-          </div>
-      </div>
-
-      <div class="col-sm-8">
-        <app-current-critters></app-current-critters>
-      </div>
-
-      <div class="col-sm-2">
+      <div class="col-sm-6">
         <!-- <h1 class="text-right">Dashboard</h1> -->
         <div class="date">
         <h2 class="card-title"><strong>{{dateService.todayFullDate}}</strong></h2>
@@ -37,10 +24,19 @@
         </div>
       </div>
 
+      <div class="col-sm-6">
+        <div class="card card-signin my-2">
+          <div class="card-body">
+            <div class="card-title">Profile</div>
+              <app-profile></app-profile>
+            </div>
+          </div>
+      </div>
+
     </div>
 
     <div class="footer"></div>
-    <img class="isabelle" src="assets/images/isabelle.png">
+    <img class="image" src="assets/images/kk.png">
 
 
   </div>
