@@ -1,10 +1,23 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
+    <div class="key">
+      <span class="dot"></span><h6>Available Right Now</h6>
+      <span class="dot1"></span><h6>New This Month</h6>
+      <span class="dot2"></span><h6>Leaving Next Month</h6>
+    </div>
+    
+    <a (click)="showAll()"  class="nav-item nav-link ml-auto " id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">All</a>
+    <a (click)="showCurrent()" class="nav-item nav-link pull-right" id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">Available This Month</a>
+    <a (click)="showMine()" class="nav-item nav-link" id="ngnav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">My Collection</a>
+  </div>
+</nav>
 
 <!-- Grid -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-8">
-        <div class="card card-signin my-5">
+        <div class="card card-signin my-2">
             <div class="card-body">  
                 <div class="row scroll">
                     <div class="col-4 col-sm-3 align-items-center text-center" (click)="onSelect(f)" *ngFor="let f of fish">

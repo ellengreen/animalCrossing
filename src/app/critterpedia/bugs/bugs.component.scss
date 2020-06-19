@@ -6,7 +6,9 @@
     padding: 1rem 2rem;
 }
 
-
+h6 {
+    display: inline-block;
+}
 .footer {
     position: fixed;
     left: 0;
@@ -32,13 +34,12 @@
 .icon {
     width: 55%;
     padding: 10px;
-    // background-color: #f0f0f0;
-    // border: 0px;
+    background-color: #f0f0f0;
     border-radius: 50%;
 }
 
 .icon:hover{
-    background-color: 	#F2C14E;
+    cursor: pointer;
 }
 
 p {

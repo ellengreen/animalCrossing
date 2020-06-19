@@ -14,10 +14,10 @@ export class FishComponent implements OnInit {
   constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe, private ccs: CurrentCritterService) { }
 
   fish: any;
-  critterList: any;
+  allFish: any;
   selectedFish: any;
   currentMonth=this.ds.currentMonth;
-  time=this.ds.todayTime;
+  time=this.ds.todayDate;
   thisHour=[];
   new = [];
   leaving = [];
@@ -26,8 +26,8 @@ export class FishComponent implements OnInit {
   ngOnInit(){
     this.ns.getFish().subscribe(data=> {
       this.fish = data;
+      this.allFish = this.fish;
       this.catchablefish();
-      console.log(this.fish)
     })
   }
 
@@ -37,15 +37,15 @@ export class FishComponent implements OnInit {
   }
 
   showAll(){
-    this.critterList=this.fish;
+    this.fish=this.allFish;
   }
   
   showCurrent(){
-    this.critterList=this.thisMonth;
+    this.fish=this.thisMonth;
   }
 
   showMine(){
-    this.critterList=this.myfishCP;
+    // this.critterList=this.myfishCP;
   }
 
   catchablefish(){
@@ -69,7 +69,6 @@ export class FishComponent implements OnInit {
   myfishCP=[];
   addToFishCP(selectedFish){
     this.myfishCP.push(selectedFish);
-    console.log(this.myfishCP);
   }
 
   hourMethod(id){

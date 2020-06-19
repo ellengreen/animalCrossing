@@ -14,10 +14,11 @@ export class BugsComponent implements OnInit {
   constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe, private ccs: CurrentCritterService) { }
 
   bugs: any;
+  allBugs: any;
   critterList: any;
   selectedBug: any;
   currentMonth=this.ds.currentMonth;
-  time=this.ds.todayTime;
+  time=this.ds.todayDate;
   thisHour=[];
   new = [];
   leaving = [];
@@ -26,22 +27,21 @@ export class BugsComponent implements OnInit {
   ngOnInit(){
     this.ns.getBugs().subscribe(data=> {
       this.bugs = data;
+      this.allBugs=this.bugs;
       this.catchableBugs();
-      console.log(this.bugs)
     })
   }
-
 
   onSelect(b:any){
     this.selectedBug = b;
   }
 
   showAll(){
-    this.critterList=this.bugs;
+    this.bugs=this.allBugs;
   }
   
   showCurrent(){
-    this.critterList=this.thisMonth;
+    this.bugs=this.thisMonth;
   }
 
   showMine(){

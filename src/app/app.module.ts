@@ -9,7 +9,6 @@ import { NavComponent } from './nav/nav.component';
 import { KeyValuePipe, DatePipe } from '@angular/common';
 import { NookipediaService } from './shared/nookipedia.service';
 import { CurrentCritterService } from './shared/current-critter.service';
-import { CurrentComponent } from './critterpedia/current/current.component';
 import { FishComponent } from './critterpedia/fish/fish.component';
 import { BugsComponent } from './critterpedia/bugs/bugs.component';
 
@@ -19,7 +18,6 @@ import { BugsComponent } from './critterpedia/bugs/bugs.component';
     AppComponent,
     CritterpediaMainComponent,
     NavComponent,
-    CurrentComponent,
     FishComponent,
     BugsComponent
   ],
