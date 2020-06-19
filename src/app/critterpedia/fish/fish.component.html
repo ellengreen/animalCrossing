@@ -1,0 +1,105 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+    <div class="key">
+      <span class="dot"></span><h6>Available Right Now</h6>
+      <span class="dot1"></span><h6>New This Month</h6>
+      <span class="dot2"></span><h6>Leaving Next Month</h6>
+    </div>
+    
+    <a (click)="showAll()"  class="nav-item nav-link ml-auto " id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">All</a>
+    <a (click)="showCurrent()" class="nav-item nav-link pull-right" id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">Available This Month</a>
+    <a (click)="showMine()" class="nav-item nav-link" id="ngnav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">My Collection</a>
+  </div>
+</nav>
+
+<!-- Grid -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card card-signin my-2">
+            <div class="card-body">  
+                <div class="row scroll">
+                    <div class="col-4 col-sm-3 align-items-center text-center" (click)="onSelect(f)" *ngFor="let f of fish">
+                        <img [class.hour]="hourMethod(f.id)" [class.new]="newMethod(f.id)" [class.leaving]="leavingMethod(f.id)" class="icon" src="http://acnhapi.com/icons/fish/{{f['id']}}">
+                        <p>{{f['name']}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+<!-- Detail View: Default -->
+    <div class="col-sm-4 detail">
+      <div class="card card-signin my-5">
+          <div class="card-body"> 
+            <div *ngIf="!selectedFish">
+              <table class="table">
+                  <tr>
+                    <td>Price</td>
+                  </tr>
+                  <tr>
+                    <td>CJ's Price</td>
+                  </tr>
+                  <tr>
+                    <td>Location</td>
+                  </tr>
+                  <tr>
+                    <td>Shadow Size</td>
+                  </tr>
+                  <tr>
+                    <td>Available Times</td>
+                  </tr>
+                  <tr>
+                    <td>Northern Months</td>
+                  </tr>
+                  <tr>
+                    <td>Southern Months</td>
+                </tr>
+              </table>
+              
+              <button class="button">I've Caught It!</button>
+            </div> 
+
+<!-- Selected Fish Detail View -->
+    <div *ngIf="selectedFish">
+      <h5 class="card-title text-center name">{{selectedFish['name']}}</h5>
+
+      <table class="table">
+          <tr>
+            <td>Price</td>
+            <td class="text-right">{{selectedFish['price']}} bells</td>
+          </tr>
+          <tr>
+            <td>CJ's Price</td>
+            <td class="text-right">{{selectedFish['price']*1.5}} bells</td>
+          </tr>
+          <tr>
+              <td>Location</td>
+              <td class="text-right">{{selectedFish.location}}</td>
+          </tr>
+          <tr>
+            <td>Shadow Size</td>
+            <td class="text-right">{{selectedFish.shadow_size}}</td>
+        </tr>
+          <tr>
+              <td>Available Times</td>
+              <td class="text-right">{{selectedFish['times']['text']}}</td>
+          </tr>
+          <tr>
+              <td>Northern Months</td>
+              <td class="text-right">{{selectedFish['months']['northern']['text']}}</td>
+          </tr>
+          <tr>
+            <td>Southern Months</td>
+            <td class="text-right">{{selectedFish['months']['southern']['text']}}</td>
+        </tr>
+      </table>
+      <button (click)="addToFishCP(selectedFish)" class="button">I've Caught It!</button>
+  </div>
+
+
+                  </div>
+              </div>
+          </div>
+
+      </div> 

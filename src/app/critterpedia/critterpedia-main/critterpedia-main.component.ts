@@ -23,16 +23,6 @@ export class CritterpediaMainComponent implements OnInit {
   vendor: string;
   
   selectedCritter: any;
-  currentMonth=this.ds.currentMonth;
-  time=this.ds.todayTime;
-  thisMonthFish=[];
-  thisMonthBugs=[];
-  thisHourBugs=[];
-  thisHourFish=[];
-  leavingFish=[];
-  leavingBugs=[];
-  newFish=[];
-  newBugs=[];
   loadedBugs:any;
   loadedFish:any;
 
@@ -43,11 +33,9 @@ export class CritterpediaMainComponent implements OnInit {
       this.critters = this.bugs;
       this.name ='bugs';
       this.vendor='Flick';
-      this.catchableBugs();
     })
       this.ns.getFish().subscribe(data => {
         this.fish = data;
-        this.catchableFish();
     })
   
     this.db.fetchBugs().subscribe(bugs =>{
@@ -59,25 +47,15 @@ export class CritterpediaMainComponent implements OnInit {
   }
 
   onFish(){
-    this.fishView = true;
-    this.bugView = false;
-    if (this.fishView){
-      this.critters=this.fish;
-      this.name = 'fish';
-      this.vendor = 'CJ';
-    } 
-    this.selectedCritter = null;
+    this.bugView=false;
+    this.fishView=true;
+    this.vendor='CJ';
   }
 
   onBugs(){
-    this.fishView = false;
-    this.bugView = true;
-    if (this.bugView){
-      this.critters=this.bugs;
-      this.name='bugs';
-      this.vendor = 'Flick';
-    }
-    this.selectedCritter = null;
+    this.bugView=true;
+    this.fishView=false;
+    this.vendor='Flick'
   }
 
   onSelect(c:any){
@@ -92,13 +70,6 @@ export class CritterpediaMainComponent implements OnInit {
     }
   }
 
-  showCurrent(){
-    if (this.fishView){
-    this.critters=this.thisMonthFish;
-    } else {
-      this.critters=this.thisMonthBugs;
-    }
-  }
 
   showMine(){
     if (this.fishView){
@@ -110,48 +81,6 @@ export class CritterpediaMainComponent implements OnInit {
           this.critters=bugs;
         })
       }
-  }
-
-  catchableBugs(){
-    this.kv.transform(this.bugs);
-    //this month
-    Object.keys(this.bugs).forEach(key => {
-      if (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth)){ 
-        this.thisMonthBugs.push(this.bugs[key])
-      }
-       //this hour
-       if (this.bugs[key]['times']['array'].includes(this.time) && (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth))){
-         this.thisHourBugs.push(this.bugs[key])
-       }
-               //if new this month
-               if (this.bugs[key]['months']['northern']['array'][0] == this.currentMonth){
-                this.newBugs.push(this.bugs[key]);
-              }
-              //if leaving next month
-              if (this.bugs[key]['months']['northern']['array'].includes(this.currentMonth +1) == false){
-                this.leavingBugs.push(this.bugs[key])
-              }
-    });
-  }
-
-  catchableFish(){
-    this.kv.transform(this.fish);
-    Object.keys(this.fish).forEach(key => {
-      if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth)){ 
-        this.thisMonthFish.push(this.fish[key])
-      }
-      if (this.fish[key]['times']['array'].includes(this.time) && (this.fish[key]['months']['northern']['array'].includes(this.currentMonth))){
-        this.thisHourFish.push(this.fish[key])
-      }
-              //if new this month
-              if (this.fish[key]['months']['northern']['array'][0] == this.currentMonth){
-                this.newFish.push(this.fish[key]);
-              }
-              //if leaving next month
-              if (this.fish[key]['months']['northern']['array'].includes(this.currentMonth +1) == false){
-                this.leavingFish.push(this.fish[key])
-              }
-    });
   }
 
 
@@ -180,16 +109,5 @@ dupes(selectedCritter){
  
 }
 
-hourMethod(id){
-  return this.thisHourBugs.some((item) => item.id == id);
-}
-
-newMethod(id){
-  return this.newBugs.some((item) => item.id == id);
-}
-
-leavingMethod(id){
-  return this.leavingBugs.some((item) => item.id == id);
-}
 
 }
