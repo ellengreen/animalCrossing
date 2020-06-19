@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NookipediaService } from 'src/app/shared/nookipedia.service';
 import { CurrentDateService } from 'src/app/shared/current-date.service';
 import { KeyValuePipe } from '@angular/common';
+import { FirebaseService } from 'src/app/shared/firebase.service';
 
 @Component({
   selector: 'app-fish',
@@ -10,7 +11,7 @@ import { KeyValuePipe } from '@angular/common';
 })
 export class FishComponent implements OnInit {
 
-  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe) { }
+  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe, public db: FirebaseService) { }
 
   fish: any;
   allFish: any;
@@ -21,12 +22,16 @@ export class FishComponent implements OnInit {
   new = [];
   leaving = [];
   thisMonth=[];
+  loadedFish: any;
 
   ngOnInit(){
     this.ns.getFish().subscribe(data=> {
       this.fish = data;
       this.allFish = this.fish;
       this.catchablefish();
+    });
+    this.db.fetchFish().subscribe(fish =>{
+      this.loadedFish=fish;
     })
   }
 
@@ -44,7 +49,9 @@ export class FishComponent implements OnInit {
   }
 
   showMine(){
-    // this.critterList=this.myfishCP;
+    this.db.fetchFish().subscribe(fish =>{
+      this.fish=fish;
+    })
   }
 
   catchablefish(){
@@ -64,10 +71,9 @@ export class FishComponent implements OnInit {
       }
     });
   }
-  
-  myfishCP=[];
-  addToFishCP(selectedFish){
-    this.myfishCP.push(selectedFish);
+
+  addFish(selectedFish){
+    this.db.addFish(selectedFish)
   }
 
   hourMethod(id){
