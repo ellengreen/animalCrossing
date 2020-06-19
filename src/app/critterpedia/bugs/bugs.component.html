@@ -1,0 +1,84 @@
+
+<!-- Grid -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card card-signin my-5">
+            <div class="card-body">  
+                <div class="row scroll">
+                    <div class="col-4 col-sm-3 align-items-center text-center" (click)="onSelect(b)" *ngFor="let b of bugs">
+                        <img [class.hour]="hourMethod(b.id)" [class.new]="newMethod(b.id)" [class.leaving]="leavingMethod(b.id)" class="icon" src="http://acnhapi.com/icons/bugs/{{b['id']}}">
+                        <p>{{b['name']}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Detail View: Default  -->
+    <div class="col-sm-4 detail">
+      <div class="card card-signin my-5">
+          <div class="card-body"> 
+            <div *ngIf="!selectedBug">
+              <table class="table">
+                  <tr>
+                    <td>Price</td>
+                  </tr>
+                  <tr>
+                    <td>Flick's Price</td>
+                  </tr>
+                  <tr>
+                    <td>Location</td>
+                  </tr>
+                  <tr>
+                    <td>Available Times</td>
+                  </tr>
+                  <tr>
+                    <td>Northern Months</td>
+                  </tr>
+                  <tr>
+                    <td>Southern Months</td>
+                </tr>
+              </table>
+              
+              <button class="button">Add to My Collection!</button>
+            </div>
+
+<!-- Selected Bug Detail View -->
+    <div *ngIf="selectedBug">
+      <h5 class="card-title text-center name">{{selectedBug['name']}}</h5>
+
+      <table class="table">
+          <tr>
+            <td>Price</td>
+            <td class="text-right">{{selectedBug['price']}} bells</td>
+          </tr>
+          <tr>
+            <td>Flick's Price</td>
+            <td class="text-right">{{selectedBug['price']*1.5}} bells</td>
+          </tr>
+          <tr>
+              <td>Location</td>
+              <td class="text-right">{{selectedBug.location}}</td>
+          <tr>
+              <td>Available Times</td>
+              <td class="text-right">{{selectedBug['times']['text']}}</td>
+          </tr>
+          <tr>
+              <td>Northern Months</td>
+              <td class="text-right">{{selectedBug['months']['northern']['text']}}</td>
+          </tr>
+          <tr>
+            <td>Southern Months</td>
+            <td class="text-right">{{selectedBug['months']['southern']['text']}}</td>
+        </tr>
+      </table>
+      <button (click)="addToBugsCP(selectedBug)" class="button">I've Caught It!</button>
+
+  </div>
+
+
+                  </div>
+              </div>
+          </div>
+
+      </div> 

@@ -28,40 +28,48 @@ export class CritterpediaMainComponent implements OnInit {
   thisMonthBugs=[];
 
   ngOnInit(){
-    this.ns.getBugs().subscribe(data=> {
-      this.bugs = data;
-      // set bugs as default view options
-      this.critters = this.bugs;
-      this.name ='bugs';
-      this.vendor='Flick';
-      this.catchableBugs();
-    })
-      this.ns.getFish().subscribe(data => {
-        this.fish = data;
-        this.catchableFish();
-    })
+    // this.ns.getBugs().subscribe(data=> {
+    //   this.bugs = data;
+    //   // set bugs as default view options
+    //   this.critters = this.bugs;
+    //   this.name ='bugs';
+    this.bugView=true;
+    this.vendor='Flick';
+    //   this.catchableBugs();
+    // })
+    //   this.ns.getFish().subscribe(data => {
+    //     this.fish = data;
+    //     this.catchableFish();
+    // })
   }
 
   onFish(){
-    this.fishView = true;
-    this.bugView = false;
-    if (this.fishView){
-      this.critters=this.fish;
-      this.name = 'fish';
-      this.vendor = 'CJ';
-    } 
-    this.selectedCritter = null;
+    // this.fishView = true;
+    // this.bugView = false;
+    // if (this.fishView){
+    //   this.critters=this.fish;
+    //   this.name = 'fish';
+    //   this.vendor = 'CJ';
+    // } 
+    // this.selectedCritter = null;
+    this.bugView=false;
+    this.fishView=true;
+    this.vendor='CJ';
   }
 
+
   onBugs(){
-    this.fishView = false;
-    this.bugView = true;
-    if (this.bugView){
-      this.critters=this.bugs;
-      this.name='bugs';
-      this.vendor = 'Flick';
-    }
-    this.selectedCritter = null;
+    this.bugView=true;
+    this.fishView=false;
+    this.vendor='Flick'
+    // this.fishView = false;
+    // this.bugView = true;
+    // if (this.bugView){
+    //   this.critters=this.bugs;
+    //   this.name='bugs';
+    //   this.vendor = 'Flick';
+    // }
+    // this.selectedCritter = null;
   }
 
   onSelect(c:any){

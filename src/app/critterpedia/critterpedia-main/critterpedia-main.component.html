@@ -7,12 +7,17 @@
 
       <a (click)="showAll()"  class="nav-item nav-link ml-auto " id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">All</a>
       <a (click)="showCurrent()" class="nav-item nav-link pull-right" id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">Available This Month</a>
-      <a (click)="showMine()" class="nav-item nav-link" id="nav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">My Collection</a>
+      <a (click)="showMine()" class="nav-item nav-link" id="ngnav-fish-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-fish" aria-selected="true">My Collection</a>
     </div>
+
   </nav>
 
+  <div *ngIf="bugView"><app-bugs></app-bugs></div>
+  <div *ngIf="fishView"><app-fish></app-fish></div>
+
+
 <!-- Grid -->
-  <div class="container-fluid">
+  <!-- <div class="container-fluid">
     <div class="row">
       <div class="col-sm-8">
         <div class="card card-signin my-5">
@@ -25,9 +30,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 <!-- Detail View: Default -->
-    <div class="col-sm-4 detail">
+    <!-- <div class="col-sm-4 detail">
       <div class="card card-signin my-5">
           <div class="card-body"> 
             <div *ngIf="!selectedCritter">
@@ -56,10 +61,10 @@
               </table>
               
               <button class="button">I've Caught It!</button>
-            </div>
+            </div> -->
 
 <!-- Selected Critter Detail View -->
-    <div *ngIf="selectedCritter">
+    <!-- <div *ngIf="selectedCritter">
       <h5 class="card-title text-center name">{{selectedCritter['name']}}</h5>
 
       <table class="table">
@@ -102,11 +107,11 @@
               </div>
           </div>
 
-      </div>
+      </div> -->
 
       <div class="footer"></div>
       <img class="vendor" src="assets/images/{{vendor}}.png">
       
-  </div>
+  <!-- </div> -->
 </body>
 

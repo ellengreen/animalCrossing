@@ -10,6 +10,8 @@ import { KeyValuePipe, DatePipe } from '@angular/common';
 import { NookipediaService } from './shared/nookipedia.service';
 import { CurrentCritterService } from './shared/current-critter.service';
 import { CurrentComponent } from './critterpedia/current/current.component';
+import { FishComponent } from './critterpedia/fish/fish.component';
+import { BugsComponent } from './critterpedia/bugs/bugs.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { CurrentComponent } from './critterpedia/current/current.component';
     AppComponent,
     CritterpediaMainComponent,
     NavComponent,
-    CurrentComponent
+    CurrentComponent,
+    FishComponent,
+    BugsComponent
   ],
   imports: [
     BrowserModule,
