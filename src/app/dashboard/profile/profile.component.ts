@@ -12,4 +12,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  displayName: string;
+  addName(name: string){
+    this.displayName = name;
+  }
+
 }
