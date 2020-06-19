@@ -16,16 +16,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { BugsComponent } from './critterpedia/bugs/bugs.component';
-import { FishComponent } from './critterpedia/fish/fish.component';
-import { CritterpediaMainComponent } from './critterpedia/critterpedia-main/critterpedia-main.component';
 import { LoginComponent } from './user-auth/login/login.component';
 import { RegisterComponent } from './user-auth/register/register.component';
-import { VerifyEmailComponent } from './user-auth/verify-email/verify-email.component';
-import { ForgotPasswordComponent } from './user-auth/forgot-password/forgot-password.component';
-import { AuthComponent } from './user-auth/auth/auth.component';
 import { AuthenticationService } from './shared/authentication.service';
 
 
@@ -33,16 +26,9 @@ import { AuthenticationService } from './shared/authentication.service';
   declarations: [
     AppComponent,
     NavigationComponent,
-    ProfileComponent,
     DashboardComponent,
-    BugsComponent,
-    FishComponent,
-    CritterpediaMainComponent,
     LoginComponent,
-    RegisterComponent,
-    VerifyEmailComponent,
-    ForgotPasswordComponent,
-    AuthComponent
+    RegisterComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

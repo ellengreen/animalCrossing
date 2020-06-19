@@ -1,32 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CritterpediaMainComponent } from './critterpedia/critterpedia-main/critterpedia-main.component';
-import { BugsComponent } from './critterpedia/bugs/bugs.component';
-import { FishComponent } from './critterpedia/fish/fish.component';
-import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './user-auth/login/login.component';
 import { RegisterComponent } from './user-auth/register/register.component';
-import { ForgotPasswordComponent } from './user-auth/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './user-auth/verify-email/verify-email.component';
-import { AuthComponent } from './user-auth/auth/auth.component';
 
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'home', component: DashboardComponent },
-  { path: 'critterpedia', component: CritterpediaMainComponent },
-  { path: 'bugs', component: BugsComponent },
-  { path: 'fish', component: FishComponent },
-  { path: 'profile', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
-  { 
-    path: 'auth', component: AuthComponent }, 
-
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: 'forgot', component: ForgotPasswordComponent },
-      { path: 'verify-email', component: VerifyEmailComponent }
+  { path: 'register', component: RegisterComponent }
     
   
 ];

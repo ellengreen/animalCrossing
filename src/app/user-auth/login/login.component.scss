@@ -45,8 +45,14 @@
     font-weight: bold;
     padding: 1rem;
     transition: all 0.2s;
+    
   }
   
+  .form-control:focus {
+    border-color: #006D77;
+    box-shadow: #006D77; -webkit-box-shadow: none;
+  }
+
   .form-label-group {
     position: relative;
     margin-bottom: 1rem;
@@ -57,6 +63,9 @@
     border-radius: 2rem;
   }
 
+  .btn{
+    background-color: #006D77;;
+  }
   
   .btn-google {
     color: white;
@@ -64,7 +73,7 @@
   }
   
 p {
-  color: #007bff;
+  color: #006D77;
   text-align: center; 
 }
 

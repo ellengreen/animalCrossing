@@ -16,6 +16,15 @@
     margin-right: auto;
 }
 
+.form-control:focus {
+  border-color: #006D77;
+  box-shadow: #006D77; -webkit-box-shadow: none;
+}
+
+.btn{
+  background-color: #006D77;;
+}
+
 .side {
   background-color: #8DDAC1;
   height: 100vh;

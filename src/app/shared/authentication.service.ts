@@ -28,7 +28,7 @@ export class AuthenticationService {
    async login(email, password){
     try {
        const result = await this.afAuth.signInWithEmailAndPassword(email, password);
-       this.router.navigate(['profile']);
+       this.router.navigate(['home']);
      }
      catch (error) {
        window.alert(error.message);
