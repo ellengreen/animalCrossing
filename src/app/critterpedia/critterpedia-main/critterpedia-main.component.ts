@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NookipediaService } from 'src/app/shared/nookipedia.service';
-import { CurrentDateService } from 'src/app/shared/current-date.service';
-import { KeyValuePipe } from '@angular/common';
-import { FirebaseService } from 'src/app/shared/firebase.service';
 
 @Component({
   selector: 'app-critterpedia-main',
@@ -11,39 +7,16 @@ import { FirebaseService } from 'src/app/shared/firebase.service';
 })
 export class CritterpediaMainComponent implements OnInit {
 
-  constructor(public ns: NookipediaService, public ds: CurrentDateService, public kv:KeyValuePipe, private db: FirebaseService) { }
+  constructor() { }
 
-  bugs: any;
-  fish: any;
-  critters: any;
-  
   fishView: boolean;
   bugView: boolean;
-  name: string;
   vendor: string;
-  
-  selectedCritter: any;
-  loadedBugs:any;
-  loadedFish:any;
+
 
   ngOnInit(){
-    this.ns.getBugs().subscribe(data=> {
-      this.bugs = data;
-      // set bugs as default view options
-      this.critters = this.bugs;
-      this.name ='bugs';
-      this.vendor='Flick';
-    })
-      this.ns.getFish().subscribe(data => {
-        this.fish = data;
-    })
-  
-    this.db.fetchBugs().subscribe(bugs =>{
-      this.loadedBugs=bugs;
-    })
-    this.db.fetchFish().subscribe(fish =>{
-      this.loadedFish=fish;
-    })
+    this.bugView=true;
+    this.vendor='flick';
   }
 
   onFish(){
@@ -55,59 +28,95 @@ export class CritterpediaMainComponent implements OnInit {
   onBugs(){
     this.bugView=true;
     this.fishView=false;
-    this.vendor='Flick'
+    this.vendor='flick'
   }
 
-  onSelect(c:any){
-    this.selectedCritter = c;
-  }
-
-  showAll(){
-    if (this.fishView){
-      this.critters=this.fish;
-    } else {
-      this.critters=this.bugs;
-    }
-  }
-
-
-  showMine(){
-    if (this.fishView){
-      this.db.fetchFish()
-      .subscribe(fish =>{
-      this.critters=fish;
-      })} else {
-        this.db.fetchBugs().subscribe(bugs=>{
-          this.critters=bugs;
-        })
-      }
-  }
-
-
-addFish(selectedCritter){
-  // this.myFishCP.push(selectedCritter);
-  // this.dupes(selectedCritter)
-  this.db.addFish(selectedCritter);
-}
-addBugs(selectedCritter){
-  this.dupes(selectedCritter)
-  // this.db.addBug(selectedCritter)
 }
 
-dupes(selectedCritter){
-  this.kv.transform(this.loadedBugs);
-  Object.keys(this.loadedBugs).forEach(key=>{
-    if(this.loadedBugs[key]['id'] == selectedCritter['id']){
-      console.log('stop')
-    } else {
-      this.db.addBug(selectedCritter)
-      console.log(this.loadedBugs)
-      // this.db.addBug(selectedCritter)
-    }
-  })
+
+
+//   ngOnInit(){
+//     this.ns.getBugs().subscribe(data=> {
+//       this.bugs = data;
+//       // set bugs as default view options
+//       this.critters = this.bugs;
+//       this.name ='bugs';
+//       this.vendor='Flick';
+//     })
+//       this.ns.getFish().subscribe(data => {
+//         this.fish = data;
+//     })
+  
+//     this.db.fetchBugs().subscribe(bugs =>{
+//       this.loadedBugs=bugs;
+//     })
+//     this.db.fetchFish().subscribe(fish =>{
+//       this.loadedFish=fish;
+//     })
+//   }
+
+//   onFish(){
+//     this.bugView=false;
+//     this.fishView=true;
+//     this.vendor='CJ';
+//   }
+
+//   onBugs(){
+//     this.bugView=true;
+//     this.fishView=false;
+//     this.vendor='Flick'
+//   }
+
+//   onSelect(c:any){
+//     this.selectedCritter = c;
+//   }
+
+//   showAll(){
+//     if (this.fishView){
+//       this.critters=this.fish;
+//     } else {
+//       this.critters=this.bugs;
+//     }
+//   }
+
+
+//   showMine(){
+//     if (this.fishView){
+//       this.db.fetchFish()
+//       .subscribe(fish =>{
+//       this.critters=fish;
+//       })} else {
+//         this.db.fetchBugs().subscribe(bugs=>{
+//           this.critters=bugs;
+//         })
+//       }
+//   }
+
+
+// addFish(selectedCritter){
+//   // this.myFishCP.push(selectedCritter);
+//   // this.dupes(selectedCritter)
+//   this.db.addFish(selectedCritter);
+// }
+// addBugs(selectedCritter){
+//   this.dupes(selectedCritter)
+//   // this.db.addBug(selectedCritter)
+// }
+
+// dupes(selectedCritter){
+//   this.kv.transform(this.loadedBugs);
+//   Object.keys(this.loadedBugs).forEach(key=>{
+//     if(this.loadedBugs[key]['id'] == selectedCritter['id']){
+//       console.log('stop')
+//     } else {
+//       this.db.addBug(selectedCritter)
+//       console.log(this.loadedBugs)
+//       // this.db.addBug(selectedCritter)
+//     }
+//   })
 
  
-}
+// }
 
 
-}
+// }
