@@ -3,6 +3,7 @@ import { NookipediaService } from 'src/app/shared/nookipedia.service';
 import { CurrentDateService } from 'src/app/shared/current-date.service';
 import { KeyValuePipe } from '@angular/common';
 import { FirebaseService } from 'src/app/shared/firebase.service';
+import { AuthenticationService } from 'src/app/shared/authentication.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { FirebaseService } from 'src/app/shared/firebase.service';
 })
 export class BugsComponent implements OnInit {
 
-  constructor(public ns: NookipediaService, public ds: CurrentDateService, private db: FirebaseService, public kv:KeyValuePipe) { }
+  constructor(public ns: NookipediaService, public ds: CurrentDateService, private db: FirebaseService, public kv:KeyValuePipe, private auth: AuthenticationService) { }
 
   bugs: any;
   allBugs: any;
@@ -25,6 +26,9 @@ export class BugsComponent implements OnInit {
   new = [];
   leaving = [];
   thisMonth=[];
+  id: any;
+  user: any;
+
 
   ngOnInit(){
     this.ns.getBugs().subscribe(data=> {
@@ -35,6 +39,8 @@ export class BugsComponent implements OnInit {
     this.db.fetchBugs().subscribe(bugs=> {
       this.loadedBugs=bugs;
     })
+    this.user = this.auth.getUser()
+    this.id = this.user['uid'];
   }
 
   onSelect(b:any){
