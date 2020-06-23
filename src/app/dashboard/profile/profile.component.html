@@ -1,15 +1,52 @@
+<div *ngIf="new">
+  <div class="container">
+  <form (ngSubmit)="onSubmit()" #profileForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+               [(ngModel)]="displayName" name="name">
+      </div>
+      <div class="form-group">
+        <label for="islandName">Island Name</label>
+        <input type="text" class="form-control" id="islandName"
+               [(ngModel)]="islandName" name="islandName"
+               >
+      </div>
+    
+      <div class="form-group">
+        <label for="fruit">Native Fruit</label>
+        <select class="form-control" id="fruit"
+                [(ngModel)]="nativeFruit" name="fruit"
+                >
+          <option *ngFor="let fr of fruit" [value]="fr">{{fr}}</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="flower">Native Flower</label>
+        <select class="form-control" id="flower"
+                [(ngModel)]="nativeFlower" name="flower"
+                #flower="ngModel">
+          <option *ngFor="let f of flowers" [value]="f">{{f}}</option>
+        </select>
+      </div>
+        <button type="submit" class="btn btn-custom" (click)="update(profileForm)">Update Profile</button>
+    </form>
+    </div>
+  </div>
 
-  <input type="text"  #nameInput>
-  <button type="submit" (click) = 'addName(nameInput.value)'>Add</button>
+<div *ngIf="!new">
+  <div *ngFor="let i of userInfo | keyvalue">
+    <h3>{{userInfo[0]['name']}}</h3>
+    <h3>{{userInfo[0]['islandName']}}</h3>
+    <img src="/assets/images/{{userInfo[0]['flower']}}.png">
+    <img src="/assets/images/{{userInfo[0]['fruit']}}.png">
+  </div>
+  <hr>
+  <div class="card-title">Collection Progress</div>
+  <h5>Bugs</h5>{{savedBugs.length}}/80 
+  <progress id="bar" max="100" value="{{bugWidth}}"></progress> 
   <br>
-
-<h3>{{displayName}}</h3>
-<h3>Bean Cove</h3>
-<h5>Apples</h5>
-<h5>Lilies</h5>
-<hr>
-<h3>Collection Progress</h3>
-<h5>Bugs</h5>
-<h5>Fish</h5>
-<h5>Fossils</h5>
-<h5>Art</h5>
+  <h5>Fish</h5>{{savedFish.length}}/80
+  <progress id="bar" max="100" value="{{fishWidth}}"></progress>
+</div>

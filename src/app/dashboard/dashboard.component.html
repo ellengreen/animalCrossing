@@ -1,4 +1,4 @@
-<!-- <app-nav></app-nav> -->
+<app-nav></app-nav>
 <body>
   <div class="container-fluid">
     <div class="row">
@@ -6,10 +6,10 @@
 
 
       <div class="col-sm-4">
-        <div class="date">
+        <!-- <div class="date">
           <h2 class="card-title"><strong>{{dateService.todayFullDate}}</strong></h2>
           <h3 class="card-title">{{dateService.todayTime}}</h3>
-        </div>
+        </div> -->
         <div class="card card-signin my-2">
           <div class="card-body">
             <div class="card-title">Profile</div>
@@ -20,6 +20,10 @@
 
       
       <div class="col-sm-4">
+        <div class="date">
+          <h2 class="card-title"><strong>{{dateService.todayFullDate}}</strong></h2>
+          <h3 class="card-title">{{dateService.todayTime}}</h3>
+        </div>
         <div class="card card-signin my-2">
           <div class="card-body">
             <div class="card-title">Events this Month</div>
@@ -32,6 +36,12 @@
             <app-birthday></app-birthday>
         </div>
         </div>
+        <!-- <div class="card card-signin my-2">
+          <div class="card-body">
+      <div class="card-title">Catchable Critters</div>
+          
+      </div>
+      </div> -->
       </div>
 
 
