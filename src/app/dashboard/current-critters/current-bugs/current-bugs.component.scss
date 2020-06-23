@@ -1,19 +1,15 @@
+.col-sm-12 {
+  padding: 0px;
+}
+.row {
+  height: 150px;
+  overflow: hidden;
+}
+
 .icon {
-  width: 70%;
-  margin: 5px;
-  padding: 5px;
-  
+  width: 120%;
 }
 
-
-h3 {
-    text-align: center;
-
-}
-
-.scroll{
-  height: 280px;
-}
 
        
     .card-signin {
@@ -33,11 +29,11 @@ h3 {
         // padding-top: 1rem;
       }
 @media only screen and (max-width: 700px) {
-        .icon {
-          width: 60%;
-          display:block;
-          margin:auto;
-        }
+        // .icon {
+        //   width: 60%;
+        //   display:block;
+        //   margin:auto;
+        // }
       
         .p{
           font-size: 10px;
@@ -53,11 +49,11 @@ h3 {
 }     
 
 @media only screen and (min-width: 1400px) {
-  .icon {
-    width: 40%;
-    display:block;
-    margin:auto;
-  }
+  // .icon {
+  //   width: 40%;
+  //   display:block;
+  //   margin:auto;
+  // }
 
   .p{
     font-size: 10px;

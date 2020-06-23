@@ -1,23 +1,15 @@
-<body>
     <div class="container">
       <div class="row">
 
         <div class="col-sm-12">
-          <div class="card card-signin my-2">
-            <div class="card-body">
-              <!-- <h3 class="card-title text-center">Bugs Available Right Now</h3> -->
-              <div class="row scroll">
-                  <div class="col-4 col-sm-3 align-items-center text-center mb-3" *ngFor="let bug of thisMonth">
-                      <img [class.hour]="hourMethod(bug.id)" [class.new]="newMethod(bug.id)" [class.leaving]="leavingMethod(bug.id)" class="icon" src="http://acnhapi.com/icons/bugs/{{bug['id']}}">
-                      <p>{{bug['name']}}</p>
+           {{thisHour.length}} Bugs
+              <div class="row">
+                  <div class="col-4 col-sm-3 align-items-center text-center mb-3" *ngFor="let bug of thisHour | slice:-8">
+                      <img class="icon" src="http://acnhapi.com/icons/bugs/{{bug['id']}}">
                   </div>
               </div>
             </div>
-          </div>
-        </div>
+
       </div>
     </div>
-  </body>
-<!-- <h2>
-  {{bugs}}/80
-</h2> -->
+ 

@@ -1,16 +1,27 @@
-.icon {
-  width: 70%;
-  margin: 5px;
-  padding: 5px;
-}
+// .icon {
+//   width: 70%;
+//   margin: 5px;
+//   padding: 5px;
+// }
 
 h3 {
     text-align: center;
 }
 
-.scroll{
-  height: 280px;
+.col-sm-12 {
+  padding: 0px;
 }
+// .row {
+//   height: 70px;
+//   // overflow: hidden;
+// }
+
+.icon {
+  width: 120%;
+}
+// .scroll{
+//   height: 280px;
+// }
  
     .card-signin {
         border: 0;
@@ -30,11 +41,11 @@ h3 {
       }
 
       @media only screen and (max-width: 700px) {
-        .icon {
-          width: 60%;
-          display:block;
-          margin:auto;
-        }
+        // .icon {
+        //   width: 60%;
+        //   display:block;
+        //   margin:auto;
+        // }
       
         .p{
           font-size: 10px;
@@ -49,11 +60,11 @@ h3 {
         }
 }     
 @media only screen and (min-width: 1400px) {
-        .icon {
-          width: 40%;
-          display:block;
-          margin:auto;
-        }
+        // .icon {
+        //   width: 40%;
+        //   display:block;
+        //   margin:auto;
+        // }
       
         .p{
           font-size: 10px;

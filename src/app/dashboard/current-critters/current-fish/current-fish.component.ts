@@ -34,7 +34,6 @@ export class CurrentFishComponent implements OnInit {
       this.fishList = data;
       this.kvPipe.transform(this.fishList);
       this.catchablefish()
-      // console.log(this.thisMonth)
     })
   }
 
@@ -52,7 +51,7 @@ export class CurrentFishComponent implements OnInit {
         }
         //if available this month & this hour
         if (this.fishList[key]['times']['array'].includes(this.todayTime) && (this.fishList[key]['months']['northern']['array'].includes(this.currentMonth))) { 
-          this.thisHour.push(this.fishList[key])
+          this.thisHour.push(this.fishList[key]);
         }
         //if available all day
         if (this.fishList[key]['times']['text'] == 'All day'){ 

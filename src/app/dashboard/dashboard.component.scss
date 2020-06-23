@@ -1,3 +1,11 @@
+.container-fluid {
+  margin-left: 70px;
+}
+
+.row{
+  margin-top: 35px;
+}
+
 .footer {
   position: fixed;
   left: 0;
@@ -9,11 +17,18 @@
   text-align: center;
 }
 
+a {
+  margin-top: 3px;
+  font-size: 13px;
+  text-align: center;
+  color: #007bff;
+  font-weight: 600;
+  margin-left: 70px;
+}
+
 .date {
-  // background-color: #F2C14E;
-  padding: 20px 10px 20px 20px;
-  margin-right: 0px;
-  text-align: right;
+  padding: 10px 10px 10px 10px;
+  text-align: center;
   border-radius: 15px;
 }
 
@@ -28,11 +43,13 @@
 h2, h3 {
   font-family: "Roboto", sans-serif;
 }
+
 hr {
-  border-top: 2px solid #F2C14E;
+  padding: 13px;
 }
+
 @media only screen and (max-width: 800px) {
-  .isabelle {
+  .image {
     display: none;
   }
 }
