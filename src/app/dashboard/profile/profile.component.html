@@ -38,7 +38,7 @@
 <div *ngIf="!new">
   <div *ngFor="let i of userInfo | keyvalue">
     <h3>{{userInfo[0]['name']}}</h3>
-    <h3>{{userInfo[0]['islandName']}}</h3>
+    <h4>{{userInfo[0]['islandName']}}</h4>
     <img src="/assets/images/{{userInfo[0]['flower']}}.png">
     <img src="/assets/images/{{userInfo[0]['fruit']}}.png">
   </div>
