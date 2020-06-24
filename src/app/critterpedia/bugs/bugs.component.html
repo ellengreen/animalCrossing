@@ -86,7 +86,8 @@
             <td class="text-right">{{selectedBug['months']['southern']['text']}}</td>
         </tr>
       </table>
-      <button (click)="addBugs(selectedBug)" class="button">I've Caught It!</button>
+      <div *ngIf="aDupe"><p class="text-left">I've already caught this!</p></div>
+      <div *ngIf="!aDupe"><button (click)="addBugs(selectedBug)" class="button">Add to My Collection!</button></div>
 
   </div>
 
