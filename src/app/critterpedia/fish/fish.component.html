@@ -57,7 +57,7 @@
                 </tr>
               </table>
               
-              <button class="button">I've Caught It!</button>
+              <button class="button">Add to My Collection!</button>
             </div> 
 
 <!-- Selected Fish Detail View -->
@@ -94,7 +94,9 @@
             <td class="text-right">{{selectedFish['months']['southern']['text']}}</td>
         </tr>
       </table>
-      <button (click)="addFish(selectedFish)" class="button">I've Caught It!</button>
+      <div *ngIf="aDupe"><p class="text-left">I've already caught this!</p></div>
+      <div *ngIf="!aDupe"><button (click)="addFish(selectedFish)" class="button">Add to My Collection!</button></div>
+
   </div>
 
 
