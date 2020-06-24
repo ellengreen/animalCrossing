@@ -32,15 +32,27 @@ export class BugsComponent implements OnInit {
       this.allBugs=this.bugs;
       this.catchableBugs();
     })
+    this.load()
+  }
+
+  load(){
     this.db.fetchBugs().subscribe(bugs=> {
       this.loadedBugs=bugs;
     })
   }
 
   onSelect(b:any){
+    this.load()
     this.selectedBug = b;
+    this.dupe(this.selectedBug);
+    if(this.duplicate.includes(this.selectedBug['id'])){
+      this.aDupe=true;
+    } else {
+      this.aDupe=false;
+    }
   }
 
+  aDupe: boolean;
   showAll(){
     this.bugs=this.allBugs;
   }
@@ -57,7 +69,8 @@ export class BugsComponent implements OnInit {
   }
 
   addBugs(selectedCritter){
-    this.db.addBug(selectedCritter)
+    this.db.addBug(selectedCritter);
+    this.aDupe = true;
   }
 
   catchableBugs(){
@@ -78,7 +91,15 @@ export class BugsComponent implements OnInit {
     });
   }
 
-
+  duplicate=[];
+  dupe(selectedBug){
+    this.kv.transform(this.loadedBugs);
+    Object.keys(this.loadedBugs).forEach(key => {
+      if (this.loadedBugs[key]['id']==(this.selectedBug['id'])){ 
+        this.duplicate.push(this.selectedBug['id'])
+    }});
+  }
+  
   hourMethod(id){
     return this.thisHour.some((item) => item.id == id);
   }
