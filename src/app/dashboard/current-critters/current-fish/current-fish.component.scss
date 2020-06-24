@@ -1,80 +1,13 @@
-// .icon {
-//   width: 70%;
-//   margin: 5px;
-//   padding: 5px;
-// }
-
-h3 {
-    text-align: center;
-}
-
 .col-sm-12 {
   padding: 0px;
 }
-// .row {
-//   height: 70px;
-//   // overflow: hidden;
-// }
 
 .icon {
   width: 120%;
 }
-// .scroll{
-//   height: 280px;
-// }
- 
-    .card-signin {
-        border: 0;
-        border-radius: 1rem;
-        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-      }
-      
-      .card-signin .card-title {
-        margin-bottom: 2rem;
-        font-weight: 300;
-        font-size: 1.5rem;
-      }
-      
-      .card-signin .card-body {
-        padding: 1.5rem;
-        // padding-top: 1rem;
-      }
 
-      @media only screen and (max-width: 700px) {
-        // .icon {
-        //   width: 60%;
-        //   display:block;
-        //   margin:auto;
-        // }
-      
-        .p{
-          font-size: 10px;
-        }
-      
-        .card-signin .card-body{
-          padding: 10px;
-        }
-      
-        .scroll {
-          height: 400px;
-        }
+@media only screen and (max-width: 700px) {
+  .icon {
+    width: 60%;
+  }
 }     
-@media only screen and (min-width: 1400px) {
-        // .icon {
-        //   width: 40%;
-        //   display:block;
-        //   margin:auto;
-        // }
-      
-        .p{
-          font-size: 10px;
-        }
-      
-        .card-signin .card-body{
-          padding: 10px;
-        }
-      
-        .scroll {
-          height: 350px;
-        }
-}

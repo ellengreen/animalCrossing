@@ -49,7 +49,20 @@ hr {
 }
 
 @media only screen and (max-width: 800px) {
-  .image {
+  .image, .filler, .date, hr{
     display: none;
   }
+
+  .container-fluid {
+    margin-left: 0px;
+  }
+  
+  .row {
+    margin-top: 0px;
+  }
+
+  .card-body {
+    padding: .5em;
+  }
+
 }

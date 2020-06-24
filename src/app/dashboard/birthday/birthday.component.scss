@@ -16,8 +16,7 @@
 
 .table td {
   padding: 0px;
-  border-top: 0px solid #F2C14E;
-  // vertical-align: middle;
+  border-top: 0px
 }
 
 .table p {
@@ -32,9 +31,21 @@
   margin-right: auto;
 }
 
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 800px) {
     .villager {
-      width: 20%;
+      width: 75%;
+    }
+
+    .col-sm-4{
+      width: 40%;
+    }
+
+    .col-sm-8 {
+      width: 60%;
+    }
+
+    .table p, .table td {
+      font-size: 13px;
     }
   }
       

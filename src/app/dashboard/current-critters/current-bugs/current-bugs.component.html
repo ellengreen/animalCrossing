@@ -4,7 +4,7 @@
         <div class="col-sm-12">
            {{thisHour.length}} Bugs
               <div class="row">
-                  <div class="col-4 col-sm-3 align-items-center text-center mb-3" *ngFor="let bug of thisHour | slice:-8">
+                  <div class="col-4 col-sm-3 align-items-center text-center" *ngFor="let bug of thisHour | slice:-8">
                       <img class="icon" src="http://acnhapi.com/icons/bugs/{{bug['id']}}">
                   </div>
               </div>
