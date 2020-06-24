@@ -3,7 +3,7 @@
     <div *ngFor="let event of eventsList | keyvalue">
       <div *ngIf="event.key == currentMonth">
           <span class="events" *ngFor="let e of event.value | keyvalue">
-              <h6>{{e.value['name']}}</h6>
+              <h5>{{e.value['name']}}</h5>
               <p>{{e.value['date-str']}}</p>
           </span>
       </div>
