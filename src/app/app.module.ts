@@ -10,6 +10,7 @@ import { KeyValuePipe, DatePipe } from '@angular/common';
 import { NookipediaService } from './shared/nookipedia.service';
 import { FishComponent } from './critterpedia/fish/fish.component';
 import { BugsComponent } from './critterpedia/bugs/bugs.component';
+import { FirebaseService } from './shared/firebase.service';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { BugsComponent } from './critterpedia/bugs/bugs.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [KeyValuePipe, DatePipe, NookipediaService],
+  providers: [KeyValuePipe, DatePipe, NookipediaService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
