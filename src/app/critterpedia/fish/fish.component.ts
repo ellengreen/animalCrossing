@@ -30,16 +30,27 @@ export class FishComponent implements OnInit {
       this.allFish = this.fish;
       this.catchablefish();
     });
+    this.load();
+  }
+
+  load(){
     this.db.fetchFish().subscribe(fish =>{
       this.loadedFish=fish;
     })
   }
 
-
   onSelect(f:any){
+    this.load();
     this.selectedFish = f;
+    this.dupe(this.selectedFish);
+    if(this.duplicate.includes(this.selectedFish['id'])){
+      this.aDupe=true;
+    } else {
+      this.aDupe=false;
+    }
   }
 
+  aDupe: boolean; 
   showAll(){
     this.fish=this.allFish;
   }
@@ -73,7 +84,17 @@ export class FishComponent implements OnInit {
   }
 
   addFish(selectedFish){
-    this.db.addFish(selectedFish)
+    this.db.addFish(selectedFish);
+    this.aDupe = true;
+  }
+
+  duplicate=[];
+  dupe(selectedFish){
+    this.kv.transform(this.loadedFish);
+    Object.keys(this.loadedFish).forEach(key => {
+      if (this.loadedFish[key]['id']==(this.selectedFish['id'])){ 
+        this.duplicate.push(this.selectedFish['id'])
+    }});
   }
 
   hourMethod(id){
