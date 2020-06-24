@@ -96,17 +96,21 @@ p {
       -ms-overflow-style: none;
   }
 
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 800px) {
+    .key {
+        margin-left: 0px;
+    }
+
     .icon {
         width: 100%;
     }
 
     .card-signin .card-body{
-        padding: 0px;
+        padding: 10px;
     }
 
     .scroll {
-        height: 500px;
+        height: 300px;
     }
 
     .nav-link{

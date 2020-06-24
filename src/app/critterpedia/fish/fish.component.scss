@@ -127,4 +127,38 @@ p {
 
 @media only screen and (max-width: 850px) {
     .icon { width: 100%;}
+
+
+.key {
+    margin-left: 0px;
+}
+
+.icon {
+    width: 100%;
+}
+
+.card-signin .card-body{
+    padding: 10px;
+}
+
+.scroll {
+    height: 300px;
+}
+
+.nav-link{
+    padding: 1rem .25rem;
+}
+
+.footer, .vendor{
+    display: none;
+}
+
+}
+@media only screen and (min-width: 1000px) {
+.icon {
+    width: 40%;}
+}
+
+@media only screen and (max-width: 850px) {
+.icon { width: 100%;}
 }

@@ -68,6 +68,7 @@ p {
 
 p {
     font-family: 'Roboto', sans-serif;
+    color: #006D77;
 }
 
 .key {
@@ -109,5 +110,17 @@ p {
 }
 
 @media only screen and (max-width: 700px) {
+  .footer {
+    display: none;
+  }
 
+  .key {
+    margin-left: 0px;
+  }
+
+  .dot, .dot1, .dot2 {
+    height: 1em;
+    width: 1em;
+    margin: 10px;
+  }
 }
