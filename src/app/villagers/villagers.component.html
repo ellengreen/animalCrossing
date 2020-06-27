@@ -1,82 +1,34 @@
+<app-nav></app-nav>
 <body>
-    <div class="jumbotron">
-        <h1>Villagers</h1>
-    </div>
     <div class="container-fluid">
-        <div class="row justify-content-between">
-            <div class="col-sm-8 list scroll ">
-                <table class="table table-hover table-responsive-sm table-bordered">
-                    <thead class="thead-light">
-                        <tr class="head">
-                            <th></th>
-                            <th>Name</th>
-                            <th>Species</th>
-                            <th>Personality</th>
-                        </tr>
-                    </thead>   
-                    <tbody>
-                    <tr (click)="onSelect(v)" class="table" *ngFor="let v of villagers | keyvalue" >
-                        <td class="icon text-center">
-                            <img src="http://acnhapi.com/icons/villagers/{{v.value['id']}}">
-                        </td>    
-                        <td>
-                            {{v.value['name']['name-en']}}
-                        </td>
-                        <td>
-                            {{v.value['species']}}
-                        </td>
-                        <td>
-                            {{v.value['personality']}}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="card card-signin my-2">
+                    <div class="card-body">
+                        <div class="row scroll">
+                            <div class="col-4 col-sm-3 align-items-center text-center" (click)="onSelect(v)" *ngFor="let v of villagers | keyvalue">
+                                <img src="http://acnhapi.com/icons/villagers/{{v.value['id']}}">
+                                <p>{{v.value['name']['name-en']}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="col-sm-4">
+                
+            </div>
+
+        </div>
+    </div>
+    <div class="footer"></div>
+    <img class="vendor" src="assets/images/isabelle.png">
+</body>
+
+<!-- 
 
             <div class="col-sm-4 details">
                 <div class="detailBox">
-
-                    <!-- <div *ngIf="!selectedVillager">
-                        <div *ngFor="let v of villagers | keyvalue">
-                            <div *ngIf="v.key == 0">
-                                <div class="text-center">
-                                    <img class="icon2" src="http://acnhapi.com/icons/villagers/{{v.value['id']}}">
-                                </div> 
-                                <h1>{{v.value['name']}}</h1>
-                                <h6>{{v.value['price']}} bells</h6>
-                                <h6>{{v.value['price'] * 1.5}} bells from Flick</h6>
-                                <div class="deets">
-                                    <div class="row">
-                                        <div class="col-sm-6 text-left">
-                                            Location 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{v.value['location']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Available Times 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{v.value['times']['text']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Nothern Months 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{v.value['months']['northern']['text']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Southern Months 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{v.value['months']['southern']['text']}} 
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>     -->
                     <div *ngIf="selectedVillager">
                                 <div class="text-center">
                                     <img class="icon2" src="http://acnhapi.com/images/villagers/{{selectedVillager.value['id']}}">
@@ -120,4 +72,4 @@
             </div>
         </div>
     </div>
-</body>
+</body>  -->
