@@ -9,7 +9,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { RouterModule, Routes, Router } from '@angular/router';
 import { ReactiveFormsModule, FormsModule} from "@angular/forms";
-import { DatePipe, KeyValuePipe } from '@angular/common'
+import { DatePipe, KeyValuePipe,  } from '@angular/common'
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -21,6 +21,7 @@ import { AuthenticationService } from './shared/authentication.service';
 import { NavComponent } from './nav/nav.component';
 
 import { VillagersComponent } from './villagers/villagers.component';
+import { CallbackPipe } from './shared/callback.pipe';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { VillagersComponent } from './villagers/villagers.component';
     AppComponent,
     // ProfileComponent,
     NavComponent,
-    VillagersComponent
+    VillagersComponent,
+    CallbackPipe
     
   ],
   imports: [
@@ -43,7 +45,7 @@ import { VillagersComponent } from './villagers/villagers.component';
     HttpClientModule, 
     RouterModule
   ],
-  providers: [AuthenticationService, DatePipe, KeyValuePipe, HttpClientModule],
+  providers: [AuthenticationService, DatePipe, KeyValuePipe, HttpClientModule, CallbackPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

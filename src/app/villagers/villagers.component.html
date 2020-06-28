@@ -1,5 +1,25 @@
 <app-nav></app-nav>
 <body>
+
+
+    <article>
+        <select (change)="selectGender($event)">
+            <option>Gender</option>
+            <option *ngFor="let g of genders" value={{g}}>{{g}}</option>
+        </select>
+
+        <select (change)="selectSpecies($event)">
+            <option>Species</option>
+            <option *ngFor="let s of species" value={{s}}>{{s}}</option>
+        </select>
+
+        <select (change)="selectPersonality($event)">
+            <option>Personality</option>
+            <option *ngFor="let p of personalities" value={{p}}>{{p}}</option>
+        </select>
+    </article>
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8">
@@ -25,51 +45,4 @@
     <img class="vendor" src="assets/images/isabelle.png">
 </body>
 
-<!-- 
-
-            <div class="col-sm-4 details">
-                <div class="detailBox">
-                    <div *ngIf="selectedVillager">
-                                <div class="text-center">
-                                    <img class="icon2" src="http://acnhapi.com/images/villagers/{{selectedVillager.value['id']}}">
-                                </div> 
-                                <h1>{{selectedVillager.value['name']['name-en']}}</h1>
-                                <div class="deets">
-                                    <div class="row">
-                                        <div class="col-sm-6 text-left">
-                                            Gender 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{selectedVillager.value['gender']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Birthday 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{selectedVillager.value['birthday-string']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Personality
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{selectedVillager.value['personality']}} 
-                                        </div>
-                                        <div class="col-sm-6 text-left">
-                                            Catch Phrase 
-                                        </div>
-                                        <div class="col-sm-6 text-right">
-                                            {{selectedVillager.value['catch-phrase']}} 
-                                        </div>
-                                        <div>
-
-                                        </div>
-                            </div>
-                        </div>
-                    </div>         
-                </div>
-
-                
-            </div>
-        </div>
-    </div>
-</body>  -->
+  
