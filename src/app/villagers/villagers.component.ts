@@ -100,6 +100,10 @@ export class VillagersComponent implements OnInit {
       }
     }); this.villagers=this.filteredVillagers
   }
+
+  addVillager(selectedVillager){
+
+  }
 }
 
 
