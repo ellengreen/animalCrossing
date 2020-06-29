@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NookipediaService } from '../shared/nookipedia.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { FirebaseService } from '../shared/firebase.service';
@@ -23,8 +23,8 @@ export class VillagersComponent implements OnInit {
   'Octopus', 'Ostrich', 'Penguin', 'Pig', 'Rabbit', 'Rhino',
   'Sheep', 'Squirrel', 'Tiger', 'Wolf'];
   genders = ['Male', 'Female'];
-  personalities = ['Cranky', 'Jock', 'Lazy', 'Normal', 'Peppy', 'Sisterly',
-        'Smug', 'Snooty'];
+  personalities = ['Cranky', 'Jock', 'Lazy', 'Normal', 'Peppy',
+        'Smug', 'Snooty', 'Uchi'];
 
   constructor(private nookSerivce: NookipediaService, public fb: FormBuilder, private http: HttpClient, private db:FirebaseService, private kv: KeyValuePipe) { }
   myVillagers: any;
@@ -39,6 +39,38 @@ export class VillagersComponent implements OnInit {
     })
   }
 
+  form = new FormGroup({
+    gender: new FormControl(''),
+    species: new FormControl(''),
+    personality: new FormControl('')
+  });
+  
+  // get f(){
+  //   return this.form.controls;
+  // }
+  
+  submit(){
+    console.log(this.form.value);
+    this.filter(this.form.value);
+  }
+
+
+filter(profileForm){
+   this.filteredVillagers=[];
+   Object.keys(this.allVillagers).forEach(key=>{
+     if (this.form.value['gender'].includes(this.allVillagers[key]['gender'])
+    // if (this.allVillagers[key]['gender']==this.form.value['gender'] 
+     && (this.form.value['species'].includes(this.allVillagers[key]['species']))
+    //  && (this.allVillagers[key]['species']==this.form.value['species']) 
+    && (this.form.value['personality'].includes(this.allVillagers[key]['personality']))){
+    //  && (this.allVillagers[key]['personality']==this.form.value['personality'])){
+       this.filteredVillagers.push(this.allVillagers[key]);
+       console.log(this.filteredVillagers)
+   } 
+   }); this.villagers=this.filteredVillagers;
+}
+
+
   duplicate: boolean;
   dupe(){
     Object.keys(this.myVillagers).forEach(key=>{
@@ -49,32 +81,23 @@ export class VillagersComponent implements OnInit {
     })
   }
 
-// filter(profileForm){
-//   this.filteredVillagers=[];
-//   Object.keys(this.allVillagers).forEach(key=>{
-//     if (this.allVillagers[key]['gender']==profileForm.value['gender'] && (this.allVillagers[key]['species']==profileForm.value['species'])){
-//       this.filteredVillagers.push(this.allVillagers[key]);
-//       console.log(this.filteredVillagers)
-//     } 
-//   }); this.villagers=this.filteredVillagers;
-// }
 
-  filterBy: any;
-  selectGender (event: any) {
-    this.filterBy = event.target.value;
-    console.log(this.filterBy)
-    this.filterGender();
-  }
+  // filterBy: any;
+  // selectGender (event: any) {
+  //   this.filterBy = event.target.value;
+  //   console.log(this.filterBy)
+  //   this.filterGender();
+  // }
 
-  selectSpecies (event: any) {
-    this.filterBy = event.target.value;
-    this.filterSpecies();
-  }
+  // selectSpecies (event: any) {
+  //   this.filterBy = event.target.value;
+  //   this.filterSpecies();
+  // }
 
-  selectPersonality (event: any) {
-    this.filterBy = event.target.value;
-    this.filterPersonality();
-  }
+  // selectPersonality (event: any) {
+  //   this.filterBy = event.target.value;
+  //   this.filterPersonality();
+  // }
 
   selected:any;
   onSelect(v){
@@ -89,32 +112,32 @@ export class VillagersComponent implements OnInit {
   }
 
   filteredVillagers = [];
-  filterGender(){
-    this.filteredVillagers=[];
-    Object.keys(this.allVillagers).forEach(key=>{
-      if(this.allVillagers[key]['gender']==this.filterBy){
-        this.filteredVillagers.push(this.allVillagers[key]);
-      } 
-    }); this.villagers=this.filteredVillagers;
-  }
+  // filterGender(){
+  //   this.filteredVillagers=[];
+  //   Object.keys(this.allVillagers).forEach(key=>{
+  //     if(this.allVillagers[key]['gender']==this.filterBy){
+  //       this.filteredVillagers.push(this.allVillagers[key]);
+  //     } 
+  //   }); this.villagers=this.filteredVillagers;
+  // }
 
-  filterSpecies(){
-    this.filteredVillagers=[];
-    Object.keys(this.allVillagers).forEach(key=> {
-      if(this.allVillagers[key]['species']==this.filterBy){
-        this.filteredVillagers.push(this.allVillagers[key]);
-      }
-    }); this.villagers=this.filteredVillagers
-  }
+  // filterSpecies(){
+  //   this.filteredVillagers=[];
+  //   Object.keys(this.allVillagers).forEach(key=> {
+  //     if(this.allVillagers[key]['species']==this.filterBy){
+  //       this.filteredVillagers.push(this.allVillagers[key]);
+  //     }
+  //   }); this.villagers=this.filteredVillagers
+  // }
 
-  filterPersonality(){
-    this.filteredVillagers=[];
-    Object.keys(this.allVillagers).forEach(key=> {
-      if(this.allVillagers[key]['personality']==this.filterBy){
-        this.filteredVillagers.push(this.allVillagers[key]);
-      }
-    }); this.villagers=this.filteredVillagers
-  }
+  // filterPersonality(){
+  //   this.filteredVillagers=[];
+  //   Object.keys(this.allVillagers).forEach(key=> {
+  //     if(this.allVillagers[key]['personality']==this.filterBy){
+  //       this.filteredVillagers.push(this.allVillagers[key]);
+  //     }
+  //   }); this.villagers=this.filteredVillagers
+  // }
 
   addVillager(selectedVillager){
     this.db.addVillager(selectedVillager);

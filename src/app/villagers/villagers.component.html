@@ -1,33 +1,35 @@
 <app-nav></app-nav>
+<form [formGroup]="form" (ngSubmit)="submit()">
+           
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select formControlName="gender" class="form-control">
+            <option>Gender</option>
+            <option value={{genders}}>All</option>
+            <option *ngFor="let g of genders">{{g}}</option>
+        </select>
+
+        <select formControlName="species" class="form-control">
+            <option>Species</option>
+            <option value={{species}}>All</option>
+            <option *ngFor="let s of species">{{s}}</option>
+        </select>
+
+        <select formControlName="personality" class="form-control">
+            <option>Personality</option>
+            <option value={{personalities}}>All</option>
+            <option *ngFor="let p of personalities">{{p}}</option>
+        </select>
+    </div>
+   
+    <button class="btn btn-primary" type="submit" >Submit</button>
+
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8">
 
-                <div class="form-row">
-                    <div class="col">
-                    <select class="form-control" id="filterForm" (change)="selectGender($event)">
-                        <option>Gender</option>
-                        <option *ngFor="let g of genders" value={{g}}>{{g}}</option>
-                    </select>
-                    </div>
-            
-                    <div class="col">
-                    <select class="form-control" (change)="selectSpecies($event)">
-                        <option>Species</option>
-                        <option *ngFor="let s of species" value={{s}}>{{s}}</option>
-                    </select>
-                    </div>
-            
-                    <div class="col">
-                    <select class="form-control" (change)="selectPersonality($event)">
-                        <option>Personality</option>
-                        <option *ngFor="let p of personalities" value={{p}}>{{p}}</option>
-                    </select> 
-                    </div>
-                    
-                  </div>
-                  
+
                 <div class="card card-signin my-2">
                     <div class="card-body">
                         <div class="row scroll">
@@ -79,4 +81,4 @@
     <img *ngIf="selectedVillager" class="vendor" src="{{selected.image}}">
 </body>
 
-  
+   
