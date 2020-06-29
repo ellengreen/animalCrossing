@@ -3,6 +3,7 @@ import { NookipediaService } from '../shared/nookipedia.service';
 import { FormBuilder } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { FirebaseService } from '../shared/firebase.service';
 
 @Component({
   selector: 'app-villagers',
@@ -24,7 +25,7 @@ export class VillagersComponent implements OnInit {
   personalities = ['Cranky', 'Jock', 'Lazy', 'Normal', 'Peppy', 'Sisterly',
         'Smug', 'Snooty'];
 
-  constructor(private nookSerivce: NookipediaService, public fb: FormBuilder, private http: HttpClient) { }
+  constructor(private nookSerivce: NookipediaService, public fb: FormBuilder, private http: HttpClient, private db:FirebaseService) { }
 
   ngOnInit(): void {
     this.nookSerivce.getVillagers().subscribe(data=> {
@@ -102,7 +103,7 @@ export class VillagersComponent implements OnInit {
   }
 
   addVillager(selectedVillager){
-
+    this.db.addVillager(selectedVillager);
   }
 }
 

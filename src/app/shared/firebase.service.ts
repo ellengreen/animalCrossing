@@ -80,4 +80,27 @@ id: any;
     })
     )
   }
+
+  addVillager(selectedVillager){
+    this.http
+    .post(`https://animal-crossing-92e14.firebaseio.com/users/${this.id}/villagers.json`, selectedVillager)
+    .subscribe(responseData=>{
+    })
+  }
+
+  fetchVillagers(){
+    return this.http
+    .get(`https://animal-crossing-92e14.firebaseio.com/users/${this.id}/villagers.json`)
+    .pipe(map(responseData => {
+      const loadedVillagers =[];
+      for (const key in responseData) {
+        if (responseData.hasOwnProperty(key)){
+          loadedVillagers.push({ ...responseData[key], newID: key})
+        }
+      }
+      return loadedVillagers;
+    })
+    )
+  }
 }
+
