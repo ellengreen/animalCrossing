@@ -26,7 +26,7 @@
                     <div class="card-body">
                         <div class="row scroll">
                             <div class="col-4 col-sm-3 align-items-center text-center" (click)="onSelect(v)" *ngFor="let v of villagers | keyvalue">
-                                <img src="http://acnhapi.com/icons/villagers/{{v.value['id']}}">
+                                <img class="icon" src="http://acnhapi.com/icons/villagers/{{v.value['id']}}">
                                 <p>{{v.value['name']['name-en']}}</p>
                             </div>
                         </div>
@@ -61,8 +61,8 @@
                             </tr>
                         </table>
 
-                        <!-- <div *ngIf="aDupe"><p class="text-left">I've already caught this!</p></div> -->
-                        <div><button (click)="addVillager(selectedVillager)" class="button">Add to My Island!</button></div>
+                        <div *ngIf="duplicate == true"><p class="text-left">This Villager lives on my Island!</p></div>
+                        <div *ngIf="!duplicate"><button (click)="addVillager(selectedVillager)" class="button">Add to My Island!</button></div>
                     </div>
                 </div>
             </div>

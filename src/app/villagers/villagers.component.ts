@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { FirebaseService } from '../shared/firebase.service';
+import { KeyValuePipe } from '@angular/common';
 
 @Component({
   selector: 'app-villagers',
@@ -25,15 +26,28 @@ export class VillagersComponent implements OnInit {
   personalities = ['Cranky', 'Jock', 'Lazy', 'Normal', 'Peppy', 'Sisterly',
         'Smug', 'Snooty'];
 
-  constructor(private nookSerivce: NookipediaService, public fb: FormBuilder, private http: HttpClient, private db:FirebaseService) { }
-
+  constructor(private nookSerivce: NookipediaService, public fb: FormBuilder, private http: HttpClient, private db:FirebaseService, private kv: KeyValuePipe) { }
+  myVillagers: any;
   ngOnInit(): void {
     this.nookSerivce.getVillagers().subscribe(data=> {
       this.villagers = Object.keys(data).map(i => data[i]);
       this.allVillagers = this.villagers;
+    });
+    this.db.fetchVillagers().subscribe(data=> {
+      this.myVillagers=data;
+      console.log(this.myVillagers)
     })
   }
 
+  duplicate: boolean;
+  dupe(){
+    Object.keys(this.myVillagers).forEach(key=>{
+      if (this.myVillagers[key]['value']['id']==(this.selectedVillager.value['id'])){
+        this.duplicate = true;
+        console.log('a dupe')
+      } else { this.duplicate = false;}
+    })
+  }
 
 // filter(profileForm){
 //   this.filteredVillagers=[];
@@ -65,12 +79,12 @@ export class VillagersComponent implements OnInit {
   selected:any;
   onSelect(v){
     this.selectedVillager = v;
-    // console.log(this.selectedVillager.value['name']['name-en'])
+    console.log(this.selectedVillager.value['id'])
+    this.dupe();
     this.http.get(
     `http://nookipedia.com/api/villager/${this.selectedVillager.value['name']['name-en']}/?api_key=a2f61762-8c07-4aff-a16c-75ffa9e8ef8a`)
       .subscribe(data=> {
       this.selected = data;
-      // console.log(this.selected);
     })
   }
 
@@ -104,6 +118,7 @@ export class VillagersComponent implements OnInit {
 
   addVillager(selectedVillager){
     this.db.addVillager(selectedVillager);
+    this.duplicate = true;
   }
 }
 
