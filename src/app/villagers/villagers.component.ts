@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NookipediaService } from '../shared/nookipedia.service';
-import { KeyValuePipe } from '@angular/common';
-import { map } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-villagers',
@@ -24,7 +24,7 @@ export class VillagersComponent implements OnInit {
   personalities = ['Cranky', 'Jock', 'Lazy', 'Normal', 'Peppy', 'Sisterly',
         'Smug', 'Snooty'];
 
-  constructor(private nookSerivce: NookipediaService) { }
+  constructor(private nookSerivce: NookipediaService, public fb: FormBuilder, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.nookSerivce.getVillagers().subscribe(data=> {
@@ -33,6 +33,16 @@ export class VillagersComponent implements OnInit {
     })
   }
 
+
+// filter(profileForm){
+//   this.filteredVillagers=[];
+//   Object.keys(this.allVillagers).forEach(key=>{
+//     if (this.allVillagers[key]['gender']==profileForm.value['gender'] && (this.allVillagers[key]['species']==profileForm.value['species'])){
+//       this.filteredVillagers.push(this.allVillagers[key]);
+//       console.log(this.filteredVillagers)
+//     } 
+//   }); this.villagers=this.filteredVillagers;
+// }
 
   filterBy: any;
   selectGender (event: any) {
@@ -51,8 +61,16 @@ export class VillagersComponent implements OnInit {
     this.filterPersonality();
   }
 
+  selected:any;
   onSelect(v){
     this.selectedVillager = v;
+    // console.log(this.selectedVillager.value['name']['name-en'])
+    this.http.get(
+    `http://nookipedia.com/api/villager/${this.selectedVillager.value['name']['name-en']}/?api_key=a2f61762-8c07-4aff-a16c-75ffa9e8ef8a`)
+      .subscribe(data=> {
+      this.selected = data;
+      // console.log(this.selected);
+    })
   }
 
   filteredVillagers = [];
@@ -74,7 +92,6 @@ export class VillagersComponent implements OnInit {
     }); this.villagers=this.filteredVillagers
   }
 
-  
   filterPersonality(){
     this.filteredVillagers=[];
     Object.keys(this.allVillagers).forEach(key=> {

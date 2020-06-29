@@ -1,9 +1,8 @@
 <app-nav></app-nav>
 <body>
 
-
     <article>
-        <select (change)="selectGender($event)">
+        <select class='dropdown'(change)="selectGender($event)">
             <option>Gender</option>
             <option *ngFor="let g of genders" value={{g}}>{{g}}</option>
         </select>
@@ -36,13 +35,28 @@
             </div>
 
             <div class="col-sm-4">
-                
+                <div class="card card-signin my-2">
+                    <div *ngIf="selectedVillager" class="card-body">
+                        {{selectedVillager.value['name']['name-en']}}
+                        <br>
+                        {{selectedVillager.value['gender']}}
+                        <br>
+                        {{selectedVillager.value['species']}}
+                        <br>
+                        {{selectedVillager.value['personality']}}
+                        <br>
+                        {{selectedVillager.value['birthday-string']}}
+                        <br>
+                        {{selectedVillager.value['catch-phrase']}}
+                    </div>
+                </div>
             </div>
 
         </div>
     </div>
     <div class="footer"></div>
-    <img class="vendor" src="assets/images/isabelle.png">
+    <img *ngIf="selectedVillager" class="vendor" src="{{selected.image}}">
+    <!-- <img *ngIf="selectedVillager" class="vendor" src="http://nookipedia.com/api/villager/{{selectedVillager.value['name']['name-en']}}/?api_key=a2f61762-8c07-4aff-a16c-75ffa9e8ef8a"> -->
 </body>
 
   
