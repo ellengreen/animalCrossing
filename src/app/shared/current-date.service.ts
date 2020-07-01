@@ -21,7 +21,7 @@ export class CurrentDateService {
   //time as 9:03 PM
   todayTime = this.datePipe.transform(Date.now(), 'shortTime');
   //just get the hour
-  todayDate = Number(this.datePipe.transform(Date.now(), 'H'));
+  thisHour = Number(this.datePipe.transform(Date.now(), 'H'));
   
   // .split(':')[0];
 

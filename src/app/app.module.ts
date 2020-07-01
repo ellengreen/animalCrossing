@@ -8,8 +8,6 @@ import { CritterpediaMainComponent } from './critterpedia/critterpedia-main/crit
 import { NavComponent } from './nav/nav.component';
 import { KeyValuePipe, DatePipe } from '@angular/common';
 import { NookipediaService } from './shared/nookipedia.service';
-import { FishComponent } from './critterpedia/fish/fish.component';
-import { BugsComponent } from './critterpedia/bugs/bugs.component';
 import { FirebaseService } from './shared/firebase.service';
 
 
@@ -17,9 +15,7 @@ import { FirebaseService } from './shared/firebase.service';
   declarations: [
     AppComponent,
     CritterpediaMainComponent,
-    NavComponent,
-    FishComponent,
-    BugsComponent
+    NavComponent
   ],
   imports: [
     BrowserModule,
