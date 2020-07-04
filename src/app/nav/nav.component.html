@@ -17,7 +17,8 @@
     </ul>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" (click)="authService.logout()" routerLink="login">Logout <span class="sr-only">(current)</span></a>
+        <a *ngIf="!noUser" class="nav-link" (click)="authService.logout()" routerLink="login">Logout <span class="sr-only">(current)</span></a>
+        <a *ngIf="noUser" class="nav-link" routerLink="login">Login <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
