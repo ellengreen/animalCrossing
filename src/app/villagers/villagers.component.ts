@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { FirebaseService } from '../shared/firebase.service';
 import { KeyValuePipe } from '@angular/common';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-villagers',
@@ -26,14 +27,22 @@ export class VillagersComponent implements OnInit {
   personalities = ['Cranky', 'Jock', 'Lazy', 'Normal', 'Peppy',
         'Smug', 'Snooty', 'Uchi'];
 
-  constructor(private nookSerivce: NookipediaService, public fb: FormBuilder, private http: HttpClient, private db:FirebaseService, private kv: KeyValuePipe) { }
+  constructor(private nookSerivce: NookipediaService, public fb: FormBuilder, private http: HttpClient, private db:FirebaseService, private afAuth: AngularFireAuth) { }
   myVillagers: any;
+  noUser: boolean;
   ngOnInit(): void {
     this.nookSerivce.getVillagers().subscribe(data=> {
       this.villagers = Object.keys(data).map(i => data[i]);
       this.allVillagers = this.villagers;
     });
     this.load();
+    this.afAuth.authState.subscribe(user => {
+      if (user){
+        this.noUser = false;
+      } else { 
+        this.noUser = true;
+      }
+    })
   }
 
   load(){

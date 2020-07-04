@@ -5,9 +5,10 @@ import { LoginComponent } from './user-auth/login/login.component';
 import { RegisterComponent } from './user-auth/register/register.component';
 import { CritterpediaMainComponent } from './critterpedia/critterpedia-main/critterpedia-main.component';
 import { VillagersComponent } from './villagers/villagers.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: WelcomeComponent },
   { path: 'home', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'villagers', component: VillagersComponent},
   {
     path: '**',
-    redirectTo: '/login',
+    redirectTo: '/welcome',
     pathMatch: 'full'
   }
 ];

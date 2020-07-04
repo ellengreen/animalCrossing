@@ -76,7 +76,7 @@
                             </tr>
                         </table>
 
-                        <div *ngIf="!aDupe"><button (click)="addVillager(selectedVillager)" class="button btn-primary">Add to My Island!</button></div>
+                        <div *ngIf="!aDupe && !noUser"><button (click)="addVillager(selectedVillager)" class="button btn-primary">Add to My Island!</button></div>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,8 @@
                         </table>
 
                         <div *ngIf="aDupe === true"><p class="text-left">This Villager lives on my Island!</p></div>
-                        <div *ngIf="aDupe == false"><button (click)="addVillager(selectedVillager)" class="button btn-primary">Add to My Island!</button></div>
+                        <div *ngIf="noUser"><p class="text-left">Login to add villager to your island</p></div>
+                        <div *ngIf="aDupe == false && !noUser"><button (click)="addVillager(selectedVillager)" class="button btn-primary">Add to My Island!</button></div>
                     </div>
                 </div>
             </div>

@@ -27,6 +27,7 @@ import { BirthdayComponent } from './dashboard/birthday/birthday.component';
 import { CritterpediaMainComponent } from './critterpedia/critterpedia-main/critterpedia-main.component';
 import { ProfileComponent } from './profile/profile.component';
 import { VillagersComponent } from './villagers/villagers.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { VillagersComponent } from './villagers/villagers.component';
     EventsComponent,
     BirthdayComponent,
     CritterpediaMainComponent,
-    VillagersComponent
+    VillagersComponent,
+    WelcomeComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

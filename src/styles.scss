@@ -26,7 +26,7 @@ $icon-grey: #f0f0f0;
 .card-custom .card-body {
   padding: 2rem;
 }
-  
+
 .form-signin .btn {
   font-size: 80%;
   border-radius: 5rem;
@@ -45,10 +45,10 @@ p {
   font-weight: 600;
 }
 
-
-  
-  
-  
+.guest {
+  color: $primary-blue;
+}
+   
 .scroll { 
     overflow-y: scroll; 
 }

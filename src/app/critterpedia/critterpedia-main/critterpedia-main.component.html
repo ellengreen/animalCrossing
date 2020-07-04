@@ -64,7 +64,7 @@
                 </tr>
               </table>
 
-              <button class="button">Add To My Collection</button>
+              <button *ngIf="!noUser" class="button">Add To My Collection</button>
             </div>
 
 <!-- Selected Critter Detail View -->
@@ -102,9 +102,9 @@
         </tr>
       </table>
       <div *ngIf="aDupe"><p class="text-left">I've already caught this!</p></div>
-      <div *ngIf="!aDupe && critterType === 'fish'"><button (click)="addFish(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
-      <div *ngIf="!aDupe && critterType === 'bugs'"><button (click)="addBugs(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
-
+      <div *ngIf="!aDupe && critterType === 'fish' && !noUser"><button (click)="addFish(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
+      <div *ngIf="!aDupe && critterType === 'bugs' && !noUser"><button (click)="addBugs(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
+      <div *ngIf="noUser"><p class="text-left">Login to add to your collection</p></div>
       </div>
       </div>
     </div>

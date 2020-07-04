@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NookipediaService } from 'src/app/shared/nookipedia.service';
 import { FirebaseService } from 'src/app/shared/firebase.service';
 import { CurrentDateService } from 'src/app/shared/current-date.service';
+import { AuthenticationService } from 'src/app/shared/authentication.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-critterpedia-main',
@@ -10,7 +12,7 @@ import { CurrentDateService } from 'src/app/shared/current-date.service';
 })
 export class CritterpediaMainComponent implements OnInit {
 
-  constructor(private ns: NookipediaService, private db: FirebaseService, private ds: CurrentDateService){}
+  constructor(private ns: NookipediaService, private db: FirebaseService, private ds: CurrentDateService, private afAuth: AngularFireAuth){}
 
   bugs: any;
   fish: any;
@@ -22,6 +24,7 @@ export class CritterpediaMainComponent implements OnInit {
   bugView: boolean;
   fishView: boolean;
   selectedCritter: any;
+  noUser: boolean;
   
     ngOnInit(){
       this.ns.getBugs().subscribe(data=> {
@@ -36,7 +39,6 @@ export class CritterpediaMainComponent implements OnInit {
       })
       this.load();
     }
-  
     load(){
       this.db.fetchBugs().subscribe(bugs =>{
         this.loadedBugs=bugs;
@@ -44,7 +46,10 @@ export class CritterpediaMainComponent implements OnInit {
       this.db.fetchFish().subscribe(fish =>{
         this.loadedFish=fish;
       })
-      
+    this.afAuth.authState.subscribe(user => {
+      if (user){
+        this.noUser = false;
+      } else { this.noUser = true }})
     }
   
     onFish(){

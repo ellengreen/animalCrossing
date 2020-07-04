@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/shared/firebase.service';
-import { FormControl } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/authentication.service';
-import { Key } from 'protractor';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +10,7 @@ import { Key } from 'protractor';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private db: FirebaseService, private auth: AuthenticationService) { }
+  constructor(private db: FirebaseService, private auth: AuthenticationService, private afAuth: AngularFireAuth) { }
 
   savedFish=[];
   savedBugs=[];
@@ -28,27 +27,38 @@ export class ProfileComponent implements OnInit {
   fruit = ['Apples', 'Oranges', 'Peaches', 'Pears', 'Cherries'];
   new: boolean;
   submitted = false;
+  user:any; 
+  noUser: boolean;
 
   ngOnInit() {
-    this.db.fetchFish().subscribe(fish =>{
-      this.savedFish=fish;
-      this.fishWidth = (this.savedFish.length/80)*100;
-    })
-    this.db.fetchBugs().subscribe(bugs=> {
-      this.savedBugs=bugs;
-      this.bugWidth = (this.savedBugs.length/80)*100;
-    })
-    this.db.fetchUserInfo().subscribe(data=> {
-      this.userInfo=data;
-      if (this.userInfo.length < 1){
-        this.new = true;
-        } else {
-          this.new = false;
-        }
-    })
-    this.db.fetchVillagers().subscribe(data=> {
-      this.villagers=data;
-    })
+    
+    this.afAuth.authState.subscribe(user => {
+      if (user){
+        this.noUser = false;
+        this.db.fetchFish().subscribe(fish =>{
+          this.savedFish=fish;
+          this.fishWidth = (this.savedFish.length/80)*100;
+        })
+        this.db.fetchBugs().subscribe(bugs=> {
+          this.savedBugs=bugs;
+          this.bugWidth = (this.savedBugs.length/80)*100;
+        })
+        this.db.fetchUserInfo().subscribe(data=> {
+          this.userInfo=data;
+            if (this.userInfo.length < 1){
+            this.new = true;
+            } else {
+              this.new = false;
+            }
+          })
+        this.db.fetchVillagers().subscribe(data=> {
+          this.villagers=data;
+        })
+          } else {
+            this.noUser = true;
+            console.log('no User')
+      }
+    });
   }
 
   onSubmit() { this.submitted = true; }
