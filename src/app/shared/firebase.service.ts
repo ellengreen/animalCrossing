@@ -14,7 +14,11 @@ newID: any;
 
   constructor(private http: HttpClient, private auth: AuthenticationService) {
     this.user = this.auth.getUser();
-    this.id = this.user.uid;
+    if (this.user == null){ 
+      this.id = null;
+    } else {
+      this.id = this.user.uid;
+    }
   }
 
   addBug(selectedCritter: any){
