@@ -14,7 +14,6 @@
   </nav>
 </nav>
 
-<!-- Grid -->
   <div class="container-fluid">
     <div class="row">
       <div class="key">
@@ -25,16 +24,15 @@
         <div class="card card-custom my-5">
             <div class="card-body">  
                 <div class="row scroll">
-                    <div class="col-4 col-sm-3 align-items-center text-center fishGrid" (click)="onSelect(c)" *ngFor="let c of critters">
-                        <img [class.hour]="hourMethod(c.id)" class="icon" src="https://acnhapi.com/v1/icons/{{critterType}}/{{c['id']}}">
-                        <p>{{c['name']}}</p>
+                    <div class="col-4 col-sm-3 align-items-center text-center fishGrid" (click)="onSelect(c)" *ngFor="let c of critters | keyvalue">
+                        <img [class.hour]="hourMethod(c.id)" class="icon" src="https://acnhapi.com/v1/icons/{{critterType}}/{{c.value['id']}}">
+                        <p>{{c.value['name']['name-USen']}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-<!-- Detail View: Default -->
     <div class="col-sm-4 detail">
       <div class="card card-custom my-5">
           <div class="card-body"> 
@@ -67,18 +65,17 @@
               <button *ngIf="!noUser" class="button">Add To My Collection</button>
             </div>
 
-<!-- Selected Critter Detail View -->
     <div *ngIf="selectedCritter">
-      <h5 class="card-title text-center name">{{selectedCritter['name']}}</h5>
+      <h5 class="card-title text-center name">{{selectedCritter.value['name']['name-USen']}}</h5>
 
       <table class="table">
           <tr>
             <td>Price</td>
-            <td class="text-right">{{selectedCritter['price']}} bells</td>
+            <td class="text-right">{{selectedCritter.value['price']}} bells</td>
           </tr>
           <tr>
             <td>{{vendor}}'s Price</td>
-            <td class="text-right">{{selectedCritter['price']*1.5}} bells</td>
+            <td class="text-right">{{selectedCritter.value['price']*1.5}} bells</td>
           </tr>
           <tr>
               <td>Location</td>
@@ -102,7 +99,6 @@
         </tr>
       </table>
       <div *ngIf="aDupe"><button (click)="delete(selectedCritter)" class="button btn-primary">Remove From My Collection</button></div>
-      <!-- <div *ngIf="aDupe"><p class="text-left">I've already caught this!</p></div> -->
       <div *ngIf="!aDupe && critterType === 'fish' && !noUser"><button (click)="addFish(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
       <div *ngIf="!aDupe && critterType === 'bugs' && !noUser"><button (click)="addBugs(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
       <div *ngIf="noUser"><p class="text-left">Login to add to your collection</p></div>
@@ -115,4 +111,4 @@
   <div class="footer"></div>
   <img class="vendor" src="assets/images/{{vendor}}.png">
 
-</div>
+</div> -->

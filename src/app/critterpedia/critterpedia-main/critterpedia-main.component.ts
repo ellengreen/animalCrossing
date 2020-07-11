@@ -29,6 +29,7 @@ export class CritterpediaMainComponent implements OnInit {
     ngOnInit(){
       this.ns.getBugs().subscribe(data=> {
         this.bugs = data;
+        console.log(this.bugs)
         this.critters = this.bugs;
         this.critterType ='bugs';
         this.vendor='Flick';
