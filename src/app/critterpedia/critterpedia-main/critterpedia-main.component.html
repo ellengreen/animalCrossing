@@ -46,6 +46,9 @@
                     <td>{{vendor}}'s Price</td>
                   </tr>
                   <tr>
+                    <td>Rarity</td>
+                  </tr>
+                  <tr>
                     <td>Location</td>
                   </tr>
                   <tr *ngIf="critterType == 'fish'">
@@ -78,16 +81,20 @@
             <td class="text-right">{{selectedCritter.value['price']*1.5}} bells</td>
           </tr>
           <tr>
+            <td>Rarity</td>
+            <td class="text-right">{{selectedCritter.value['availability']['rarity']}}</td>
+          </tr>
+          <tr>
               <td>Location</td>
-              <td class="text-right">{{selectedCritter.location}}</td>
+              <td class="text-right">{{selectedCritter.value['availability']['location']}}</td>
           </tr>
           <tr *ngIf="critterType == 'fish'">
             <td>Shadow Size</td>
-            <td class="text-right">{{selectedCritter.shadow_size}}</td>
+            <td class="text-right">{{selectedCritter.value['availability']['shadow']}}</td>
         </tr>
           <tr>
               <td>Available Times</td>
-              <td class="text-right">{{selectedCritter['times']['text']}}</td>
+              <td class="text-right">{{selectedCritter.value['availability']['time']}}</td>
           </tr>
           <tr>
               <td>Northern Months</td>
