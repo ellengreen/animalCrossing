@@ -97,17 +97,25 @@
             <td>Speed</td>
             <td class="text-right">{{selectedCritter.value['speed']}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="selectedCritter.value['availability']['isAllDay'] == false">
               <td>Available Times</td>
               <td class="text-right">{{selectedCritter.value['availability']['time']}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="selectedCritter.value['availability']['isAllDay'] == true">
+            <td>Available Times</td>
+            <td class="text-right">All Day</td>
+        </tr>
+          <tr *ngIf="selectedCritter.value['availability']['isAllYear'] == false">
               <td>Northern Months</td>
               <td class="text-right">{{selectedCritter.value['availability']['month-northern']}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="selectedCritter.value['availability']['isAllYear'] == false">
             <td>Southern Months</td>
             <td class="text-right">{{selectedCritter.value['availability']['month-southern']}}</td>
+        </tr>
+        <tr *ngIf="selectedCritter.value['availability']['isAllYear'] == true">
+          <td>Months</td>
+          <td class="text-right">All Year</td>
         </tr>
       </table>
       <div *ngIf="aDupe"><button (click)="delete(selectedCritter)" class="button btn-primary">Remove From My Collection</button></div>
