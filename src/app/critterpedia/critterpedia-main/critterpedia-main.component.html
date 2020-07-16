@@ -129,6 +129,7 @@
     </div>
 
   <div class="footer"></div>
-  <img class="vendor" src="assets/images/{{vendor}}.png">
+  <img *ngIf="critterType !== 'sea'" class="vendor" src="assets/images/{{vendor}}.png">
+  <img *ngIf="critterType === 'sea'" class="pascal" src="assets/images/{{vendor}}.png">
 
-</div> -->
+</div> 
