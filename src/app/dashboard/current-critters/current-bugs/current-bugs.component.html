@@ -1,15 +1,11 @@
     <div class="container">
-      <div class="row">
-
+        <p class="text-left">{{thisHour.length}} Bugs</p>
         <div class="col-sm-12">
-           {{thisHour.length}} Bugs
               <div class="row">
                   <div class="col-4 col-sm-3 align-items-center text-center" *ngFor="let bug of thisHour | slice:-8">
-                      <img class="icon" src="http://acnhapi.com/icons/bugs/{{bug['id']}}">
+                      <img class="icon" src="https://acnhapi.com/v1/icons/bugs/{{bug['id']}}">
                   </div>
               </div>
             </div>
-
-      </div>
     </div>
  

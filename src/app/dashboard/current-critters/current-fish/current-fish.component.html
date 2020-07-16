@@ -1,14 +1,12 @@
 <div class="container">
-  <div class="row">
+  <p class="text-left"> {{thisHour.length}} Fish</p>
     <div class="col-sm-12">
-      {{thisHour.length}} Fish
       <div class="row">
         <div class="col-4 col-sm-3 align-items-center text-center" *ngFor="let fish of thisHour | slice:-8">
-          <img class="icon" src="http://acnhapi.com/icons/fish/{{fish['id']}}">
+          <img class="icon" src="https://acnhapi.com/v1/icons/fish/{{fish['id']}}">
         </div>
       </div>
     </div>
-  </div>
 </div>
 
     

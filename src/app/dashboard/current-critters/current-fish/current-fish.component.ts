@@ -28,7 +28,7 @@ export class CurrentFishComponent implements OnInit {
     private kvPipe: KeyValuePipe
   ) { }
 
-  todayTime = this.dateService.todayDate;
+  todayTime = this.dateService.thisHour;
   ngOnInit() {
     this.httpClient.get("assets/fish.json").subscribe(data => {
       this.fishList = data;

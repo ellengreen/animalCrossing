@@ -2,18 +2,12 @@ p {
     text-align: start;
 }
 
-.div-wrapper img {
-    position: absolute;
-    left: 85px;
-    bottom: 0;
-    width: 80%;
-    margin-bottom: 0px;
-}
-
-@media only screen and (max-width: 700px) {
-    .div-wrapper img {
-        width: 20%;
-        left: 65%;
-        margin-bottom: -7px;
+@media only screen and (max-width: 850px) {
+    h5 {
+        font-size: x-large
     }
-  }
+
+    p {
+        font-size: larger;
+    }
+}

@@ -2,22 +2,18 @@
   padding: 0px;
 }
 
-.row {
-  height: 150px;
-  overflow: hidden;
-}
+// .row {
+//   // height: 150px;
+//   // overflow: hidden;
+// }
 
 .icon {
-  width: 120%;
+  width: 50%;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 850px) {
   .icon {
-    width: 60%;
+    width: 100%;
   }
 
-  .row {
-    height: 250px;
-    overflow: hidden;
-  }
 }     

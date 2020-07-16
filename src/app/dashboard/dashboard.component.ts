@@ -10,10 +10,9 @@ import { NookipediaService } from '../shared/nookipedia.service';
 export class DashboardComponent implements OnInit {
 
   constructor(
-      public nookService: NookipediaService,
-      public dateService: CurrentDateService
+    public nookService: NookipediaService,
+    public dateService: CurrentDateService
   ) { }
-  
 
   ngOnInit() {
   }

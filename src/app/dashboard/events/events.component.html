@@ -1,18 +1,10 @@
-<div class="row">
-  <div class="col-sm-7">
-    <div *ngFor="let event of eventsList | keyvalue">
-      <div *ngIf="event.key == currentMonth">
-          <span class="events" *ngFor="let e of event.value | keyvalue">
-              <h5>{{e.value['name']}}</h5>
-              <p>{{e.value['date-str']}}</p>
-          </span>
-      </div>
-    </div>
+<div *ngFor="let event of eventsList | keyvalue">
+  <div *ngIf="event.key == currentMonth">
+    <span class="events" *ngFor="let e of event.value | keyvalue">
+        <h5>{{e.value['name']}}</h5>
+        <p>{{e.value['date-str']}}</p>
+    </span>
   </div>
-    <div class="col-sm-4 div-wrapper">
-      <img src="{{image}}">
-    </div>
-  
 </div>
 
 
