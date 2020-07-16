@@ -16,13 +16,16 @@ export class CritterpediaMainComponent implements OnInit {
 
   bugs: any;
   fish: any;
+  sea: any;
   critters: any;
   critterType: any;
   vendor: any;
   loadedBugs: any;
   loadedFish: any;
+  loadedSea: any;
   bugView: boolean;
   fishView: boolean;
+  seaView: boolean;
   selectedCritter: any;
   noUser: boolean;
   
@@ -37,6 +40,9 @@ export class CritterpediaMainComponent implements OnInit {
       })
       this.ns.getFish().subscribe(data => {
         this.fish = data;
+      })
+      this.ns.getSea().subscribe(data => {
+        this.sea = data;
       })
       this.load();
     }
@@ -57,6 +63,7 @@ export class CritterpediaMainComponent implements OnInit {
       this.critters=this.fish;
       this.bugView=false;
       this.fishView=true;
+      this.seaView=false;
       this.vendor='CJ';
       this.critterType='fish';
       this.currentlyAvailable();
@@ -66,11 +73,22 @@ export class CritterpediaMainComponent implements OnInit {
       this.critters=this.bugs;
       this.fishView=false;
       this.bugView=true;
+      this.seaView=false;
       this.vendor='Flick';
       this.critterType ='bugs';
       this.currentlyAvailable();
     }
   
+    onSea(){
+      this.critters=this.sea;
+      this.seaView=true;
+      this.bugView=false;
+      this.fishView=false;
+      this.vendor='Pascal';
+      this.critterType ='sea';
+      this.currentlyAvailable();
+    }
+
     onSelect(c:any){
       this.load();
       this.selectedCritter = c;
@@ -83,8 +101,10 @@ export class CritterpediaMainComponent implements OnInit {
     showAll(){
       if (this.fishView){
         this.critters=this.fish;
-      } else {
+      } else if (this.bugView) {
         this.critters=this.bugs;
+      } else {
+        this.critters=this.sea;
       }
     }
   
@@ -117,12 +137,14 @@ export class CritterpediaMainComponent implements OnInit {
     catchableCritters(){
       if (this.fishView){
         this.critters=this.fish;
-      } else {
+      } else if (this.bugView) {
         this.critters=this.bugs;
+      } else {
+        this.critters=this.sea;
       }
       this.thisMonth=[];
       Object.keys(this.critters).forEach(key=> {
-        if (this.critters[key]['months']['northern']['array'].includes(this.currentMonth)){
+        if (this.critters[key]['availability']['month-array-northern'].includes(this.currentMonth)){
           this.thisMonth.push(this.critters[key]);
         }
       })
@@ -131,7 +153,7 @@ export class CritterpediaMainComponent implements OnInit {
     currentlyAvailable(){
       this.thisHour=[];
       Object.keys(this.critters).forEach(key=> {
-        if (this.critters[key]['times']['array'].includes(this.hour) && (this.critters[key]['months']['northern']['array'].includes(this.currentMonth))){
+        if (this.critters[key]['availability']['time-array'].includes(this.hour) && (this.critters[key]['availability']['month-array-northern'].includes(this.currentMonth))){
           this.thisHour.push(this.critters[key]);
         }
       })
@@ -146,6 +168,9 @@ export class CritterpediaMainComponent implements OnInit {
       this.db.addBug(selectedCritter);
       this.aDupe=true;
     }
+    // addSea(selectedCritter){
+
+    // }
   
     duplicate = [];
     loaded: any;
