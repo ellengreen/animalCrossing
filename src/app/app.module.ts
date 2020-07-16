@@ -19,9 +19,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AuthenticationService } from './shared/authentication.service';
 import { CurrentCrittersComponent } from './dashboard/current-critters/current-critters.component';
-import { CurrentFishComponent } from './dashboard/current-critters/current-fish/current-fish.component';
-import { CurrentBugsComponent } from './dashboard/current-critters/current-bugs/current-bugs.component';
-
 import { EventsComponent } from './dashboard/events/events.component';
 import { BirthdayComponent } from './dashboard/birthday/birthday.component';
 import { NavComponent } from './nav/nav.component';
@@ -34,8 +31,6 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
     DashboardComponent,
     ProfileComponent,
     CurrentCrittersComponent,
-    CurrentFishComponent,
-    CurrentBugsComponent,
     NavComponent,
     EventsComponent,
     BirthdayComponent,

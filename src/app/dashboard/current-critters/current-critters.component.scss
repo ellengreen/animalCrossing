@@ -2,10 +2,21 @@ h3 {
     text-align: center;
 }
 
+.col-sm-12 {
+  padding: 0px;
+}
 
+.icon {
+  width: 50%;
+}
 
+@media only screen and (max-width: 850px) {
+  .icon {
+    width: 100%;
+  }
 
-  
+}     
+
   @media only screen and (max-width: 700px) {
     .col-sm-12 {
       padding: 2px;

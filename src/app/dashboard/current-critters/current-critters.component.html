@@ -3,9 +3,30 @@
       <div class="row">
 
         <div class="col-sm-12">
-              <app-current-fish></app-current-fish>
-              <hr>
-              <app-current-bugs></app-current-bugs>
+          <div class="container">
+            <p class="text-left">{{availableBugs.length}} Bugs</p>
+            <div class="col-sm-12">
+                  <div class="row">
+                      <div class="col-4 col-sm-3 align-items-center text-center" *ngFor="let bug of availableBugs | slice:-8">
+                          <img class="icon" src="https://acnhapi.com/v1/icons/bugs/{{bug['id']}}">
+                      </div>
+                  </div>
+                </div>
+            </div>
+
+            
+        <div class="col-sm-12">
+          <div class="container">
+            <p class="text-left">{{availableFish.length}} Fish</p>
+            <div class="col-sm-12">
+                  <div class="row">
+                      <div class="col-4 col-sm-3 align-items-center text-center" *ngFor="let f of availableFish | slice:-8">
+                          <img class="icon" src="https://acnhapi.com/v1/icons/fish/{{f['id']}}">
+                      </div>
+                  </div>
+                </div>
+            </div></div>
+      
         </div>
 
       </div>

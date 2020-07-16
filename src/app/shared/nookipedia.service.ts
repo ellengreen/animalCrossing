@@ -8,11 +8,11 @@ export class NookipediaService {
 
   constructor(private httpClient: HttpClient) { }
   getFish(){
-    return this.httpClient.get('assets/fish.json');
+    return this.httpClient.get('http://acnhapi.com/v1/fish');
   }
 
   getBugs(){
-    return this.httpClient.get('assets/bugs.json');
+    return this.httpClient.get('http://acnhapi.com/v1/bugs');
   }
 
   getEvents(){
