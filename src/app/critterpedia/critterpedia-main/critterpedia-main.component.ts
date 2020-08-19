@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NookipediaService } from 'src/app/shared/nookipedia.service';
 import { FirebaseService } from 'src/app/shared/firebase.service';
 import { CurrentDateService } from 'src/app/shared/current-date.service';
-import { AuthenticationService } from 'src/app/shared/authentication.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
@@ -20,6 +19,7 @@ export class CritterpediaMainComponent implements OnInit {
   critterType: string;
   selectedCritter: any;
   tableTitles: Array<string>;
+  noUser: boolean;
 
   constructor(private ns: NookipediaService, private db: FirebaseService, private ds: CurrentDateService, private afAuth: AngularFireAuth){}
 
@@ -38,36 +38,44 @@ export class CritterpediaMainComponent implements OnInit {
   // selectedCritter: any;
   // noUser: boolean;
 
-     ngOnInit(){
-       
-       this.ns.getBugs().subscribe(data => {
-         this.bugsList = data;
-         this.getCritterInfo('bugs');
-       });
-
-       this.ns.getFish().subscribe(data => {
-         this.fishList = data;
-       })
-
-       this.ns.getSea().subscribe(data => {
-         this.seaList = data;
-       })
-
+  ngOnInit(){
+    this.afAuth.authState.subscribe(user => {
+      if (user){
+        this.noUser = false
+      } else {
+        this.noUser = true;
       }
+    })
+
+    this.ns.getBugs().subscribe(data => {
+      this.bugsList = data;
+      this.getCritterInfo('bugs');
+    });
+
+    this.ns.getFish().subscribe(data => {
+      this.fishList = data;
+    })
+
+    this.ns.getSea().subscribe(data => {
+      this.seaList = data;
+    })
+
+  }
 
   getCritterInfo(critter: string){
+    this.selectedCritter = null;
     if (critter === 'bugs'){
       this.vendor = 'Flick';
       this.critterList = this.bugsList;
       this.critterType = 'bugs';
-      this.tableTitles = ['Price', "Flick's Price", 'Rarity', 'Location', 'Avaiable Times', 'Northern Months', 'Southern Months'];
+      this.tableTitles = ['Price', "Flick's Price", 'Rarity', 'Location', 'Available Times', 'Northern Months', 'Southern Months'];
     }
 
     if (critter === 'fish'){
       this.critterList = this.fishList;
       this.critterType = 'fish';
       this.vendor = 'CJ';
-      this.tableTitles = ['Price', "CJ's Price", 'Rarity', 'Location', 'Shadow Size', 'Avaiable Times', 'Northern Months', 'Southern Months'];
+      this.tableTitles = ['Price', "CJ's Price", 'Rarity', 'Location', 'Shadow Size', 'Available Times', 'Northern Months', 'Southern Months'];
     }
 
     if (critter === 'sea'){
@@ -82,6 +90,19 @@ export class CritterpediaMainComponent implements OnInit {
     this.selectedCritter = critter;
   }
 
+  addToCollection(selectedCritter: any){
+    if (this.critterType == 'bugs'){
+      //add to bugs database
+    }
+
+    if (this.critterType == 'fish'){
+      //add to fish database
+    }
+
+    if (this.critterType == 'sea'){
+      //add to sea database
+    }
+  }
 
     //   onSelect(c:any){
   //     this.load();

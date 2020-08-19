@@ -37,204 +37,35 @@
           <table class="table">
             <tr *ngFor = 'let t of tableTitles'>
               <td>{{t}}</td>
+              <td *ngIf="selectedCritter && t=='Price'">{{selectedCritter.value['price']}}</td>
+              <td *ngIf="selectedCritter && (t=='CJ\'s Price' || t=='Flick\'s Price')">{{selectedCritter.value['price']*1.5}}</td>
+              <td *ngIf="selectedCritter && t=='Rarity'">{{selectedCritter.value['availability']['rarity']}}</td>
+              <td *ngIf="selectedCritter && t=='Location'">{{selectedCritter.value['availability']['location']}}</td>
+              <td *ngIf="selectedCritter && t=='Available Times' && selectedCritter.value['availability']['isAllDay'] == false">{{selectedCritter.value['availability']['time']}}</td>
+              <td *ngIf="selectedCritter && t=='Shadow Size'">{{selectedCritter.value['shadow']}}</td>
+              <td *ngIf="selectedCritter && t=='Speed'">{{selectedCritter.value['speed']}}</td>
+              <td *ngIf="selectedCritter && t=='Southern Months' && selectedCritter.value['availability']['isAllYear'] == false">{{selectedCritter.value['availability']['month-southern']}}</td>
+              <td *ngIf="selectedCritter && t=='Northern Months' && selectedCritter.value['availability']['isAllYear'] == false">{{selectedCritter.value['availability']['month-northern']}}</td>
+              <td *ngIf="selectedCritter && t=='Southern Months' && selectedCritter.value['availability']['isAllYear'] == true">All Year</td>
+              <td *ngIf="selectedCritter && t=='Northern Months' && selectedCritter.value['availability']['isAllYear'] == true">All Year</td>
+              <td *ngIf="selectedCritter && t=='Available Times' && selectedCritter.value['availability']['isAllDay'] == true">All Day</td>
             </tr>
           </table>
+
+          <!-- Buttons -->
+          <div *ngIf="noUser"><p class="text-left">Login to add to your collection</p></div>
+          <button (click)="addToCollection(selectedCritter)" class="button btn-primary">Add to My Collection</button>
+<!--
+      <div *ngIf="aDupe"><button (click)="delete(selectedCritter)" class="button btn-primary">Remove From My Collection</button></div>
+      <div *ngIf="!aDupe && critterType === 'fish' && !noUser"><button (click)="addFish(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
+      <div *ngIf="!aDupe && critterType === 'bugs' && !noUser"><button (click)="addBugs(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
+      <div *ngIf="noUser"><p class="text-left">Login to add to your collection</p></div>
+-->
         </div>
       </div>
     </div>
   </div>
 </div>
-<!--
-
-              <button *ngIf="!noUser" class="button">Add To My Collection</button>
-            </div>
-
-    <div *ngIf="selectedCritter">
-      <h5 class="card-title text-center name">{{selectedCritter.value['name']['name-USen']}}</h5>
-
-      <table class="table">
-          <tr>
-            <td>Price</td>
-            <td class="text-right">{{selectedCritter.value['price']}} bells</td>
-          </tr>
-          <tr *ngIf="critterType !== 'sea'">
-            <td>{{vendor}}'s Price</td>
-            <td class="text-right">{{selectedCritter.value['price']*1.5}} bells</td>
-          </tr>
-          <tr *ngIf="critterType !== 'sea'">
-            <td>Rarity</td>
-            <td class="text-right">{{selectedCritter.value['availability']['rarity']}}</td>
-          </tr>
-          <tr *ngIf="critterType !== 'sea'">
-              <td>Location</td>
-              <td class="text-right">{{selectedCritter.value['availability']['location']}}</td>
-          </tr>
-          <tr *ngIf="critterType !== 'bugs'">
-            <td>Shadow Size</td>
-            <td class="text-right">{{selectedCritter.value['shadow']}}</td>
-        </tr>
-          <tr *ngIf="critterType === 'sea'">
-            <td>Speed</td>
-            <td class="text-right">{{selectedCritter.value['speed']}}</td>
-          </tr>
-          <tr *ngIf="selectedCritter.value['availability']['isAllDay'] == false">
-              <td>Available Times</td>
-              <td class="text-right">{{selectedCritter.value['availability']['time']}}</td>
-          </tr>
-          <tr *ngIf="selectedCritter.value['availability']['isAllDay'] == true">
-            <td>Available Times</td>
-            <td class="text-right">All Day</td>
-        </tr>
-          <tr *ngIf="selectedCritter.value['availability']['isAllYear'] == false">
-              <td>Northern Months</td>
-              <td class="text-right">{{selectedCritter.value['availability']['month-northern']}}</td>
-          </tr>
-          <tr *ngIf="selectedCritter.value['availability']['isAllYear'] == false">
-            <td>Southern Months</td>
-            <td class="text-right">{{selectedCritter.value['availability']['month-southern']}}</td>
-        </tr>
-        <tr *ngIf="selectedCritter.value['availability']['isAllYear'] == true">
-          <td>Months</td>
-          <td class="text-right">All Year</td>
-        </tr>
-      </table>
-      <div *ngIf="aDupe"><button (click)="delete(selectedCritter)" class="button btn-primary">Remove From My Collection</button></div>
-      <div *ngIf="!aDupe && critterType === 'fish' && !noUser"><button (click)="addFish(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
-      <div *ngIf="!aDupe && critterType === 'bugs' && !noUser"><button (click)="addBugs(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
-      <div *ngIf="noUser"><p class="text-left">Login to add to your collection</p></div>
-      </div>
-      </div>
-    </div>
-
-    </div>
-
-</div>  
-
-
-
-
-
-
-
-<!--
-  <div class="container-fluid">
-    <div class="row">
-      <div class="key">
-        <span class="dot"></span><p class="legend">&nbsp;&nbsp;Available Right Now</p>
-      </div></div>
-      <div class="row">
-      <div class="col-sm-8">
-        <div class="card card-custom my-5">
-            <div class="card-body">  
-                <div class="row scroll">
-                    <div class="col-4 col-sm-3 align-items-center text-center fishGrid" (click)="onSelect(c)" *ngFor="let c of critters | keyvalue">
-                        <img [class.hour]="hourMethod(c.id)" class="icon" src="https://acnhapi.com/v1/icons/{{critterType}}/{{c.value['id']}}">
-                        <p>{{c.value['name']['name-USen']}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-4 detail">
-      <div class="card card-custom my-5">
-          <div class="card-body"> 
-            
-            <div *ngIf="!selectedCritter">
-              <table class="table">
-                  <tr>
-                    <td>Price</td>
-                  </tr>
-                  <tr>
-                    <td>{{vendor}}'s Price</td>
-                  </tr>
-                  <tr>
-                    <td>Rarity</td>
-                  </tr>
-                  <tr>
-                    <td>Location</td>
-                  </tr>
-                  <tr *ngIf="critterType !== 'bugs'">
-                    <td>Shadow Size</td>
-                  </tr>
-                  <tr>
-                    <td>Available Times</td>
-                  </tr>
-                  <tr>
-                    <td>Northern Months</td>
-                  </tr>
-                  <tr>
-                    <td>Southern Months</td>
-                </tr>
-              </table>
-
-              <button *ngIf="!noUser" class="button">Add To My Collection</button>
-            </div>
-
-    <div *ngIf="selectedCritter">
-      <h5 class="card-title text-center name">{{selectedCritter.value['name']['name-USen']}}</h5>
-
-      <table class="table">
-          <tr>
-            <td>Price</td>
-            <td class="text-right">{{selectedCritter.value['price']}} bells</td>
-          </tr>
-          <tr *ngIf="critterType !== 'sea'">
-            <td>{{vendor}}'s Price</td>
-            <td class="text-right">{{selectedCritter.value['price']*1.5}} bells</td>
-          </tr>
-          <tr *ngIf="critterType !== 'sea'">
-            <td>Rarity</td>
-            <td class="text-right">{{selectedCritter.value['availability']['rarity']}}</td>
-          </tr>
-          <tr *ngIf="critterType !== 'sea'">
-              <td>Location</td>
-              <td class="text-right">{{selectedCritter.value['availability']['location']}}</td>
-          </tr>
-          <tr *ngIf="critterType !== 'bugs'">
-            <td>Shadow Size</td>
-            <td class="text-right">{{selectedCritter.value['shadow']}}</td>
-        </tr>
-          <tr *ngIf="critterType === 'sea'">
-            <td>Speed</td>
-            <td class="text-right">{{selectedCritter.value['speed']}}</td>
-          </tr>
-          <tr *ngIf="selectedCritter.value['availability']['isAllDay'] == false">
-              <td>Available Times</td>
-              <td class="text-right">{{selectedCritter.value['availability']['time']}}</td>
-          </tr>
-          <tr *ngIf="selectedCritter.value['availability']['isAllDay'] == true">
-            <td>Available Times</td>
-            <td class="text-right">All Day</td>
-        </tr>
-          <tr *ngIf="selectedCritter.value['availability']['isAllYear'] == false">
-              <td>Northern Months</td>
-              <td class="text-right">{{selectedCritter.value['availability']['month-northern']}}</td>
-          </tr>
-          <tr *ngIf="selectedCritter.value['availability']['isAllYear'] == false">
-            <td>Southern Months</td>
-            <td class="text-right">{{selectedCritter.value['availability']['month-southern']}}</td>
-        </tr>
-        <tr *ngIf="selectedCritter.value['availability']['isAllYear'] == true">
-          <td>Months</td>
-          <td class="text-right">All Year</td>
-        </tr>
-      </table>
-      <div *ngIf="aDupe"><button (click)="delete(selectedCritter)" class="button btn-primary">Remove From My Collection</button></div>
-      <div *ngIf="!aDupe && critterType === 'fish' && !noUser"><button (click)="addFish(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
-      <div *ngIf="!aDupe && critterType === 'bugs' && !noUser"><button (click)="addBugs(selectedCritter)" class="button btn-primary">Add to My Collection!</button></div>
-      <div *ngIf="noUser"><p class="text-left">Login to add to your collection</p></div>
-      </div>
-      </div>
-    </div>
-
-    </div>
-
-  <div class="footer"></div>
-  <img *ngIf="critterType !== 'sea'" class="vendor" src="assets/images/{{vendor}}.png">
-  <img *ngIf="critterType === 'sea'" class="pascal" src="assets/images/{{vendor}}.png">
-
-</div>  -->
 
 
 <div class="footer"></div>
