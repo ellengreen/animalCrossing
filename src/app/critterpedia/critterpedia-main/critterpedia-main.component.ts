@@ -18,6 +18,8 @@ export class CritterpediaMainComponent implements OnInit {
   vendor: string;
   critterList: any;
   critterType: string;
+  selectedCritter: any;
+  tableTitles: Array<string>;
 
   constructor(private ns: NookipediaService, private db: FirebaseService, private ds: CurrentDateService, private afAuth: AngularFireAuth){}
 
@@ -35,10 +37,6 @@ export class CritterpediaMainComponent implements OnInit {
   // seaView: boolean;
   // selectedCritter: any;
   // noUser: boolean;
-
-  // fishValues: ['Price', "CJ's Price", 'Rarity', 'Location', 'Shadow Size', 'Avaiable Times', 'Northern Months', 'Southern Months'];
-  // bugValues: ['Price', "Flick's Price", 'Rarity', 'Location', 'Avaiable Times', 'Northern Months', 'Southern Months'];
-  // seaValues: ['Price', 'Shadow Size', 'Speed', 'Available Times', 'Northern Months', 'Southern Months'];
 
      ngOnInit(){
        
@@ -62,24 +60,40 @@ export class CritterpediaMainComponent implements OnInit {
       this.vendor = 'Flick';
       this.critterList = this.bugsList;
       this.critterType = 'bugs';
+      this.tableTitles = ['Price', "Flick's Price", 'Rarity', 'Location', 'Avaiable Times', 'Northern Months', 'Southern Months'];
     }
 
     if (critter === 'fish'){
       this.critterList = this.fishList;
       this.critterType = 'fish';
       this.vendor = 'CJ';
+      this.tableTitles = ['Price', "CJ's Price", 'Rarity', 'Location', 'Shadow Size', 'Avaiable Times', 'Northern Months', 'Southern Months'];
     }
 
     if (critter === 'sea'){
       this.critterType = 'sea';
       this.critterList = this.seaList;
       this.vendor = 'Pascal';
+      this.tableTitles = ['Price', 'Shadow Size', 'Speed', 'Available Times', 'Northern Months', 'Southern Months'];
     }
   } 
 
-  onSelect(somethin){
-
+  onSelect(critter: any){
+    this.selectedCritter = critter;
   }
+
+
+    //   onSelect(c:any){
+  //     this.load();
+  //     this.selectedCritter = c;
+  //     this.dupe(this.selectedCritter);
+  //     if(this.duplicate.includes(this.selectedCritter['id'])){
+  //       this.aDupe=true 
+  //     } else { this.aDupe=false}
+  //   }
+
+
+
   //     this.ns.getBugs().subscribe(data=> {
   //       this.bugs = data;
   //       console.log(this.bugs)

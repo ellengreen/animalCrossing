@@ -23,48 +23,28 @@
           <div class="row scroll">
             <div class="col-4 col-sm-3 align-items-center text-center fishGrid" (click)="onSelect(c)" *ngFor="let c of critterList | keyvalue">
               <img class="icon" src="https://acnhapi.com/v1/icons/{{critterType}}/{{c.value['id']}}">
-              <p>{{c.value['name']['name-USen']}}</p>
+              <p>{{c.value['name']['name-USen'] | lowercase}}</p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4 detail">
+      <div class="card card-custom my-5">
+        <div class="card-body">
+          <h5 *ngIf= "selectedCritter" class="card-title text-center name">{{selectedCritter.value['name']['name-USen'] | lowercase }}</h5>
+          <table class="table">
+            <tr *ngFor = 'let t of tableTitles'>
+              <td>{{t}}</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
   </div>
 </div>
 <!--
-
-
-    <div class="col-sm-4 detail">
-      <div class="card card-custom my-5">
-          <div class="card-body"> 
-            
-            <div *ngIf="!selectedCritter">
-              <table class="table">
-                  <tr>
-                    <td>Price</td>
-                  </tr>
-                  <tr>
-                    <td>{{vendor}}'s Price</td>
-                  </tr>
-                  <tr>
-                    <td>Rarity</td>
-                  </tr>
-                  <tr>
-                    <td>Location</td>
-                  </tr>
-                  <tr *ngIf="critterType !== 'bugs'">
-                    <td>Shadow Size</td>
-                  </tr>
-                  <tr>
-                    <td>Available Times</td>
-                  </tr>
-                  <tr>
-                    <td>Northern Months</td>
-                  </tr>
-                  <tr>
-                    <td>Southern Months</td>
-                </tr>
-              </table>
 
               <button *ngIf="!noUser" class="button">Add To My Collection</button>
             </div>
